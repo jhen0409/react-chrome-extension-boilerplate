@@ -3,7 +3,7 @@ import 'todomvc-app-css/index.css';
 
 chrome.storage.local.get('todos', (obj) => {
   let todos = obj.todos;
-	if (todos) {
+  if (todos) {
     window.todos = JSON.parse(todos);
   }
 

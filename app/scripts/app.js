@@ -18,7 +18,7 @@ function getObjectsBySearch(searchStr) {
 
 chrome.storage.local.get('todos', (obj) => {
   let todos = obj.todos;
-	if (todos) {
+  if (todos) {
     window.todos = JSON.parse(todos);
   }
 
