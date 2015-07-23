@@ -1,0 +1,12 @@
+doctype html
+
+html
+  head
+    meta(charset='UTF-8')
+    title Redux TodoMVC Example
+  
+  body
+    #root(class='todoapp')
+    if env != 'prod'
+      script(src='/js/reactdevtool.js')
+    script(src=env == 'prod' ? '/js/app.bundle.js' : 'http://localhost:3000/js/app.bundle.js')
