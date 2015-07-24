@@ -18,7 +18,8 @@
     "comma-style": [ 2, "last" ],
     "eol-last": [ 0 ],
     "no-unused-vars": [ 0 ],
-    "no-console": [ 0 ]
+    "no-console": [ 0 ],
+    "func-names": [ 0 ]
   },
   "plugins": [
     "react"
