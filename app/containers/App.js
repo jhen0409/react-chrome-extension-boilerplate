@@ -9,8 +9,7 @@ import * as reducers from '../reducers';
 const reducer = combineReducers(reducers);
 let finalCreateStore;
 
-let isDev = typeof __DEVELOPMENT__ !== 'undefined' && __DEVELOPMENT__;
-if (isDev) {
+if (__DEVELOPMENT__) {
   finalCreateStore = compose(
     devTools(),
     persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
@@ -32,7 +31,7 @@ export default class App extends Component {
         </Provider>
         {
           (() => {
-            if (isDev) {
+            if (__DEVELOPMENT__) {
               return (
                 <DebugPanel top right bottom>
                   <DevTools store={store}
