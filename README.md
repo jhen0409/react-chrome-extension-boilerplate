@@ -31,7 +31,7 @@ The example edited from [Redux](https://github.com/gaearon/redux) TodoMVC exampl
 
 ![Popup](example-popup.gif)
 
-The todos state will be saved to chrome.storage.local.
+The `todos` state will be saved to `chrome.storage.local`.
 
 #### Window
 
@@ -39,7 +39,7 @@ The todos state will be saved to chrome.storage.local.
 
 The context menus created by content script(start script at visiting github.com).
 
-If you want Packaged app, You can edit manifest.{env}.json.
+If you want Packaged app, You can edit `manifest.{env}.json`.
 ```
 ...
   "app": {
@@ -53,7 +53,7 @@ If you want Packaged app, You can edit manifest.{env}.json.
 ...
 ```
 
-and remove browser_action.
+and remove `browser_action`.
 
 ## Installation
 
@@ -71,7 +71,7 @@ npm install
 npm run dev
 ```
 
-You can load unpacked extensions with './dev'.
+You can load unpacked extensions with `./dev`.
 
 #### React/Flux hot reload
 
