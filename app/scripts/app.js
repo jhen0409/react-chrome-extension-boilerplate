@@ -18,7 +18,9 @@ let searchObj = getObjectsBySearch(unescape(location.search));
 chrome.storage.local.get('todos', (obj) => {
   let todos = obj.todos;
   if (todos) {
-    window.todos = JSON.parse(todos);
+    window.state = {
+      todos: JSON.parse(todos)
+    };
   }
 
   let App = require('../containers/App');

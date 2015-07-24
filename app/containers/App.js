@@ -20,7 +20,8 @@ if (isDev) {
   finalCreateStore = createStore;
 }
 
-const store = finalCreateStore(reducer);
+const store = finalCreateStore(reducer, window.state);
+window.state = null;
 
 export default class App extends Component {
   render() {

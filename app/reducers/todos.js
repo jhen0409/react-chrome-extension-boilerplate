@@ -1,12 +1,10 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
-let initialState = window.todos ||
-  [{
-    text: 'Use Redux',
-    marked: false,
-    id: 0
-  }]
-;
+let initialState = [{
+  text: 'Use Redux',
+  marked: false,
+  id: 0
+}];
 
 const actionsMap = {
   [ActionTypes.ADD_TODO]: (state, action) => {
