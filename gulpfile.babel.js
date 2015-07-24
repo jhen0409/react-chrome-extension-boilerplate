@@ -25,7 +25,9 @@ gulp.task('webpack-dev-server', () => {
     hot: true,
     historyApiFallback: true
   }).listen(port, 'localhost', (err) => {
-    if (err) throw new gutil.PluginError('webpack-dev-server', err);
+    if (err) {
+      throw new gutil.PluginError('webpack-dev-server', err);
+    }
     gutil.log('[webpack-dev-server]', `http://localhost:${port}/webpack-dev-server/index.html`);
   });
 });
@@ -53,7 +55,7 @@ gulp.task('copy:dev', () => {
   gulp.src('./app/assets/**/*').pipe(gulp.dest('./dev'));
 });
 
-gulp.task('watch', function() {
+gulp.task('watch', () => {
   livereload.listen();
   gulp.watch('./app/views/*.jade', ['views:dev']);
   gulp.watch('./app/scripts/content.js', ['babel:dev']);
@@ -70,7 +72,9 @@ gulp.task('watch', function() {
 gulp.task('webpack:build', (callback) => {
   let myConfig = Object.create(prodConfig);
   webpack(myConfig, (err, stats) => {
-    if (err) throw new gutil.PluginError('webpack:build', err)
+    if (err) {
+      throw new gutil.PluginError('webpack:build', err);
+    }
     gutil.log('[webpack:build]', stats.toString({ colors: true }));
     callback();
   });

@@ -1,5 +1,5 @@
 let data;
-let window_id;
+let windowId = 0;
 const CONTEXT_MENU_ID = 'example_context_menu';
 
 chrome.storage.local.get('todos', (obj) => {
@@ -17,9 +17,9 @@ chrome.storage.local.get('todos', (obj) => {
 });
 
 function closeIfExist() {
-  if (window_id > 0) {
-    chrome.windows.remove(window_id);
-    window_id = chrome.windows.WINDOW_ID_NONE;
+  if (windowId > 0) {
+    chrome.windows.remove(windowId);
+    windowId = chrome.windows.WINDOW_ID_NONE;
   }
 }
 
@@ -30,10 +30,10 @@ function popWindow(type) {
     left: 100, top: 100,
     width: 800, height: 475
   };
-  if (type == 'open') {
+  if (type === 'open') {
     options.url = 'app.html?q=' + JSON.stringify(data);
     chrome.windows.create(options, (win) => {
-      window_id = win.id;
+      windowId = win.id;
     });
   }
 }
@@ -56,11 +56,13 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
     case 'open':
       popWindow('open');
       break;
+    default:
+      break;
   }
 });
 
 chrome.contextMenus.onClicked.addListener((event) => {
-  if (event.menuItemId == CONTEXT_MENU_ID) {
+  if (event.menuItemId === CONTEXT_MENU_ID) {
     popWindow('open');
   }
 });

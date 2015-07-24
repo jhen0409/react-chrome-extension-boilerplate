@@ -9,7 +9,7 @@ import * as reducers from '../reducers';
 const reducer = combineReducers(reducers);
 let finalCreateStore;
 
-let isDev = typeof(__DEVELOPMENT__) !== 'undefined' && __DEVELOPMENT__;
+let isDev = typeof __DEVELOPMENT__ !== 'undefined' && __DEVELOPMENT__;
 if (isDev) {
   finalCreateStore = compose(
     devTools(),

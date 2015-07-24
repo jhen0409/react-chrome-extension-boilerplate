@@ -4,7 +4,7 @@ import webpack from 'webpack';
 export default {
   entry: {
     app: [ path.join(__dirname, '../app/scripts/app') ],
-    popup: [ path.join(__dirname, '../app/scripts/popup') ],
+    popup: [ path.join(__dirname, '../app/scripts/popup') ]
   },
   output: {
     path: path.join(__dirname, '../build/js'),

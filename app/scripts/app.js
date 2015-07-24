@@ -1,20 +1,19 @@
 import React from 'react';
 import 'todomvc-app-css/index.css';
 
-// location.search
-let searchObj = getObjectsBySearch(unescape(location.search));
-
 function getObjectsBySearch(searchStr) {
-  searchStr = searchStr.replace('?', '');
-  let keyValues = searchStr.split('&');
+  let keyValues = searchStr.replace('?', '').split('&');
   return keyValues.map(keyValue => {
-    keyValue = keyValue.split('=');
+    let result = keyValue.split('=');
     return {
-      key: keyValue[0],
-      value: keyValue[1]
+      key: result[0],
+      value: result[1]
     };
   });
 }
+
+// location.search
+let searchObj = getObjectsBySearch(unescape(location.search));
 
 chrome.storage.local.get('todos', (obj) => {
   let todos = obj.todos;

@@ -6,7 +6,8 @@
     "dev": "./node_modules/gulp/bin/gulp.js",
     "build": "./node_modules/gulp/bin/gulp.js build",
     "compress": "npm run build && ./node_modules/gulp/bin/gulp.js compress",
-    "clean": "rm -rf build/ && rm -rf dev/ && rm -f archive.zip"
+    "clean": "rm -rf build/ && rm -rf dev/ && rm -f archive.zip",
+    "test": "./node_modules/eslint/bin/eslint.js ."
   },
   "repository": {
     "type": "git",
@@ -29,8 +30,12 @@
   "license": "MIT",
   "devDependencies": {
     "babel": "^5.6.23",
+    "babel-eslint": "^3.1.26",
     "babel-loader": "^5.3.2",
     "chai": "^3.2.0",
+    "eslint": "^0.24.1",
+    "eslint-config-airbnb": "0.0.6",
+    "eslint-plugin-react": "^3.0.0",
     "gulp": "^3.9.0",
     "gulp-babel": "^5.1.0",
     "gulp-jade": "^1.0.1",

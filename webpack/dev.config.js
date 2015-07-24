@@ -11,7 +11,7 @@ export default {
   devtool: 'eval',
   entry: {
     app: [ path.join(__dirname, '../app/scripts/app'), ...entry ],
-    popup: [ path.join(__dirname, '../app/scripts/popup'), ...entry ],
+    popup: [ path.join(__dirname, '../app/scripts/popup'), ...entry ]
   },
   output: {
     path: path.join(__dirname, '../dev/js'),
@@ -24,7 +24,7 @@ export default {
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
       __DEVELOPMENT__: true
-    }),
+    })
   ],
   resolve: {
     extensions: ['', '.js']
