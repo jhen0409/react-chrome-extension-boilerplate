@@ -40,7 +40,7 @@ The `todos` state will be saved to `chrome.storage.local`.
 The context menus created by content script(start script at visiting github.com).
 
 If you want Packaged app, You can edit `manifest.{env}.json`.
-```
+```json
 ...
   "app": {
     "launch": {
@@ -57,14 +57,14 @@ and remove `browser_action`.
 
 ## Installation
 
-```
+```bash
 # required node.js/io.js
 npm install
 ```
 
 ## Development
 
-```
+```bash
 # build files to './dev'
 # watch files change
 # start WebpackDevServer
@@ -83,14 +83,14 @@ This boilerplate uses LiveReload except for Popup & Window, You can edit content
 
 ## Build
 
-```
+```bash
 # build files to './build'
 npm run build
 ```
 
 ## Build & Compress ZIP file
 
-```
+```bash
 # compress build folder to archive.zip
 npm run compress
 ```

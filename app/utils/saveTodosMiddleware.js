@@ -4,7 +4,7 @@ function saveTodos(state) {
   chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' });
 }
 
-export default function SaveTodosMiddleware({ dispatch, getState }) {
+export default function saveTodosMiddleware({ dispatch, getState }) {
   return next => action => {
     next(action);
     if (action.lastSaveTodos) {
