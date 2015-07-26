@@ -1,22 +1,25 @@
 import React, { Component } from 'react';
 import TodoApp from './TodoApp';
-import { createStore, combineReducers, compose } from 'redux';
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import { Provider } from 'react-redux';
 import * as reducers from '../reducers';
+import thunk from 'redux-thunk';
+import saveTodos from '../utils/saveTodosMiddleware';
 
 const reducer = combineReducers(reducers);
+const middlewares = applyMiddleware(thunk, saveTodos);
 let finalCreateStore;
-
 if (__DEVELOPMENT__) {
   finalCreateStore = compose(
+    middlewares,
     devTools(),
     persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
     createStore
   );
 } else {
-  finalCreateStore = createStore;
+  finalCreateStore = middlewares(createStore);
 }
 
 const store = finalCreateStore(reducer, window.state);

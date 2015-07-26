@@ -45,18 +45,8 @@ const actionsMap = {
   }
 };
 
-function saveTodos(state) {
-  chrome.storage.local.set({ todos: JSON.stringify(state) });
-  let len = state.filter((todo) => !todo.marked).length;
-  len = len > 0 ? len.toString() : '';
-  chrome.browserAction.setBadgeText({ text: len });
-}
-
 export default function todos(state = initialState, action) {
   const reduceFn = actionsMap[action.type];
   if (!reduceFn) return state;
-
-  let newState = reduceFn(state, action);
-  saveTodos(newState);
-  return newState;
+  return reduceFn(state, action);
 }
