@@ -25,7 +25,7 @@ Boilerplate for Chrome extension React.js project.
 
 ## Example
 
-The example edited from [Redux](https://github.com/gaearon/redux) TodoMVC example.
+The example is edited from [Redux](https://github.com/gaearon/redux) TodoMVC example.
 
 #### Popup
 
@@ -37,7 +37,7 @@ The `todos` state will be saved to `chrome.storage.local`.
 
 ![Popup](example-window.gif)
 
-The context menus created by content script(start script at visiting github.com).
+The context menu is created by content script(start script at visiting github.com).
 
 If you want Packaged app, You can edit `manifest.{env}.json`.
 ```json
@@ -75,11 +75,11 @@ You can load unpacked extensions with `./dev`.
 
 #### React/Flux hot reload
 
-This boilerplate use Webpack and react-hot-loader, and use Redux, You can edit related to Popup & Window files to hot reload.
+This boilerplate uses Webpack and react-hot-loader, and use Redux. You can hot reload by editing related files of Popup & Window.
 
 #### LiveReload
 
-This boilerplate uses LiveReload except for Popup & Window, You can edit content & background scripts let chrome runtime reload.
+This boilerplate uses LiveReload except for Popup & Window. You can let chrome runtime reload by editing content & background scripts.
 
 ## Build
 
