@@ -59,7 +59,11 @@ and remove `browser_action`.
 
 ```bash
 # required node.js/io.js
+# clone it
 npm install
+
+# or npm way
+npm install react-chrome-extension-boilerplate --dev
 ```
 
 ## Development
