@@ -6,24 +6,29 @@ import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import { Provider } from 'react-redux';
 import * as reducers from '../reducers';
 import thunk from 'redux-thunk';
-import saveTodos from '../utils/saveTodosMiddleware';
+import storage from '../utils/storage';
 
 const reducer = combineReducers(reducers);
-const middlewares = applyMiddleware(thunk, saveTodos);
+const middlewares = applyMiddleware(thunk);
 let finalCreateStore;
 if (__DEVELOPMENT__) {
   finalCreateStore = compose(
     middlewares,
+    storage,
     devTools(),
     persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
     createStore
   );
 } else {
-  finalCreateStore = middlewares(createStore);
+  finalCreateStore = compose(
+    middlewares,
+    storage,
+    createStore
+  );
 }
 
 const store = finalCreateStore(reducer, window.state);
-window.state = null;
+delete window.state;
 
 export default class App extends Component {
   render() {
