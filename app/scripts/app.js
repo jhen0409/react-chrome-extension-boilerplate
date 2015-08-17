@@ -21,9 +21,9 @@ chrome.storage.local.get('state', (obj) => {
     window.state = JSON.parse(state);
   }
 
-  let App = require('../containers/App');
+  let Root = require('../containers/Root');
   React.render(
-    <App />,
+    <Root />,
     document.querySelector('#root')
   );
 });

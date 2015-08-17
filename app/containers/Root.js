@@ -4,11 +4,10 @@ import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import { Provider } from 'react-redux';
-import * as reducers from '../reducers';
+import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
 import storage from '../utils/storage';
 
-const reducer = combineReducers(reducers);
 const middlewares = applyMiddleware(thunk);
 let finalCreateStore;
 if (__DEVELOPMENT__) {
@@ -27,7 +26,7 @@ if (__DEVELOPMENT__) {
   );
 }
 
-const store = finalCreateStore(reducer, window.state);
+const store = finalCreateStore(rootReducer, window.state);
 delete window.state;
 
 export default class App extends Component {
