@@ -9,7 +9,7 @@ Boilerplate for Chrome extension React.js project.
 
  - [react](https://github.com/facebook/react)
  - [react-hot-loader](https://github.com/gaearon/react-hot-loader)
- - [redux (1.0.0rc)](https://github.com/gaearon/redux/tree/e39afbec270e9381df3d23dfa2f770c44f488380)
+ - [redux](https://github.com/rackt/redux)
  - [react-redux](https://github.com/gaearon/react-redux)
  - [redux-devtools](https://github.com/gaearon/redux-devtools)
  - [webpack](https://github.com/webpack/webpack)
@@ -25,7 +25,7 @@ Boilerplate for Chrome extension React.js project.
 
 ## Example
 
-The example is edited from [Redux](https://github.com/gaearon/redux) TodoMVC example.
+The example is edited from [Redux](https://github.com/rackt/redux) TodoMVC example.
 
 #### Popup
 
