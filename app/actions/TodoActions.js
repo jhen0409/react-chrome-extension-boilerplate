@@ -22,21 +22,21 @@ export function editTodo(id, text) {
   };
 }
 
-export function markTodo(id) {
+export function completeTodo(id) {
   return {
-    type: types.MARK_TODO,
+    type: types.COMPLETE_TODO,
     id
   };
 }
 
-export function markAll() {
+export function completeAll() {
   return {
-    type: types.MARK_ALL
+    type: types.COMPLETE_ALL
   };
 }
 
-export function clearMarked() {
+export function clearCompleted() {
   return {
-    type: types.CLEAR_MARKED
+    type: types.CLEAR_COMPLETED
   };
 }

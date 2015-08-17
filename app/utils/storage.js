@@ -8,8 +8,8 @@ function setBadge(todos) {
   chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' });
 }
 
-export default function(next) {
-  return (reducer, initialState) => {
+export default function() {
+  return next => (reducer, initialState) => {
     let store = next(reducer, initialState);
     store.subscribe(function() {
       let state = store.getState();

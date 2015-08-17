@@ -13,7 +13,7 @@ let finalCreateStore;
 if (__DEVELOPMENT__) {
   finalCreateStore = compose(
     middlewares,
-    storage,
+    storage(),
     devTools(),
     persistState(window.location.href.match(/[?&]debug_session=([^&]+)\b/)),
     createStore
@@ -21,7 +21,7 @@ if (__DEVELOPMENT__) {
 } else {
   finalCreateStore = compose(
     middlewares,
-    storage,
+    storage(),
     createStore
   );
 }

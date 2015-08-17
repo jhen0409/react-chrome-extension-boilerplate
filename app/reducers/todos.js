@@ -2,15 +2,15 @@ import * as ActionTypes from '../constants/ActionTypes';
 
 let initialState = [{
   text: 'Use Redux',
-  marked: false,
+  completed: false,
   id: 0
 }];
 
 const actionsMap = {
   [ActionTypes.ADD_TODO]: (state, action) => {
     return [{
-      id: (state.length === 0) ? 0 : state[0].id + 1,
-      marked: false,
+      id: state.reduce((maxId, todo) => Math.max(todo.id, maxId), -1) + 1,
+      completed: false,
       text: action.text
     }, ...state];
   },
@@ -22,26 +22,25 @@ const actionsMap = {
   [ActionTypes.EDIT_TODO]: (state, action) => {
     return state.map(todo =>
       todo.id === action.id ?
-        { ...todo, text: action.text } :
+        Object.assign({}, todo, { text: action.text }) :
         todo
     );
   },
-  [ActionTypes.MARK_TODO]: (state, action) => {
+  [ActionTypes.COMPLETE_TODO]: (state, action) => {
     return state.map(todo =>
       todo.id === action.id ?
-        { ...todo, marked: !todo.marked } :
+        Object.assign({}, todo, { completed: !todo.completed }) :
         todo
     );
   },
-  [ActionTypes.MARK_ALL]: (state, action) => {
-    const areAllMarked = state.every(todo => todo.marked);
-    return state.map(todo => ({
-      ...todo,
-      marked: !areAllMarked
+  [ActionTypes.COMPLETE_ALL]: (state, action) => {
+    const areAllCompleted = state.every(todo => todo.completed);
+    return state.map(todo => Object.assign({}, todo, {
+      completed: !areAllCompleted
     }));
   },
-  [ActionTypes.CLEAR_MARKED]: (state, action) => {
-    return state.filter(todo => !todo.marked);
+  [ActionTypes.CLEAR_COMPLETED]: (state, action) => {
+    return state.filter(todo => todo.completed === false);
   }
 };
 

@@ -2,13 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
 
-export default class TodoItem extends Component {
-  static propTypes = {
-    todo: PropTypes.object.isRequired,
-    editTodo: PropTypes.func.isRequired,
-    deleteTodo: PropTypes.func.isRequired,
-    markTodo: PropTypes.func.isRequired
-  };
+class TodoItem extends Component {
 
   constructor(props, context) {
     super(props, context);
@@ -31,7 +25,7 @@ export default class TodoItem extends Component {
   }
 
   render() {
-    const {todo, markTodo, deleteTodo} = this.props;
+    const {todo, completeTodo, deleteTodo} = this.props;
 
     let element;
     if (this.state.editing) {
@@ -45,9 +39,9 @@ export default class TodoItem extends Component {
         <div className='view'>
           <input className='toggle'
                  type='checkbox'
-                 checked={todo.marked}
-                 onChange={() => markTodo(todo.id)} />
-          <label onDoubleClick={::this.handleDoubleClick}>
+                 checked={todo.completed}
+                 onChange={() => completeTodo(todo.id)} />
+          <label onDoubleClick={this.handleDoubleClick.bind(this)}>
             {todo.text}
           </label>
           <button className='destroy'
@@ -58,7 +52,7 @@ export default class TodoItem extends Component {
 
     return (
       <li className={classnames({
-        completed: todo.marked,
+        completed: todo.completed,
         editing: this.state.editing
       })}>
         {element}
@@ -66,3 +60,12 @@ export default class TodoItem extends Component {
     );
   }
 }
+
+TodoItem.propTypes = {
+  todo: PropTypes.object.isRequired,
+  editTodo: PropTypes.func.isRequired,
+  deleteTodo: PropTypes.func.isRequired,
+  completeTodo: PropTypes.func.isRequired
+};
+
+export default TodoItem;
