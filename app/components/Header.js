@@ -3,12 +3,6 @@ import TodoTextInput from './TodoTextInput';
 
 class Header extends Component {
 
-  handleSave(text) {
-    if (text.length !== 0) {
-      this.props.addTodo(text);
-    }
-  }
-
   render() {
     return (
       <header className='header'>
@@ -18,6 +12,12 @@ class Header extends Component {
                          placeholder='What needs to be done?' />
       </header>
     );
+  }
+
+  handleSave(text) {
+    if (text.length !== 0) {
+      this.props.addTodo(text);
+    }
   }
 }
 

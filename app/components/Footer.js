@@ -10,22 +10,6 @@ const FILTER_TITLES = {
 
 class Footer extends Component {
 
-  render() {
-    return (
-      <footer className='footer'>
-        {this.renderTodoCount()}
-        <ul className='filters'>
-          {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
-            <li key={filter}>
-              {this.renderFilterLink(filter)}
-            </li>
-          )}
-        </ul>
-        {this.renderClearButton()}
-      </footer>
-    );
-  }
-
   renderTodoCount() {
     const { activeCount } = this.props;
     const itemWord = activeCount === 1 ? 'item' : 'items';
@@ -60,6 +44,22 @@ class Footer extends Component {
         </button>
       );
     }
+  }
+
+  render() {
+    return (
+      <footer className='footer'>
+        {this.renderTodoCount()}
+        <ul className='filters'>
+          {[SHOW_ALL, SHOW_ACTIVE, SHOW_COMPLETED].map(filter =>
+            <li key={filter}>
+              {this.renderFilterLink(filter)}
+            </li>
+          )}
+        </ul>
+        {this.renderClearButton()}
+      </footer>
+    );
   }
 }
 

@@ -10,7 +10,7 @@ import WebpackDevServer from 'webpack-dev-server';
 import prodConfig from './webpack/prod.config';
 import devConfig from './webpack/dev.config';
 
-let port = 3000;
+const port = 3000;
 
 /*
  * dev tasks

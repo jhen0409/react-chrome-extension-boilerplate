@@ -40,24 +40,24 @@ function popWindow(type) {
 
 chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
   switch (request.type) {
-    case 'data':
-      data = request.data;
-      break;
-    case 'contextMenus':
-      chrome.contextMenus.create({
-        id: CONTEXT_MENU_ID,
-        title: 'React Chrome Extension Example',
-        contexts: ['all'],
-        documentUrlPatterns: [
-          '*://github.com/*'
-        ]
-      });
-      break;
-    case 'open':
-      popWindow('open');
-      break;
-    default:
-      break;
+  case 'data':
+    data = request.data;
+    break;
+  case 'contextMenus':
+    chrome.contextMenus.create({
+      id: CONTEXT_MENU_ID,
+      title: 'React Chrome Extension Example',
+      contexts: ['all'],
+      documentUrlPatterns: [
+        '*://github.com/*'
+      ]
+    });
+    break;
+  case 'open':
+    popWindow('open');
+    break;
+  default:
+    break;
   }
 });
 

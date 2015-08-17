@@ -12,14 +12,17 @@
     "react/jsx-uses-react": 2,
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
+    "react/jsx-quotes": 0,
     "block-scoped-var": 0,
     "padded-blocks": 0,
     "quotes": [ 1, "single" ],
     "comma-style": [ 2, "last" ],
-    "eol-last": [ 0 ],
-    "no-unused-vars": [ 0 ],
-    "no-console": [ 0 ],
-    "func-names": [ 0 ]
+    "eol-last": 0,
+    "no-unused-vars": 0,
+    "no-console": 0,
+    "func-names": 0,
+    "prefer-const": 0,
+    "comma-dangle": 0
   },
   "plugins": [
     "react"

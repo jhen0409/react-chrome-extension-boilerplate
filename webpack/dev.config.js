@@ -1,8 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 
-let port = 3000;
-let entry = [
+const port = 3000;
+const entry = [
   `webpack-dev-server/client?http://localhost:${port}`,
   'webpack/hot/only-dev-server'
 ];
