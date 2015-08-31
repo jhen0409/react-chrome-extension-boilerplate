@@ -8,7 +8,6 @@ import * as TodoActions from '../actions/TodoActions';
 class TodoApp extends Component {
   render() {
     const { todos, dispatch } = this.props;
-    console.log(this.props);
     const actions = bindActionCreators(TodoActions, dispatch);
 
     return (

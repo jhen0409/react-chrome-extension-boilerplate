@@ -1,19 +1,10 @@
 import React from 'react';
+import qs from 'qs';
 import 'todomvc-app-css/index.css';
 
-function getObjectsBySearch(searchStr) {
-  let keyValues = searchStr.replace('?', '').split('&');
-  return keyValues.map(keyValue => {
-    let result = keyValue.split('=');
-    return {
-      key: result[0],
-      value: result[1]
-    };
-  });
-}
-
 // location.search
-let searchObj = getObjectsBySearch(unescape(location.search));
+let searchObj = qs.parse(unescape(location.search.replace('?', '')));
+console.log(searchObj);
 
 chrome.storage.local.get('state', (obj) => {
   let state = obj.state;
