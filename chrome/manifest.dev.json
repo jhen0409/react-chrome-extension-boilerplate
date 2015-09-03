@@ -3,6 +3,7 @@
   "name": "react-chrome-extension-example",
   "manifest_version": 2,
   "description": "Example for react-chrome-extension-boilerplate",
+  "env": "development",
   "browser_action": {
     "default_title": "React Chrome Extension Example",
     "default_popup": "popup.html"
@@ -13,15 +14,9 @@
     "128": "img/icon-128.png",
     "scalable": "icon-large.svg"
   },
-  "content_scripts": [
-    {
-      "matches" : [ "*://github.com/*" ],
-      "js": [ "js/content.js" ]
-    }
-  ],
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage", "*://github.com/*" ],
-  "content_security_policy": "default-src 'self'; script-src 'self' http://localhost:3000 'unsafe-eval'; connect-src http://localhost:3000 ws://localhost:3000 ws://localhost:35729; style-src * 'unsafe-inline'; img-src 'self' data:;"
+  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
+  "content_security_policy": "default-src 'self'; script-src 'self' https://localhost:3000 'unsafe-eval'; connect-src https://localhost:3000 wss://localhost:3000 ws://localhost:35729; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

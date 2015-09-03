@@ -13,15 +13,12 @@
     "128": "img/icon-128.png",
     "scalable": "icon-large.svg"
   },
-  "content_scripts": [
-    {
-      "matches" : [ "*://github.com/*" ],
-      "js": [ "js/content.js" ]
-    }
-  ],
   "background": {
     "page": "background.html"
   },
+  "web_accessible_resources": [
+    "js/inject.bundle.js"
+  ],
   "permissions": [ "contextMenus", "tabs", "storage", "*://github.com/*" ],
   "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

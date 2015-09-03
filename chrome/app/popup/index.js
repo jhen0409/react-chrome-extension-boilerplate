@@ -7,7 +7,7 @@ chrome.storage.local.get('state', (obj) => {
     window.state = JSON.parse(state);
   }
 
-  let Root = require('../containers/Root');
+  let Root = require('../../../app/containers/Root');
   React.render(
     <Root />,
     document.querySelector('#root')

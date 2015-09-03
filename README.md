@@ -18,8 +18,6 @@ Boilerplate for Chrome extension React.js project.
  - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
  - [gulp-](https://github.com/gulpjs/gulp)
    - [jade](https://github.com/phated/gulp-jade)
-   - [livereload](https://github.com/vohof/gulp-livereload)
-   - [babel](https://github.com/babel/gulp-babel)
    - ...
  - [classnames](https://github.com/JedWatson/classnames)
  - [todomvc-app-css](https://github.com/tastejs/todomvc-app-css)
@@ -57,6 +55,9 @@ If you want Packaged app, You can edit `manifest.{env}.json`.
 
 and remove `browser_action`.
 
+#### Inject page
+
+
 ## Installation
 
 ```bash
@@ -82,10 +83,6 @@ You can load unpacked extensions with `./dev`.
 #### React/Flux hot reload
 
 This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window.
-
-#### LiveReload
-
-This boilerplate uses `LiveReload` except for Popup & Window. You can let chrome runtime reload by editing content & background scripts.
 
 ## Build
 
