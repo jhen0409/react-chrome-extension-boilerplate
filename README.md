@@ -8,12 +8,14 @@ Boilerplate for Chrome extension React.js project.
 ## Included
 
  - [react](https://github.com/facebook/react)
- - [react-hot-loader](https://github.com/gaearon/react-hot-loader)
  - [redux](https://github.com/rackt/redux)
  - [react-redux](https://github.com/gaearon/react-redux)
  - [redux-devtools](https://github.com/gaearon/redux-devtools)
  - [webpack](https://github.com/webpack/webpack)
  - [babel](https://github.com/babel/babel)
+ - [react-transform-webpack-hmr](https://github.com/gaearon/react-transform-webpack-hmr)
+ - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
+ - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
  - [gulp-](https://github.com/gulpjs/gulp)
    - [jade](https://github.com/phated/gulp-jade)
    - [livereload](https://github.com/vohof/gulp-livereload)
@@ -79,7 +81,7 @@ You can load unpacked extensions with `./dev`.
 
 #### React/Flux hot reload
 
-This boilerplate uses Webpack and react-hot-loader, and use Redux. You can hot reload by editing related files of Popup & Window.
+This boilerplate uses `Webpack` and `react-transform`, and use Redux. You can hot reload by editing related files of Popup & Window.
 
 #### LiveReload
 
