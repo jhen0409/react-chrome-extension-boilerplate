@@ -3,6 +3,14 @@ import classnames from 'classnames';
 
 class TodoTextInput extends Component {
 
+  static propTypes = {
+    onSave: PropTypes.func.isRequired,
+    text: PropTypes.string,
+    placeholder: PropTypes.string,
+    editing: PropTypes.bool,
+    newTodo: PropTypes.bool
+  };
+
   constructor(props, context) {
     super(props, context);
     this.state = {
@@ -47,13 +55,5 @@ class TodoTextInput extends Component {
     }
   }
 }
-
-TodoTextInput.propTypes = {
-  onSave: PropTypes.func.isRequired,
-  text: PropTypes.string,
-  placeholder: PropTypes.string,
-  editing: PropTypes.bool,
-  newTodo: PropTypes.bool
-};
 
 export default TodoTextInput;

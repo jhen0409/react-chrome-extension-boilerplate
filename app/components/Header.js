@@ -3,6 +3,10 @@ import TodoTextInput from './TodoTextInput';
 
 class Header extends Component {
 
+  static propTypes = {
+    addTodo: PropTypes.func.isRequired
+  };
+
   render() {
     return (
       <header className='header'>
@@ -20,9 +24,5 @@ class Header extends Component {
     }
   }
 }
-
-Header.propTypes = {
-  addTodo: PropTypes.func.isRequired
-};
 
 export default Header;

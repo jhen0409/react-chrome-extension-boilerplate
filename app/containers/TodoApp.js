@@ -5,7 +5,16 @@ import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/TodoActions';
 
+@connect(state => ({
+  todos: state.todos
+}))
 class TodoApp extends Component {
+
+  static propTypes = {
+    todos: PropTypes.array.isRequired,
+    dispatch: PropTypes.func.isRequired
+  };
+
   render() {
     const { todos, dispatch } = this.props;
     const actions = bindActionCreators(TodoActions, dispatch);
@@ -19,15 +28,4 @@ class TodoApp extends Component {
   }
 }
 
-TodoApp.propTypes = {
-  todos: PropTypes.array.isRequired,
-  dispatch: PropTypes.func.isRequired
-};
-
-function select(state) {
-  return {
-    todos: state.todos
-  };
-}
-
-export default connect(select)(TodoApp);
+export default TodoApp;

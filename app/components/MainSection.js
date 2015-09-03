@@ -11,6 +11,11 @@ const TODO_FILTERS = {
 
 class MainSection extends Component {
 
+  static propTypes = {
+    todos: PropTypes.array.isRequired,
+    actions: PropTypes.object.isRequired
+  };
+
   constructor(props, context) {
     super(props, context);
     this.state = { filter: SHOW_ALL };
@@ -78,10 +83,5 @@ class MainSection extends Component {
     this.setState({ filter });
   }
 }
-
-MainSection.propTypes = {
-  todos: PropTypes.array.isRequired,
-  actions: PropTypes.object.isRequired
-};
 
 export default MainSection;

@@ -81,11 +81,11 @@ You can load unpacked extensions with `./dev`.
 
 #### React/Flux hot reload
 
-This boilerplate uses `Webpack` and `react-transform`, and use Redux. You can hot reload by editing related files of Popup & Window.
+This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window.
 
 #### LiveReload
 
-This boilerplate uses LiveReload except for Popup & Window. You can let chrome runtime reload by editing content & background scripts.
+This boilerplate uses `LiveReload` except for Popup & Window. You can let chrome runtime reload by editing content & background scripts.
 
 ## Build
 
