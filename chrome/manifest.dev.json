@@ -3,7 +3,6 @@
   "name": "react-chrome-extension-example",
   "manifest_version": 2,
   "description": "Example for react-chrome-extension-boilerplate",
-  "env": "development",
   "browser_action": {
     "default_title": "React Chrome Extension Example",
     "default_popup": "popup.html"
