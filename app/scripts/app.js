@@ -4,7 +4,6 @@ import 'todomvc-app-css/index.css';
 
 // location.search
 let searchObj = qs.parse(unescape(location.search.replace('?', '')));
-console.log(searchObj);
 
 chrome.storage.local.get('state', (obj) => {
   let state = obj.state;
