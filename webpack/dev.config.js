@@ -10,10 +10,10 @@ const entry = [
 export default {
   devtool: 'inline-source-map',
   entry: {
-    window: [ path.join(__dirname, '../chrome/app/window.js'), ...entry ],
-    popup: [ path.join(__dirname, '../chrome/app/popup.js'), ...entry ],
-    background: [ path.join(__dirname, '../chrome/app/background.js'), ...entry ],
-    inject: [ path.join(__dirname, '../chrome/app/inject.js'), ...entry ]
+    window: [ path.join(__dirname, '../chrome/app/window/index'), ...entry ],
+    popup: [ path.join(__dirname, '../chrome/app/popup/index'), ...entry ],
+    background: [ path.join(__dirname, '../chrome/app/background/index'), ...entry ],
+    inject: [ path.join(__dirname, '../chrome/app/inject/index'), ...entry ]
   },
   output: {
     path: path.join(__dirname, '../dev/js'),
