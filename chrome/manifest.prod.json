@@ -16,6 +16,6 @@
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage", "*://github.com/*" ],
+  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
   "content_security_policy": "default-src 'self'; script-src 'self' 'unsafe-eval'; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

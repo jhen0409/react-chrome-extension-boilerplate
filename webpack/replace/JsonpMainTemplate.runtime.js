@@ -19,7 +19,7 @@ module.exports = function() {
     var request = new XMLHttpRequest();
 
     request.onload = function() {
-			evalInContext(this.responseText, context);
+			evalCode(this.responseText, context);
 		};
     request.open("get", src, true);
     request.send();

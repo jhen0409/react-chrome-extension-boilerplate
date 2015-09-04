@@ -2,7 +2,7 @@
 const arrowURLs = [ 'https://github.com' ];
 
 chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
-  if (changeInfo.status !== 'loading') return;
+  if (changeInfo.status !== 'complete') return;
   const matched = arrowURLs.every(url => !!tab.url.match(url));
   if (!matched) return;
 
