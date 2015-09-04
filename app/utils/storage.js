@@ -4,8 +4,10 @@ function saveState(state) {
 
 // todos unmarked count
 function setBadge(todos) {
-  let count = todos.filter((todo) => !todo.marked).length;
-  chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' });
+  if (chrome.browserAction) {
+    let count = todos.filter((todo) => !todo.marked).length;
+    chrome.browserAction.setBadgeText({ text: count > 0 ? count.toString() : '' });
+  }
 }
 
 export default function() {

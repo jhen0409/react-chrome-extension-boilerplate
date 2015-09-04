@@ -1,0 +1,10 @@
+doctype html
+
+html
+  head
+    meta(charset='UTF-8')
+    title Redux TodoMVC Example
+  
+  body
+    #root(class='todoapp')
+    script(src=env == 'prod' ? '/js/window.bundle.js' : 'https://localhost:3000/js/window.bundle.js')

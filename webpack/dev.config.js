@@ -3,21 +3,23 @@ import webpack from 'webpack';
 
 const port = 3000;
 const entry = [
-  `webpack-dev-server/client?http://localhost:${port}`,
+  `webpack-dev-server/client?https://localhost:${port}`,
   'webpack/hot/only-dev-server'
 ];
 
 export default {
-  devtool: 'eval',
+  devtool: 'inline-source-map',
   entry: {
-    app: [ path.join(__dirname, '../app/scripts/app'), ...entry ],
-    popup: [ path.join(__dirname, '../app/scripts/popup'), ...entry ]
+    window: [ path.join(__dirname, '../chrome/app/window/index'), ...entry ],
+    popup: [ path.join(__dirname, '../chrome/app/popup/index'), ...entry ],
+    background: [ path.join(__dirname, '../chrome/app/background/index'), ...entry ],
+    inject: [ path.join(__dirname, '../chrome/app/inject/index'), ...entry ]
   },
   output: {
     path: path.join(__dirname, '../dev/js'),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js',
-    publicPath: `http://localhost:${port}/js/`
+    publicPath: `https://localhost:${port}/js/`
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

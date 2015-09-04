@@ -1,8 +1,7 @@
+import fs from 'fs';
 import gulp from 'gulp';
 import gutil from 'gulp-util';
 import jade from 'gulp-jade';
-import babel from 'gulp-babel';
-import livereload from 'gulp-livereload';
 import rename from 'gulp-rename';
 import zip from 'gulp-zip';
 import webpack from 'webpack';
@@ -13,56 +12,53 @@ import devConfig from './webpack/dev.config';
 const port = 3000;
 
 /*
+ * common tasks
+ */
+gulp.task('replace-webpack-code', () => {
+  const replaceTasks = [ {
+    from: './webpack/replace/JsonpMainTemplate.runtime.js',
+    to: './node_modules/webpack/lib/JsonpMainTemplate.runtime.js'
+  }, {
+    from: './webpack/replace/log-apply-result.js',
+    to: './node_modules/webpack/hot/log-apply-result.js'
+  } ];
+  replaceTasks.forEach(task => fs.writeFileSync(task.to, fs.readFileSync(task.from)));
+});
+
+/*
  * dev tasks
  */
 
 gulp.task('webpack-dev-server', () => {
   let myConfig = Object.create(devConfig);
   new WebpackDevServer(webpack(myConfig), {
-    contentBase: `http://localhost:${port}/js`,
+    contentBase: `https://localhost:${port}`,
     publicPath: myConfig.output.publicPath,
     stats: {colors: true},
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    https: true
   }).listen(port, 'localhost', (err) => {
     if (err) {
       throw new gutil.PluginError('webpack-dev-server', err);
     }
-    gutil.log('[webpack-dev-server]', `http://localhost:${port}/webpack-dev-server/index.html`);
+    gutil.log('[webpack-dev-server]', `listening at port ${port}`);
   });
 });
 
 gulp.task('views:dev', () => {
-  gulp.src('./app/views/*.jade')
+  gulp.src('./chrome/views/*.jade')
     .pipe(jade({
       locals: { env: 'dev' }
     }))
-    .pipe(gulp.dest('./dev'))
-    .pipe(livereload());
-});
-
-gulp.task('babel:dev', () => {
-  gulp.src(['./app/scripts/content.js', './app/scripts/background.js', './app/scripts/reactdevtool.js', './app/scripts/livereload.js'])
-    .pipe(babel())
-    .pipe(gulp.dest('./dev/js'))
-    .pipe(livereload());
+    .pipe(gulp.dest('./dev'));
 });
 
 gulp.task('copy:dev', () => {
-  gulp.src('./app/manifest.dev.json')
+  gulp.src('./chrome/manifest.dev.json')
     .pipe(rename('manifest.json'))
     .pipe(gulp.dest('./dev'));
-  gulp.src('./app/assets/**/*').pipe(gulp.dest('./dev'));
-});
-
-gulp.task('watch', () => {
-  livereload.listen();
-  gulp.watch('./app/views/*.jade', ['views:dev']);
-  gulp.watch('./app/scripts/content.js', ['babel:dev']);
-  gulp.watch('./app/scripts/background.js', ['babel:dev']);
-  gulp.watch('./app/scripts/reactdevtool.js', ['babel:dev']);
-  gulp.watch('./app/scripts/livereload.js', ['babel:dev']);
-  gulp.watch('./app/manifest.dev.json', ['copy:dev']);
+  gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./dev'));
 });
 
 /*
@@ -81,24 +77,18 @@ gulp.task('webpack:build', (callback) => {
 });
 
 gulp.task('views:build', () => {
-  gulp.src('./app/views/*.jade')
+  gulp.src('./chrome/views/*.jade')
     .pipe(jade({
       locals: { env: 'prod' }
     }))
     .pipe(gulp.dest('./build'));
 });
 
-gulp.task('babel:build', () => {
-  gulp.src(['./app/scripts/content.js', './app/scripts/background.js'])
-    .pipe(babel())
-    .pipe(gulp.dest('./build/js'));
-});
-
 gulp.task('copy:build', () => {
-  gulp.src('./app/manifest.prod.json')
+  gulp.src('./chrome/manifest.prod.json')
     .pipe(rename('manifest.json'))
     .pipe(gulp.dest('./build'));
-  gulp.src('./app/assets/**/*').pipe(gulp.dest('./build'));
+  gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./build'));
 });
 
 /*
@@ -111,6 +101,6 @@ gulp.task('zip:compress', () => {
     .pipe(gulp.dest('.'));
 });
 
-gulp.task('default', ['webpack-dev-server', 'views:dev', 'babel:dev', 'copy:dev', 'watch']);
-gulp.task('build', ['webpack:build', 'views:build', 'babel:build', 'copy:build']);
+gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
+gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
 gulp.task('compress', ['zip:compress']);
