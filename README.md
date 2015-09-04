@@ -7,12 +7,13 @@ Boilerplate for Chrome extension React.js project.
 
 ## Included
 
+ - [babel](https://github.com/babel/babel)
  - [react](https://github.com/facebook/react)
  - [redux](https://github.com/rackt/redux)
  - [react-redux](https://github.com/gaearon/react-redux)
  - [redux-devtools](https://github.com/gaearon/redux-devtools)
+ - [redbox-react](https://github.com/KeywordBrain/redbox-react)
  - [webpack](https://github.com/webpack/webpack)
- - [babel](https://github.com/babel/babel)
  - [react-transform-webpack-hmr](https://github.com/gaearon/react-transform-webpack-hmr)
  - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
  - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
@@ -37,7 +38,7 @@ The `todos` state will be saved to `chrome.storage.local`.
 
 ![Popup](example-window.gif)
 
-The context menu is created by content script(start script at visiting github.com).
+The context menu is created by `chrome/app/background/contextMenus.js`.
 
 If you want Packaged app, You can edit `manifest.{env}.json`.
 ```json
@@ -57,6 +58,7 @@ and remove `browser_action`.
 
 #### Inject page
 
+The inject script is being run by `chrome/app/background/inject.js`. A simple example will be inject bottom of page(`https://github.com/*`) if you visit.
 
 ## Installation
 
