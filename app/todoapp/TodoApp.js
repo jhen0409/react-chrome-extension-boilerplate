@@ -8,7 +8,7 @@ import * as TodoActions from './actions/TodoActions';
 @connect(state => ({
   todos: state.todos
 }))
-class TodoApp extends Component {
+export default class TodoApp extends Component {
 
   static propTypes = {
     todos: PropTypes.array.isRequired,
@@ -27,5 +27,3 @@ class TodoApp extends Component {
     );
   }
 }
-
-export default TodoApp;

@@ -36,7 +36,8 @@ gulp.task('webpack-dev-server', () => {
     publicPath: myConfig.output.publicPath,
     stats: {colors: true},
     hot: true,
-    historyApiFallback: true
+    historyApiFallback: true,
+    https: true
   }).listen(port, 'localhost', (err) => {
     if (err) {
       throw new gutil.PluginError('webpack-dev-server', err);

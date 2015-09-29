@@ -9,7 +9,7 @@ export function isInjected(tabId) {
 export function loadScript(name, tabId, cb) {
   if (__DEVELOPMENT__) {
     // dev: async fetch bundle
-    fetch(`http://localhost:3000/js/${name}.bundle.js`).then(response => {
+    fetch(`https://localhost:3000/js/${name}.bundle.js`).then(response => {
       return response.text();
     }).then(response => {
       chrome.tabs.executeScript(tabId, { code: response, runAt: 'document_start' }, () => cb());
