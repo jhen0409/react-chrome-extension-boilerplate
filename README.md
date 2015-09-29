@@ -73,14 +73,14 @@ npm install react-chrome-extension-boilerplate --dev
 
 ## Development
 
+* Run script
 ```bash
 # build files to './dev'
-# watch files change
 # start WebpackDevServer
 npm run dev
 ```
-
-You can load unpacked extensions with `./dev`.
+* Allow `https://localhost:3000` connection (Because `injectpage` injected Github(https) pages, so `webpack-dev-server` procotol must be https.)
+* Load unpacked extensions with `./dev`
 
 #### React/Flux hot reload
 
