@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import Header from '../components/Header';
-import MainSection from '../components/MainSection';
-import * as TodoActions from '../actions/TodoActions';
+import Header from './components/Header';
+import MainSection from './components/MainSection';
+import * as TodoActions from './actions/TodoActions';
 
 @connect(state => ({
   todos: state.todos
