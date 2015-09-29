@@ -32,12 +32,11 @@ gulp.task('replace-webpack-code', () => {
 gulp.task('webpack-dev-server', () => {
   let myConfig = Object.create(devConfig);
   new WebpackDevServer(webpack(myConfig), {
-    contentBase: `https://localhost:${port}`,
+    contentBase: `http://localhost:${port}`,
     publicPath: myConfig.output.publicPath,
     stats: {colors: true},
     hot: true,
-    historyApiFallback: true,
-    https: true
+    historyApiFallback: true
   }).listen(port, 'localhost', (err) => {
     if (err) {
       throw new gutil.PluginError('webpack-dev-server', err);

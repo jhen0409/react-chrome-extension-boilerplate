@@ -14,7 +14,7 @@ chrome.tabs.onUpdated.addListener(function(tabId, changeInfo, tab) {
 
     if (__DEVELOPMENT__) {
       // dev: async fetch bundle
-      fetch('https://localhost:3000/js/inject.bundle.js').then(response => {
+      fetch('http://localhost:3000/js/inject.bundle.js').then(response => {
         return response.text();
       }).then(response => {
         chrome.tabs.executeScript(tabId, { code: response, runAt: 'document_start' });

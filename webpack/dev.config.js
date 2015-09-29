@@ -3,7 +3,7 @@ import webpack from 'webpack';
 
 const port = 3000;
 const entry = [
-  `webpack-dev-server/client?https://localhost:${port}`,
+  `webpack-dev-server/client?http://localhost:${port}`,
   'webpack/hot/only-dev-server'
 ];
 
@@ -19,7 +19,7 @@ export default {
     path: path.join(__dirname, '../dev/js'),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js',
-    publicPath: `https://localhost:${port}/js/`
+    publicPath: `http://localhost:${port}/js/`
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
