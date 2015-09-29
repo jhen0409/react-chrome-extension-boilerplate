@@ -3,7 +3,7 @@ import TodoApp from './TodoApp';
 import { devTools, persistState } from 'redux-devtools';
 import { DevTools, DebugPanel, LogMonitor } from 'redux-devtools/lib/react';
 import { Provider } from 'react-redux';
-import createStore from './stores';
+import createStore from './configureStore';
 
 const store = createStore(window.state);
 delete window.state;

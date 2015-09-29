@@ -1,8 +1,8 @@
 import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
 import { devTools, persistState } from 'redux-devtools';
-import rootReducer from '../reducers/index';
+import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
-import storage from '../utils/storage';
+import storage from './utils/storage';
 
 const middlewares = applyMiddleware(thunk);
 let finalCreateStore;
@@ -24,8 +24,8 @@ export default function(initialState) {
   const store = finalCreateStore(rootReducer, initialState);
 
   if (module.hot) {
-    module.hot.accept('../reducers', () => {
-      const nextRootReducer = require('../reducers/index');
+    module.hot.accept('./reducers', () => {
+      const nextRootReducer = require('./reducers/index');
       store.replaceReducer(nextRootReducer);
     });
   }
