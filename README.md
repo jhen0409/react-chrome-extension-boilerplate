@@ -100,13 +100,10 @@ npm run build
 npm run compress
 ```
 
-## Test (Work in progress)
+## Roadmap
 
-The test use [sinon-chrome](https://github.com/vitalets/sinon-chrome).
-
-```
-npm test
-```
+- [ ] React components, Redux actions & reducers tests
+- [ ] E2E tests (use [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
 
 ## LICENSE
 
