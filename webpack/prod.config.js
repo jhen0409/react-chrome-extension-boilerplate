@@ -1,6 +1,8 @@
 import path from 'path';
 import webpack from 'webpack';
 
+process.env.BABEL_ENV = 'production';
+
 export default {
   entry: {
     window: [ path.join(__dirname, '../chrome/app/window/index') ],
