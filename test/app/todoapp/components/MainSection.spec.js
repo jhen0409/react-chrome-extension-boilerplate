@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import jsdomReact from '../../jsdomReact';
+import { jsdomReact } from '../../../func';
 import React from 'react/addons';
 import MainSection from '../../../../app/todoapp/components/MainSection';
 import TodoItem from '../../../../app/todoapp/components/TodoItem';

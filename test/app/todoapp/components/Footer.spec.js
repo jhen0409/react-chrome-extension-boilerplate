@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import jsdomReact from '../../jsdomReact';
+import { jsdomReact } from '../../../func';
 import React from 'react/addons';
 import Footer from '../../../../app/todoapp/components/Footer';
 import { SHOW_ALL, SHOW_ACTIVE } from '../../../../app/todoapp/constants/TodoFilters';
