@@ -14,7 +14,7 @@ Boilerplate for Chrome extension React.js project.
  - [redux-devtools](https://github.com/gaearon/redux-devtools)
  - [redbox-react](https://github.com/KeywordBrain/redbox-react)
  - [webpack](https://github.com/webpack/webpack)
- - [react-transform-webpack-hmr](https://github.com/gaearon/react-transform-webpack-hmr)
+ - [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)
  - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
  - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
  - [gulp-](https://github.com/gulpjs/gulp)
