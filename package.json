@@ -4,7 +4,7 @@
   "description": "Boilerplate for Chrome extension React.js project",
   "scripts": {
     "dev": "gulp",
-    "build": "gulp build",
+    "build": "BABEL_ENV=production gulp build",
     "compress": "npm run build && gulp compress",
     "clean": "rm -rf build/ && rm -rf dev/ && rm -f archive.zip",
     "test-crdv": "chromedriver",
