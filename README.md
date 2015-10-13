@@ -100,10 +100,15 @@ npm run build
 npm run compress
 ```
 
-## Roadmap
+## Test
 
-- [ ] React components, Redux actions & reducers tests
-- [ ] E2E tests (use [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
+* `test/app`: React components, Redux actions & reducers tests
+* `test/e2e`: E2E tests (use [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
+
+```bash
+npm run test-crdv  // start chromedriver
+npm test
+```
 
 ## LICENSE
 
