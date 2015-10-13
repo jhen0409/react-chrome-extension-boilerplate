@@ -31,8 +31,9 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
   });
 
   it('should render inject app', function(done) {
-    this.driver.findElement(webdriver.By.className('inject-react-example'));
-    done();
+    this.driver.findElement(webdriver.By.className('inject-react-example')).then(elem => {
+      done();
+    });
   });
 
   it('should link to repo page with click "view repo" link', function(done) {
