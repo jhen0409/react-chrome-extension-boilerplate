@@ -7,9 +7,12 @@ install:
   - sudo sh -c 'echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list'
   - sudo apt-get update
   - sudo apt-get install google-chrome-stable
+  - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
   - npm install
 
 before_script:
   - export DISPLAY=:99.0
   - sh -e /etc/init.d/xvfb start &
+  - sleep 3
   - npm run test-crdv &
+  - sleep 3
