@@ -96,7 +96,7 @@ gulp.task('copy:build', () => {
  */
 
 gulp.task('zip:compress', () => {
-  gulp.src('build/*')
+  gulp.src('build/**')
     .pipe(zip('archive.zip'))
     .pipe(gulp.dest('.'));
 });
