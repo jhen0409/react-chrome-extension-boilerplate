@@ -11,44 +11,44 @@ function addTodo(driver, key) {
   // add todo
   return co(function *() {
     driver.findElement(webdriver.By.className('new-todo')).sendKeys(key + webdriver.Key.RETURN);
-    const elems = yield findList(driver);
-    return { elem: elems[0], length: elems.length };
+    const todos = yield findList(driver);
+    return { todo: todos[0], count: todos.length };
   });
 }
 
 function editTodo(driver, index, key) {
   return co(function *() {
-    let elems = yield findList(driver);
-    const label = elems[index].findElement(webdriver.By.tagName('label'));
+    let todos = yield findList(driver);
+    const label = todos[index].findElement(webdriver.By.tagName('label'));
     // dbl click to enable textarea
     yield driver.actions().doubleClick(label).perform();
     // typing & enter
     driver.actions().sendKeys(key + webdriver.Key.RETURN).perform();
 
-    elems = yield findList(driver);
-    return { elem: elems[index], length: elems.length };
+    todos = yield findList(driver);
+    return { todo: todos[index], count: todos.length };
   });
 }
 
 function completeTodo(driver, index) {
   return co(function *() {
-    let elems = yield findList(driver);
-    elems[index].findElement(webdriver.By.className('toggle')).click();
-    elems = yield findList(driver);
-    return { elem: elems[index], length: elems.length };
+    let todos = yield findList(driver);
+    todos[index].findElement(webdriver.By.className('toggle')).click();
+    todos = yield findList(driver);
+    return { todo: todos[index], count: todos.length };
   });
 }
 
 function deleteTodo(driver, index) {
   return co(function *() {
-    let elems = yield findList(driver);
+    let todos = yield findList(driver);
     driver.executeScript(
       `document.querySelectorAll('.todo-list > li')[${index}]
         .getElementsByClassName('destroy')[0].style.display = 'block'`
     );
-    elems[index].findElement(webdriver.By.className('destroy')).click();
-    elems = yield findList(driver);
-    return { length: elems.length };
+    todos[index].findElement(webdriver.By.className('destroy')).click();
+    todos = yield findList(driver);
+    return { count: todos.length };
   });
 }
 
@@ -88,9 +88,9 @@ describe('window (popup) page', function() {
 
   it('should can add todo', function(done) {
     co(function *() {
-      const { elem, length } = yield addTodo(this.driver, 'Add tests');
-      expect(length).to.equal(2);
-      const text = yield elem.findElement(webdriver.By.tagName('label')).getText();
+      const { todo, count } = yield addTodo(this.driver, 'Add tests');
+      expect(count).to.equal(2);
+      const text = yield todo.findElement(webdriver.By.tagName('label')).getText();
       expect(text).to.equal('Add tests');
       done();
     }.bind(this)).catch(done);
@@ -98,9 +98,9 @@ describe('window (popup) page', function() {
 
   it('should can edit todo', function(done) {
     co(function *() {
-      const { elem, length } = yield editTodo(this.driver, 0, 'Ya ');
-      expect(length).to.equal(2);
-      const text = yield elem.findElement(webdriver.By.tagName('label')).getText();
+      const { todo, count } = yield editTodo(this.driver, 0, 'Ya ');
+      expect(count).to.equal(2);
+      const text = yield todo.findElement(webdriver.By.tagName('label')).getText();
       expect(text).to.equal('Ya Add tests');
       done();
     }.bind(this)).catch(done);
@@ -108,9 +108,9 @@ describe('window (popup) page', function() {
 
   it('should can complete todo', function(done) {
     co(function *() {
-      const { elem, length } = yield completeTodo(this.driver, 0);
-      expect(length).to.equal(2);
-      const className = yield elem.getAttribute('class');
+      const { todo, count } = yield completeTodo(this.driver, 0);
+      expect(count).to.equal(2);
+      const className = yield todo.getAttribute('class');
       expect(className).to.equal('completed');
       done();
     }.bind(this)).catch(done);
@@ -119,8 +119,8 @@ describe('window (popup) page', function() {
   it('should can complete all todos', function(done) {
     co(function *() {
       this.driver.findElement(webdriver.By.className('toggle-all')).click();
-      const elems = yield findList(this.driver);
-      const classNames = yield Promise.all(elems.map((elem) => elem.getAttribute('class')));
+      const todos = yield findList(this.driver);
+      const classNames = yield Promise.all(todos.map((todo) => todo.getAttribute('class')));
       expect(classNames.every((name) => name === 'completed')).to.equal(true);
       done();
     }.bind(this)).catch(done);
@@ -128,8 +128,8 @@ describe('window (popup) page', function() {
 
   it('should can delete todo', function(done) {
     co(function *() {
-      const { length } = yield deleteTodo(this.driver, 0);
-      expect(length).to.equal(1);
+      const { count } = yield deleteTodo(this.driver, 0);
+      expect(count).to.equal(1);
       done();
     }.bind(this)).catch(done);
   });
@@ -138,13 +138,13 @@ describe('window (popup) page', function() {
     co(function *() {
       // current todo count: 1
       yield addTodo(this.driver, 'Add 1');
-      const { length } = yield addTodo(this.driver, 'Add 2');
-      expect(length).to.equal(3);
+      const { count } = yield addTodo(this.driver, 'Add 2');
+      expect(count).to.equal(3);
 
       yield completeTodo(this.driver, 0);
       this.driver.findElement(webdriver.By.className('clear-completed')).click();
-      const elems = yield findList(this.driver);
-      const classNames = yield Promise.all(elems.map((elem) => elem.getAttribute('class')));
+      const todos = yield findList(this.driver);
+      const classNames = yield Promise.all(todos.map((todo) => todo.getAttribute('class')));
       expect(classNames.every((name) => name !== 'completed')).to.equal(true);
       done();
     }.bind(this)).catch(done);
@@ -152,8 +152,8 @@ describe('window (popup) page', function() {
 
   it('should cannot clear completed todos if completed todos count = 0', function(done) {
     co(function *() {
-      const elems = yield this.driver.findElements(webdriver.By.className('clear-completed'));
-      expect(elems.length).to.equal(0);
+      const todos = yield this.driver.findElements(webdriver.By.className('clear-completed'));
+      expect(todos.length).to.equal(0);
       done();
     }.bind(this)).catch(done);
   });
@@ -162,14 +162,14 @@ describe('window (popup) page', function() {
     co(function *() {
       // current todo count: 2
       yield addTodo(this.driver, 'Add 1');
-      const { length } = yield addTodo(this.driver, 'Add 2');
-      expect(length).to.equal(3);
+      const { count } = yield addTodo(this.driver, 'Add 2');
+      expect(count).to.equal(3);
 
       yield completeTodo(this.driver, 0);
-      let elems = yield this.driver.findElements(webdriver.By.css('.filters > li'));
-      elems[1].click();
-      elems = yield findList(this.driver);
-      expect(elems.length).to.equal(2);
+      let todos = yield this.driver.findElements(webdriver.By.css('.filters > li'));
+      todos[1].click();
+      todos = yield findList(this.driver);
+      expect(todos.length).to.equal(2);
       done();
     }.bind(this)).catch(done);
   });
@@ -177,10 +177,10 @@ describe('window (popup) page', function() {
   it('should can filter completed todos', function(done) {
     co(function *() {
       // current todo count: 2
-      let elems = yield this.driver.findElements(webdriver.By.css('.filters > li'));
-      elems[2].click();
-      elems = yield findList(this.driver);
-      expect(elems.length).to.equal(1);
+      let todos = yield this.driver.findElements(webdriver.By.css('.filters > li'));
+      todos[2].click();
+      todos = yield findList(this.driver);
+      expect(todos.length).to.equal(1);
       done();
     }.bind(this)).catch(done);
   });
