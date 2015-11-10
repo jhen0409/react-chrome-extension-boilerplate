@@ -1,3 +1,4 @@
+import co from 'co';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import { check } from '../func';
@@ -23,33 +24,36 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
   });
 
   it('should open Github', function(done) {
-    this.driver.getTitle().then((title) => {
+    co(function *() {
+      const title = yield this.driver.getTitle();
       expect(title).to.equal('GitHub · Where software is built');
       done();
-    });
+    }.bind(this)).catch(done);
   });
 
   it('should render inject app', function(done) {
-    // inject load & run bundle time
-    this.driver.wait(() =>
-      this.driver.findElements(webdriver.By.className('inject-react-example'))
-        .then(elems => elems.length > 0)
-    , 10000, 'Inject app not found')
-    .then(() => done());
+    co(function *() {
+      yield this.driver.wait(() =>
+        this.driver.findElements(webdriver.By.className('inject-react-example'))
+          .then(elems => elems.length > 0)
+        , 10000, 'Inject app not found');
+      done();
+    }.bind(this)).catch(done);
   });
 
   it('should link to repo page with click "view repo" link', function(done) {
-    this.driver.wait(() =>
-      this.driver.findElements(webdriver.By.className('inject-react-example-repo-button'))
-        .then(elems => elems.length > 0)
-    , 10000, 'Inject app not found');
-    this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
-    this.driver.getAllWindowHandles().then(tabs => {
+    co(function *() {
+      yield this.driver.wait(() =>
+        this.driver.findElements(webdriver.By.className('inject-react-example-repo-button'))
+          .then(elems => elems.length > 0)
+      , 10000, 'Inject app not found');
+
+      this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
+      const tabs = yield this.driver.getAllWindowHandles();
       this.driver.switchTo().window(tabs[1]);
-      return this.driver.getTitle();
-    }).then((title) => {
+      const title = yield this.driver.getTitle();
       expect(title).to.equal('jhen0409/react-chrome-extension-boilerplate · GitHub');
       done();
-    });
+    }.bind(this)).catch(done);
   });
 });
