@@ -5,6 +5,7 @@
     "__DEVELOPMENT__": true
   },
   "env": {
+    "mocha": true,
     "browser": true,
     "node": true
   },
