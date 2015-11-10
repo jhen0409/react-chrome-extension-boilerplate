@@ -8,7 +8,7 @@ const entry = [
 ];
 
 export default {
-  devtool: 'inline-source-map',
+  devtool: 'eval-cheap-module-source-map',
   entry: {
     window: [ path.join(__dirname, '../chrome/app/window/index'), ...entry ],
     popup: [ path.join(__dirname, '../chrome/app/popup/index'), ...entry ],
