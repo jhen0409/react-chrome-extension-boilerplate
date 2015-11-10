@@ -3,9 +3,9 @@ import { expect } from 'chai';
 import { check } from '../func';
 
 describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate)', function() {
+  this.timeout(15000);
 
   before(function(done) {
-    this.timeout(6000);
     this.driver = new webdriver.Builder()
       .usingServer('http://localhost:9515')
       .withCapabilities({
@@ -19,7 +19,6 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
   });
 
   after(function(done) {
-    this.timeout(20000);
     this.driver.quit().then(done);
   });
 
@@ -32,20 +31,18 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
 
   it('should render inject app', function(done) {
     // inject load & run bundle time
-    this.timeout(8000);
     this.driver.wait(() =>
       this.driver.findElements(webdriver.By.className('inject-react-example'))
         .then(elems => elems.length > 0)
-    , 5000, 'Inject app not found')
+    , 10000, 'Inject app not found')
     .then(() => done());
   });
 
   it('should link to repo page with click "view repo" link', function(done) {
-    this.timeout(8000);
     this.driver.wait(() =>
       this.driver.findElements(webdriver.By.className('inject-react-example-repo-button'))
         .then(elems => elems.length > 0)
-    , 5000, 'Inject app not found');
+    , 10000, 'Inject app not found');
     this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
     this.driver.getAllWindowHandles().then(tabs => {
       this.driver.switchTo().window(tabs[1]);

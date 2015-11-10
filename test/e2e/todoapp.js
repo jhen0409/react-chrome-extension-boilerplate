@@ -49,9 +49,9 @@ function deleteTodo(driver, index) {
 }
 
 describe('window (popup) page', function() {
+  this.timeout(15000);
 
   before(function(done) {
-    this.timeout(6000);
     this.driver = new webdriver.Builder()
       .usingServer('http://localhost:9515')
       .withCapabilities({
@@ -71,7 +71,6 @@ describe('window (popup) page', function() {
   });
 
   after(function(done) {
-    this.timeout(15000);
     this.driver.quit().then(done);
   });
 
