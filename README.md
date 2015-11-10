@@ -82,7 +82,7 @@ npm run dev
 * Allow `https://localhost:3000` connections (Because `injectpage` injected Github(https) pages, so `webpack-dev-server` procotol must be https.)
 * Load unpacked extensions with `./dev`
 
-#### React/Flux hot reload
+#### React/Redux hot reload
 
 This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window.
 
