@@ -93,12 +93,14 @@ This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can 
 npm run build
 ```
 
-## Build & Compress ZIP file
+## Build & Compress
 
 ```bash
-# compress build folder to archive.zip
+# compress build folder to react-crx.zip & .crx
 npm run compress
 ```
+
+You can add custom `key.pem` in `build` folder.
 
 ## Test
 
