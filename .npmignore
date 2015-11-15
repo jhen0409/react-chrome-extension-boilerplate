@@ -6,3 +6,5 @@ build/
 dev/
 
 *.zip
+*.crx
+*.pem

@@ -5,8 +5,8 @@
   "scripts": {
     "dev": "gulp",
     "build": "BABEL_ENV=production gulp build",
-    "compress": "npm run build && gulp compress",
-    "clean": "rm -rf build/ && rm -rf dev/ && rm -f archive.zip",
+    "compress": "npm run build && crx pack build --zip-output react-crx.zip -o react-crx.crx",
+    "clean": "rm -rf build/ && rm -rf dev/ && rm -f *.zip && rm -f *.crx",
     "test-crdv": "chromedriver",
     "test:eslint": "eslint .",
     "test:app": "BABEL_ENV=test mocha --recursive --compilers js:babel-core/register test/app",
