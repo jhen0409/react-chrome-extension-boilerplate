@@ -10,7 +10,7 @@
     "test-crdv": "chromedriver",
     "test:eslint": "eslint .",
     "test:app": "BABEL_ENV=test mocha --recursive --compilers js:babel-core/register test/app",
-    "test:e2e": "npm run build && mocha --recursive --compilers js:babel-core/register test/e2e",
+    "test:e2e": "npm run build && mocha --recursive --compilers js:babel-core/register -r co-mocha test/e2e",
     "test": "npm run test:eslint && npm run test:app && npm run test:e2e"
   },
   "repository": {
@@ -40,6 +40,7 @@
     "babel-plugin-react-transform": "^1.1.1",
     "chai": "^3.2.0",
     "chromedriver": "^2.19.0",
+    "co-mocha": "^1.1.2",
     "crx": "^3.0.3",
     "eslint": "^1.1.0",
     "eslint-config-airbnb": "0.0.7",

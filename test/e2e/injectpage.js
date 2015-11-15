@@ -1,4 +1,3 @@
-import co from 'co';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import { check } from '../func';
@@ -6,7 +5,7 @@ import { check } from '../func';
 describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate)', function() {
   this.timeout(15000);
 
-  before(function(done) {
+  before(async () => {
     this.driver = new webdriver.Builder()
       .usingServer('http://localhost:9515')
       .withCapabilities({
@@ -16,44 +15,35 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
       })
       .forBrowser('chrome')
       .build();
-    this.driver.get('https://github.com').then(done);
+    await this.driver.get('https://github.com');
   });
 
-  after(function(done) {
-    this.driver.quit().then(done);
+  after(async () => {
+    await this.driver.quit();
   });
 
-  it('should open Github', function(done) {
-    co(function *() {
-      const title = yield this.driver.getTitle();
-      expect(title).to.equal('GitHub · Where software is built');
-      done();
-    }.bind(this)).catch(done);
+  it('should open Github', async () => {
+    const title = await this.driver.getTitle();
+    expect(title).to.equal('GitHub · Where software is built');
   });
 
-  it('should render inject app', function(done) {
-    co(function *() {
-      yield this.driver.wait(() =>
-        this.driver.findElements(webdriver.By.className('inject-react-example'))
-          .then(elems => elems.length > 0)
-        , 10000, 'Inject app not found');
-      done();
-    }.bind(this)).catch(done);
-  });
-
-  it('should link to repo page with click "view repo" link', function(done) {
-    co(function *() {
-      yield this.driver.wait(() =>
-        this.driver.findElements(webdriver.By.className('inject-react-example-repo-button'))
-          .then(elems => elems.length > 0)
+  it('should render inject app', async () => {
+    await this.driver.wait(() =>
+      this.driver.findElements(webdriver.By.className('inject-react-example'))
+        .then(elems => elems.length > 0)
       , 10000, 'Inject app not found');
+  });
 
-      this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
-      const tabs = yield this.driver.getAllWindowHandles();
-      this.driver.switchTo().window(tabs[1]);
-      const title = yield this.driver.getTitle();
-      expect(title).to.equal('jhen0409/react-chrome-extension-boilerplate · GitHub');
-      done();
-    }.bind(this)).catch(done);
+  it('should link to repo page with click "view repo" link', async () => {
+    await this.driver.wait(() =>
+      this.driver.findElements(webdriver.By.className('inject-react-example-repo-button'))
+        .then(elems => elems.length > 0)
+    , 10000, 'Inject app not found');
+
+    this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
+    const tabs = await this.driver.getAllWindowHandles();
+    this.driver.switchTo().window(tabs[1]);
+    const title = await this.driver.getTitle();
+    expect(title).to.equal('jhen0409/react-chrome-extension-boilerplate · GitHub');
   });
 });
