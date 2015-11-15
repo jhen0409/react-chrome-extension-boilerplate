@@ -6,14 +6,14 @@ function findList(driver) {
   return driver.findElements(webdriver.By.css('.todo-list > li'));
 }
 
-async function addTodo(driver, key) {
+const addTodo = async (driver, key) => {
   // add todo
   driver.findElement(webdriver.By.className('new-todo')).sendKeys(key + webdriver.Key.RETURN);
   const todos = await findList(driver);
   return { todo: todos[0], count: todos.length };
-}
+};
 
-async function editTodo(driver, index, key) {
+const editTodo = async (driver, index, key) => {
   let todos = await findList(driver);
   const label = todos[index].findElement(webdriver.By.tagName('label'));
   // dbl click to enable textarea
@@ -23,16 +23,16 @@ async function editTodo(driver, index, key) {
 
   todos = await findList(driver);
   return { todo: todos[index], count: todos.length };
-}
+};
 
-async function completeTodo(driver, index) {
+const completeTodo = async (driver, index) => {
   let todos = await findList(driver);
   todos[index].findElement(webdriver.By.className('toggle')).click();
   todos = await findList(driver);
   return { todo: todos[index], count: todos.length };
-}
+};
 
-async function deleteTodo(driver, index) {
+const deleteTodo = async (driver, index) => {
   let todos = await findList(driver);
   driver.executeScript(
     `document.querySelectorAll('.todo-list > li')[${index}]
@@ -41,7 +41,7 @@ async function deleteTodo(driver, index) {
   todos[index].findElement(webdriver.By.className('destroy')).click();
   todos = await findList(driver);
   return { count: todos.length };
-}
+};
 
 describe('window (popup) page', function() {
   this.timeout(15000);
