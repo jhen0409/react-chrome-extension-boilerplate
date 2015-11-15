@@ -48,7 +48,6 @@
     "gulp-jade": "^1.0.1",
     "gulp-rename": "^1.2.2",
     "gulp-util": "^3.0.5",
-    "gulp-zip": "^3.0.2",
     "jsdom": "^6.5.1",
     "mocha": "^2.2.5",
     "mocha-jsdom": "^1.0.0",

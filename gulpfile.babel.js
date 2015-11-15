@@ -3,7 +3,6 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import jade from 'gulp-jade';
 import rename from 'gulp-rename';
-import zip from 'gulp-zip';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import prodConfig from './webpack/prod.config';
@@ -91,16 +90,5 @@ gulp.task('copy:build', () => {
   gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./build'));
 });
 
-/*
- * compress task
- */
-
-gulp.task('zip:compress', () => {
-  gulp.src('build/**')
-    .pipe(zip('archive.zip'))
-    .pipe(gulp.dest('.'));
-});
-
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
 gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
-gulp.task('compress', ['zip:compress']);
