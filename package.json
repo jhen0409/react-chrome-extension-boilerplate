@@ -4,12 +4,12 @@
   "description": "Boilerplate for Chrome extension React.js project",
   "scripts": {
     "dev": "gulp",
-    "build": "BABEL_ENV=production gulp build",
+    "build": "gulp build",
     "compress": "npm run build && crx pack build --zip-output react-crx.zip -o react-crx.crx",
     "clean": "rimraf build/ dev/ *.zip *.crx",
     "test-crdv": "chromedriver",
     "test:eslint": "eslint .",
-    "test:app": "BABEL_ENV=test mocha --recursive --compilers js:babel-core/register test/app",
+    "test:app": "mocha --recursive --compilers js:babel-core/register test/app",
     "test:e2e": "npm run build && mocha --recursive --compilers js:babel-core/register -r co-mocha test/e2e",
     "test": "npm run test:eslint && npm run test:app && npm run test:e2e"
   },
