@@ -1,3 +1,4 @@
+import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import { check } from '../func';
@@ -6,11 +7,12 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
   this.timeout(15000);
 
   before(async () => {
+    const extPath = path.resolve('build');
     this.driver = new webdriver.Builder()
       .usingServer('http://localhost:9515')
       .withCapabilities({
         chromeOptions: {
-          args: [ 'load-extension=./build' ]
+          args: [ `load-extension=${extPath}` ]
         }
       })
       .forBrowser('chrome')
