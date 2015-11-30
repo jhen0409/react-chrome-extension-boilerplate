@@ -1,6 +1,7 @@
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
+import delay from 'delay';
 
 describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate)', function() {
   this.timeout(15000);
@@ -42,6 +43,7 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
     , 10000, 'Inject app not found');
 
     this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
+    await delay(1000);
     const tabs = await this.driver.getAllWindowHandles();
     this.driver.switchTo().window(tabs[1]);
     const title = await this.driver.getTitle();

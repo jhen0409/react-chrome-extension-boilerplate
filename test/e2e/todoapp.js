@@ -1,6 +1,7 @@
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
+import delay from 'delay';
 
 function findList(driver) {
   return driver.findElements(webdriver.By.css('.todo-list > li'));
@@ -9,6 +10,7 @@ function findList(driver) {
 const addTodo = async (driver, key) => {
   // add todo
   driver.findElement(webdriver.By.className('new-todo')).sendKeys(key + webdriver.Key.RETURN);
+  await delay(1000);
   const todos = await findList(driver);
   return { todo: todos[0], count: todos.length };
 };
@@ -18,8 +20,10 @@ const editTodo = async (driver, index, key) => {
   const label = todos[index].findElement(webdriver.By.tagName('label'));
   // dbl click to enable textarea
   await driver.actions().doubleClick(label).perform();
+  await delay(500);
   // typing & enter
   driver.actions().sendKeys(key + webdriver.Key.RETURN).perform();
+  await delay(1000);
 
   todos = await findList(driver);
   return { todo: todos[index], count: todos.length };
@@ -28,6 +32,7 @@ const editTodo = async (driver, index, key) => {
 const completeTodo = async (driver, index) => {
   let todos = await findList(driver);
   todos[index].findElement(webdriver.By.className('toggle')).click();
+  await delay(1000);
   todos = await findList(driver);
   return { todo: todos[index], count: todos.length };
 };
@@ -39,6 +44,7 @@ const deleteTodo = async (driver, index) => {
       .getElementsByClassName('destroy')[0].style.display = 'block'`
   );
   todos[index].findElement(webdriver.By.className('destroy')).click();
+  await delay(1000);
   todos = await findList(driver);
   return { count: todos.length };
 };
@@ -132,6 +138,7 @@ describe('window (popup) page', function() {
     await completeTodo(this.driver, 0);
     let todos = await this.driver.findElements(webdriver.By.css('.filters > li'));
     todos[1].click();
+    await delay(1000);
     todos = await findList(this.driver);
     expect(todos.length).to.equal(2);
   });
@@ -140,6 +147,7 @@ describe('window (popup) page', function() {
     // current todo count: 2
     let todos = await this.driver.findElements(webdriver.By.css('.filters > li'));
     todos[2].click();
+    await delay(1000);
     todos = await findList(this.driver);
     expect(todos.length).to.equal(1);
   });
