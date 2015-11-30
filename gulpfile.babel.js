@@ -34,16 +34,19 @@ gulp.task('replace-webpack-code', () => {
 
 gulp.task('webpack-dev-server', () => {
   let myConfig = Object.create(devConfig);
-  new WebpackDevServer(webpack(myConfig), {
+  new WebpackDevServer(webpack(myConfig, (err, stats) => {
+    if (err) throw new gutil.PluginError('webpack', err);
+    gutil.log('Please allow `https://localhost:3000` connections in Google Chrome');
+    gutil.log('and load unpacked extensions with `./dev`');
+  }), {
     publicPath: myConfig.output.publicPath,
     stats: {colors: true},
+    noInfo: true,
     hot: true,
     historyApiFallback: true,
     https: true
   }).listen(port, 'localhost', (err) => {
-    if (err) {
-      throw new gutil.PluginError('webpack-dev-server', err);
-    }
+    if (err) throw new gutil.PluginError('webpack-dev-server', err);
     gutil.log('[webpack-dev-server]', `listening at port ${port}`);
   });
 });
