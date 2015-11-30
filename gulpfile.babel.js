@@ -3,6 +3,8 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import jade from 'gulp-jade';
 import rename from 'gulp-rename';
+import mocha from 'gulp-mocha';
+import crdv from 'chromedriver';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import prodConfig from './webpack/prod.config';
@@ -90,5 +92,21 @@ gulp.task('copy:build', () => {
   gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./build'));
 });
 
+/*
+ * test tasks
+ */
+
+gulp.task('app:test', () => {
+  gulp.src('./test/app/**/*.spec.js').pipe(mocha());
+});
+
+gulp.task('e2e:test', () => {
+  crdv.start();
+  return gulp.src('./test/e2e/**/*.js')
+    .pipe(mocha({ require: ['co-mocha'] }));
+});
+
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
 gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
+gulp.task('test-app', ['app:test']);
+gulp.task('test-e2e', ['e2e:test'], () => crdv.stop());

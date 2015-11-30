@@ -1,7 +1,6 @@
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
-import { check } from '../func';
 
 describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate)', function() {
   this.timeout(15000);

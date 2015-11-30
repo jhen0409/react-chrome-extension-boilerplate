@@ -1,7 +1,6 @@
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
-import { check } from '../func';
 
 function findList(driver) {
   return driver.findElements(webdriver.By.css('.todo-list > li'));

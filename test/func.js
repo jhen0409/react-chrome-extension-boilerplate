@@ -5,11 +5,3 @@ export function jsdomReact() {
   jsdom();
   ExecutionEnvironment.canUseDOM = true;
 }
-
-export function check(done, func) {
-  try {
-    func();
-  } catch (ex) {
-    done(ex);
-  }
-}
