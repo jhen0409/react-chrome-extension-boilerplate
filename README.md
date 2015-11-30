@@ -96,11 +96,12 @@ npm run build
 ## Build & Compress
 
 ```bash
-# compress build folder to react-crx.zip & .crx
+# compress build folder to {manifest.name}.crx
 npm run compress
 ```
 
-You can add custom `key.pem` in `build` folder.
+* You can add custom `key.pem` in main folder.
+* If you want autoupdate, you can refer [https://github.com/PavelVanecek/gulp-crx#autoupdating](this) and edit Gulpfile.
 
 ## Test
 
