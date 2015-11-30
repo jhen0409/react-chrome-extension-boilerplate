@@ -3,28 +3,16 @@
 [![Build Status](https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate.svg)](https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate)
 [![NPM version](http://img.shields.io/npm/v/react-chrome-extension-boilerplate.svg?style=flat)](https://www.npmjs.com/package/react-chrome-extension-boilerplate)
 
-Boilerplate for Chrome extension React.js project.
+Boilerplate for Chrome Extension React.js project.
 
-## Included
+## Features
 
- - [babel](https://github.com/babel/babel)
- - [react](https://github.com/facebook/react)
- - [redux](https://github.com/rackt/redux)
- - [react-redux](https://github.com/gaearon/react-redux)
- - [redux-devtools](https://github.com/gaearon/redux-devtools)
- - [redbox-react](https://github.com/KeywordBrain/redbox-react)
- - [webpack](https://github.com/webpack/webpack)
- - [react-transform-hmr](https://github.com/gaearon/react-transform-hmr)
- - [react-transform-catch-errors](https://github.com/gaearon/react-transform-catch-errors)
- - [babel-plugin-react-transform](https://github.com/gaearon/babel-plugin-react-transform)
- - [gulp-](https://github.com/gulpjs/gulp)
-   - [jade](https://github.com/phated/gulp-jade)
-   - ...
- - [classnames](https://github.com/JedWatson/classnames)
- - [todomvc-app-css](https://github.com/tastejs/todomvc-app-css)
- - ...
+ - Simple [React](https://github.com/facebook/react)/[Redux](https://github.com/rackt/redux) examples of Chrome Extension Window & Popup & Inject pages
+ - Hot reloading React/Redux (Using [Webpack](https://github.com/webpack/webpack) and [React Transform](https://github.com/gaearon/react-transform))
+ - Write code with ES2015+ syntax (Using [Babel](https://github.com/babel/babel))
+ - E2E tests of Window & Popup & Inject pages (Using [Chrome Driver](https://www.npmjs.com/package/chromedriver), [Selenium Webdriver](https://www.npmjs.com/package/selenium-webdriver))
 
-## Example
+## Examples
 
 The example is edited from [Redux](https://github.com/rackt/redux) TodoMVC example.
 
@@ -63,7 +51,7 @@ The inject script is being run by `chrome/app/background/inject.js`. A simple ex
 ## Installation
 
 ```bash
-# required node.js/io.js
+# required node.js
 # clone it
 npm install
 
@@ -84,7 +72,7 @@ npm run dev
 
 #### React/Redux hot reload
 
-This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window.
+This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window & Inject page.
 
 ## Build
 
@@ -101,7 +89,7 @@ npm run compress
 ```
 
 * You can add custom `key.pem` in main folder.
-* If you want autoupdate, you can refer [https://github.com/PavelVanecek/gulp-crx#autoupdating](this) and edit Gulpfile.
+* If you want autoupdate, you can refer [this](https://github.com/PavelVanecek/gulp-crx#autoupdating) and edit Gulpfile.
 
 ## Test
 
