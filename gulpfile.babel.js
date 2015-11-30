@@ -35,7 +35,6 @@ gulp.task('replace-webpack-code', () => {
 gulp.task('webpack-dev-server', () => {
   let myConfig = Object.create(devConfig);
   new WebpackDevServer(webpack(myConfig), {
-    contentBase: `https://localhost:${port}`,
     publicPath: myConfig.output.publicPath,
     stats: {colors: true},
     hot: true,
