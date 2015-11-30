@@ -124,7 +124,8 @@ gulp.task('crx:compress', () => {
  */
 
 gulp.task('app:test', () => {
-  gulp.src('./test/app/**/*.spec.js').pipe(mocha());
+  gulp.src('./test/app/**/*.spec.js')
+    .pipe(mocha({ require: ['./test/setup-app'] }));
 });
 
 gulp.task('e2e:test', () => {

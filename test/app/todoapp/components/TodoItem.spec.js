@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { jsdomReact } from '../../../func';
 import React from 'react/addons';
 import TodoItem from '../../../../app/todoapp/components/TodoItem';
 import TodoTextInput from '../../../../app/todoapp/components/TodoTextInput';
@@ -35,7 +34,6 @@ function setup(editing = false) {
 }
 
 describe('todoapp TodoItem component', () => {
-  jsdomReact();
 
   it('should render correctly', () => {
     const { output } = setup();

@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { jsdomReact } from '../../../func';
 import React from 'react/addons';
 import Header from '../../../../app/todoapp/components/Header';
 import TodoTextInput from '../../../../app/todoapp/components/TodoTextInput';
@@ -20,7 +19,6 @@ function setup() {
 }
 
 describe('todoapp Header component', () => {
-  jsdomReact();
 
   it('should render correctly', () => {
     const { output } = setup();

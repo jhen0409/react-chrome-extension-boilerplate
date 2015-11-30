@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { jsdomReact } from '../../../func';
 import React from 'react/addons';
 import RepoButton from '../../../../app/injectpage/components/RepoButton';
 
@@ -18,7 +17,6 @@ function setup(propOverrides) {
 }
 
 describe('inject RepoButton component', () => {
-  jsdomReact();
 
   it('should render correctly', () => {
     const { output } = setup();

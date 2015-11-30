@@ -1,6 +1,5 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import { jsdomReact } from '../../../func';
 import React from 'react/addons';
 import MainSection from '../../../../app/todoapp/components/MainSection';
 import TodoItem from '../../../../app/todoapp/components/TodoItem';
@@ -38,7 +37,6 @@ function setup(propOverrides) {
 }
 
 describe('todoapp MainSection component', () => {
-  jsdomReact();
 
   it('should render correctly', () => {
     const { output } = setup();
