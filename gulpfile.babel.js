@@ -3,6 +3,8 @@ import gulp from 'gulp';
 import gutil from 'gulp-util';
 import jade from 'gulp-jade';
 import rename from 'gulp-rename';
+import RSA from 'node-rsa';
+import crx from 'gulp-crx-pack';
 import mocha from 'gulp-mocha';
 import crdv from 'chromedriver';
 import webpack from 'webpack';
@@ -93,6 +95,29 @@ gulp.task('copy:build', () => {
 });
 
 /*
+ * compres tasks
+ */
+
+gulp.task('crx:compress', () => {
+  const keyPath = './key.pem';
+  let privateKey;
+  if (!fs.existsSync('./key.pem')) {
+    privateKey = new RSA({ b: 1024 }).exportKey('pkcs1-private-pem');
+    fs.writeFileSync(keyPath, privateKey);
+  } else {
+    privateKey = fs.readFileSync('./key.pem', 'utf8');
+  }
+  gulp.src('./build')
+    .pipe(crx({
+      privateKey,
+      filename: require('./build/manifest.json').name + '.crx'
+      // if you want autoupdating,
+      // refer: https://github.com/PavelVanecek/gulp-crx#autoupdating
+    }))
+    .pipe(gulp.dest('.'));
+});
+
+/*
  * test tasks
  */
 
@@ -108,5 +133,6 @@ gulp.task('e2e:test', () => {
 
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
 gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
+gulp.task('compress', ['crx:compress']);
 gulp.task('test-app', ['app:test']);
 gulp.task('test-e2e', ['e2e:test'], () => crdv.stop());
