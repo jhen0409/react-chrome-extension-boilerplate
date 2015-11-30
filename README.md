@@ -108,7 +108,12 @@ You can add custom `key.pem` in `build` folder.
 * `test/e2e`: E2E tests (use [chromedriver](https://www.npmjs.com/package/chromedriver), [selenium-webdriver](https://www.npmjs.com/package/selenium-webdriver))
 
 ```bash
-npm run test-crdv  // start chromedriver
+# test/app
+npm run test:app
+# test/e2e
+npm run build
+npm run test:e2e
+# lint & test:app & build & test:e2e
 npm test
 ```
 
