@@ -7,15 +7,14 @@ export function isInjected(tabId) {
 }
 
 export function loadScript(name, tabId, cb) {
-  if (__DEVELOPMENT__) {
+  if (process.env.NODE_ENV === 'production') {
+    chrome.tabs.executeScript(tabId, { file: `/js/${name}.bundle.js`, runAt: 'document_start' }, () => cb());
+  } else {
     // dev: async fetch bundle
     fetch(`https://localhost:3000/js/${name}.bundle.js`).then(response => {
       return response.text();
     }).then(response => {
       chrome.tabs.executeScript(tabId, { code: response, runAt: 'document_start' }, () => cb());
     });
-  } else {
-    // prod
-    chrome.tabs.executeScript(tabId, { file: `/js/${name}.bundle.js`, runAt: 'document_start' }, () => cb());
   }
 }

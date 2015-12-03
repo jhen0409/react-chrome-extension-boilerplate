@@ -5,7 +5,7 @@ import thunk from 'redux-thunk';
 
 const middlewares = applyMiddleware(thunk);
 let finalCreateStore;
-if (__DEVELOPMENT__) {
+if (process.env.DEVTOOLS) {
   finalCreateStore = compose(
     middlewares,
     devTools(),

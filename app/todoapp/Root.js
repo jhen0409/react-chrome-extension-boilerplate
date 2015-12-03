@@ -17,7 +17,7 @@ export default class Root extends Component {
         </Provider>
         {
           (() => {
-            if (__DEVELOPMENT__) {
+            if (process.env.DEVTOOLS) {
               return (
                 <DebugPanel top left bottom>
                   <DevTools store={store}

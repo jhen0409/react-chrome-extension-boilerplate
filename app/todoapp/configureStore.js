@@ -6,7 +6,7 @@ import storage from './utils/storage';
 
 const middlewares = applyMiddleware(thunk);
 let finalCreateStore;
-if (__DEVELOPMENT__) {
+if (process.env.DEVTOOLS) {
   finalCreateStore = compose(
     middlewares,
     storage(),

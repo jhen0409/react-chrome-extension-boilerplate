@@ -25,7 +25,10 @@ export default {
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
     new webpack.DefinePlugin({
-      __DEVELOPMENT__: true
+      'process.env': {
+        DEVTOOLS: true,
+        DEVTOOLS_EXT: false
+      }
     })
   ],
   resolve: {
