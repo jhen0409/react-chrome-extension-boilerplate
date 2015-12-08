@@ -7,10 +7,10 @@
     "build": "gulp build",
     "compress": "npm run build && gulp compress",
     "clean": "rimraf build/ dev/ *.zip *.crx",
-    "test:eslint": "eslint .",
+    "lint": "eslint .",
     "test:app": "gulp test-app",
     "test:e2e": "gulp test-e2e",
-    "test": "npm run test:eslint && npm run test:app && npm run build && npm run test:e2e"
+    "test": "npm run lint && npm run test:app && npm run build && npm run test:e2e"
   },
   "repository": {
     "type": "git",
