@@ -1,10 +1,9 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import Footer from '../../../../app/todoapp/components/Footer';
 import { SHOW_ALL, SHOW_ACTIVE } from '../../../../app/todoapp/constants/TodoFilters';
-
-const { TestUtils } = React.addons;
 
 function setup(propOverrides) {
   const props = {
@@ -59,11 +58,11 @@ describe('todoapp Footer component', () => {
     expect(filters.type).to.equal('ul');
     expect(filters.props.className).to.equal('filters');
     expect(filters.props.children.length).to.equal(3);
-    filters.props.children.forEach((filter, i) => {
+    filters.props.children.forEach((filter, index) => {
       expect(filter.type).to.equal('li');
-      const a = filter.props.children;
-      expect(a.props.className).to.equal(i === 0 ? 'selected' : '');
-      expect(a.props.children).to.equal([ 'All', 'Active', 'Completed'][i]);
+      const link = filter.props.children;
+      expect(link.props.className).to.equal(index === 0 ? 'selected' : '');
+      expect(link.props.children).to.equal([ 'All', 'Active', 'Completed'][index]);
     });
   });
 

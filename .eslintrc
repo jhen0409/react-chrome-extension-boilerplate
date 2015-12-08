@@ -1,8 +1,7 @@
 {
   "extends": "eslint-config-airbnb",
   "globals": {
-    "chrome": true,
-    "__DEVELOPMENT__": true
+    "chrome": true
   },
   "env": {
     "mocha": true,

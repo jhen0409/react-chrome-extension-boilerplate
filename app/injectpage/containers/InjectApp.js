@@ -1,7 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
-import RepoButton from './components/RepoButton';
+import RepoButton from '../components/RepoButton';
 
 @connect(state => state)
 export default class InjectApp extends Component {
@@ -12,7 +12,6 @@ export default class InjectApp extends Component {
 
   render() {
     const { dispatch } = this.props;
-    // const actions = bindActionCreators(/* Actions */, dispatch);
 
     return (
       <div style={{

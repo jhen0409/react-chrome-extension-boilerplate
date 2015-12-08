@@ -24,8 +24,12 @@ export default {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/),
     new webpack.DefinePlugin({
-      __DEVELOPMENT__: true
+      'process.env': {
+        DEVTOOLS: !!process.env.DEVTOOLS || true,
+        DEVTOOLS_EXT: !!process.env.DEVTOOLS_EXT
+      }
     })
   ],
   resolve: {
