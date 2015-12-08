@@ -13,7 +13,9 @@ let composes = [
   ),
   storage()
 ];
-if (process.env.DEVTOOLS) {
+if (process.env.DEVTOOLS_EXT && window.devToolsExtension) {
+  composes.push(window.devToolsExtension());
+} else if (process.env.DEVTOOLS) {
   composes = [
     ...composes,
     DevTools.instrument(),
@@ -23,9 +25,6 @@ if (process.env.DEVTOOLS) {
       )
     )
   ];
-}
-if (process.env.DEVTOOLS_EXT && window.devToolsExtension) {
-  composes.push(window.devToolsExtension());
 }
 const finalCreateStore = compose(...composes)(createStore);
 

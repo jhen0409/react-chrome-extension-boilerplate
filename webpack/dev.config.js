@@ -28,7 +28,7 @@ export default {
     new webpack.DefinePlugin({
       'process.env': {
         DEVTOOLS: !!process.env.DEVTOOLS || true,
-        DEVTOOLS_EXT: !!process.env.DEVTOOLS_EXT || true
+        DEVTOOLS_EXT: !!process.env.DEVTOOLS_EXT
       }
     })
   ],

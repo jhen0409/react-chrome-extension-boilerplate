@@ -8,13 +8,23 @@ export function isInjected(tabId) {
 
 export function loadScript(name, tabId, cb) {
   if (process.env.NODE_ENV === 'production') {
-    chrome.tabs.executeScript(tabId, { file: `/js/${name}.bundle.js`, runAt: 'document_start' }, () => cb());
+    chrome.tabs.executeScript(tabId, { file: `/js/${name}.bundle.js`, runAt: 'document_start' }, cb);
   } else {
     // dev: async fetch bundle
     fetch(`https://localhost:3000/js/${name}.bundle.js`).then(response => {
       return response.text();
-    }).then(response => {
-      chrome.tabs.executeScript(tabId, { code: response, runAt: 'document_start' }, () => cb());
+    }).then(fetchRes => {
+      if (process.env.DEVTOOLS_EXT) {
+        const request = new XMLHttpRequest();
+        request.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js');
+        request.send();
+        request.onload = function() {
+          if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+            chrome.tabs.executeScript(tabId, { code: request.responseText, runAt: 'document_start' });
+          }
+        };
+      }
+      chrome.tabs.executeScript(tabId, { code: fetchRes, runAt: 'document_start' }, cb);
     });
   }
 }
