@@ -5,12 +5,16 @@ node_js:
 cache:
   directories:
     - node_modules
+env:
+  - CXX=g++-4.8
 addons:
   apt:
     sources:
       - google-chrome
+      - ubuntu-toolchain-r-test
     packages:
       - google-chrome-stable
+      - g++-4.8
 
 install:
   - "/sbin/start-stop-daemon --start --quiet --pidfile /tmp/custom_xvfb_99.pid --make-pidfile --background --exec /usr/bin/Xvfb -- :99 -ac -screen 0 1280x1024x16"
