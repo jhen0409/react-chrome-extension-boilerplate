@@ -1,0 +1,40 @@
+import { applyMiddleware, createStore, combineReducers, compose } from 'redux';
+import { devTools, persistState } from 'redux-devtools';
+import rootReducer from '../reducers';
+import DevTools from '../containers/DevTools';
+import thunk from 'redux-thunk';
+import logger from 'redux-logger';
+
+let composes = [
+  applyMiddleware(
+    thunk,
+    logger({ level: 'info' })
+  )
+];
+if (process.env.DEVTOOLS) {
+  composes = [
+    ...composes,
+    DevTools.instrument(),
+    persistState(
+      window.location.href.match(
+        /[?&]debug_session=([^&]+)\b/
+      )
+    )
+  ];
+}
+if (process.env.DEVTOOLS_EXT && window.devToolsExtension) {
+  composes.push(window.devToolsExtension());
+}
+const finalCreateStore = compose(...composes)(createStore);
+
+export default function(initialState) {
+  const store = finalCreateStore(rootReducer, initialState);
+
+  if (module.hot) {
+    module.hot.accept('../reducers', () => {
+      const nextRootReducer = require('../reducers');
+      store.replaceReducer(nextRootReducer);
+    });
+  }
+  return store;
+}
