@@ -1,12 +1,11 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
-import React from 'react/addons';
+import React from 'react';
+import TestUtils from 'react-addons-test-utils';
 import MainSection from '../../../../app/todoapp/components/MainSection';
 import TodoItem from '../../../../app/todoapp/components/TodoItem';
 import Footer from '../../../../app/todoapp/components/Footer';
 import { SHOW_ALL, SHOW_COMPLETED } from '../../../../app/todoapp/constants/TodoFilters';
-
-const { TestUtils } = React.addons;
 
 function setup(propOverrides) {
   const props = {
