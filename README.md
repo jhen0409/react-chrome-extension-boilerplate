@@ -75,6 +75,17 @@ npm run dev
 
 This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window & Inject page.
 
+#### Using Redux DevTools Extension
+
+Use env `DEVTOOLS_EXT=1` to enable [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension):
+
+```bash
+# Unix-like
+DEVTOOLS_EXT=1 npm run dev
+# Windows
+set DEVTOOLS_EXT=1 && npm run dev
+```
+
 ## Build
 
 ```bash
