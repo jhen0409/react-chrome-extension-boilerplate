@@ -24,10 +24,11 @@ export default {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
+    new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/),
     new webpack.DefinePlugin({
       'process.env': {
-        DEVTOOLS: true,
-        DEVTOOLS_EXT: false
+        DEVTOOLS: !!process.env.DEVTOOLS || true,
+        DEVTOOLS_EXT: !!process.env.DEVTOOLS_EXT || true
       }
     })
   ],

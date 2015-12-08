@@ -19,6 +19,7 @@ export default {
         NODE_ENV: '"production"'
       }
     }),
+    new webpack.IgnorePlugin(/[^/]+\/[\S]+.dev$/),
     new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
