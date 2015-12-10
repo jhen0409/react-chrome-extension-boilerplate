@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
-    "compress": "npm run build && gulp compress",
+    "compress": "gulp compress",
     "clean": "rimraf build/ dev/ *.zip *.crx",
     "lint": "gulp lint",
     "test:app": "gulp app:test",
