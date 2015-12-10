@@ -155,5 +155,3 @@ gulp.task('e2e:test', () => {
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
 gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
 gulp.task('compress', ['crx:compress']);
-gulp.task('test-app', ['app:test']);
-gulp.task('test-e2e', ['e2e:test']);
