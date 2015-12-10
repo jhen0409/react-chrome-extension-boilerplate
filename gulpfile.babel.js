@@ -1,6 +1,8 @@
 import 'babel-polyfill';
 import fs from 'fs';
 import gulp from 'gulp';
+import merge from 'merge-stream';
+import gulpSync from 'gulp-sync';
 import gutil from 'gulp-util';
 import jade from 'gulp-jade';
 import rename from 'gulp-rename';
@@ -15,6 +17,7 @@ import prodConfig from './webpack/prod.config';
 import devConfig from './webpack/dev.config';
 
 const port = 3000;
+const { sync } = gulpSync(gulp);
 
 /*
  * common tasks
@@ -54,7 +57,7 @@ gulp.task('webpack-dev-server', () => {
 });
 
 gulp.task('views:dev', () => {
-  gulp.src('./chrome/views/*.jade')
+  return gulp.src('./chrome/views/*.jade')
     .pipe(jade({
       locals: {
         env: 'dev',
@@ -65,10 +68,11 @@ gulp.task('views:dev', () => {
 });
 
 gulp.task('copy:dev', () => {
-  gulp.src('./chrome/manifest.dev.json')
+  const manifest = gulp.src('./chrome/manifest.dev.json')
     .pipe(rename('manifest.json'))
     .pipe(gulp.dest('./dev'));
-  gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./dev'));
+  const assets = gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./dev'));
+  return merge(manifest, assets);
 });
 
 /*
@@ -87,7 +91,7 @@ gulp.task('webpack:build', (callback) => {
 });
 
 gulp.task('views:build', () => {
-  gulp.src('./chrome/views/*.jade')
+  return gulp.src('./chrome/views/*.jade')
     .pipe(jade({
       locals: { env: 'prod' }
     }))
@@ -95,10 +99,11 @@ gulp.task('views:build', () => {
 });
 
 gulp.task('copy:build', () => {
-  gulp.src('./chrome/manifest.prod.json')
+  const manifest = gulp.src('./chrome/manifest.prod.json')
     .pipe(rename('manifest.json'))
     .pipe(gulp.dest('./build'));
-  gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./build'));
+  const assets = gulp.src('./chrome/assets/**/*').pipe(gulp.dest('./build'));
+  return merge(manifest, assets);
 });
 
 /*
@@ -114,7 +119,7 @@ gulp.task('crx:compress', () => {
   } else {
     privateKey = fs.readFileSync('./key.pem', 'utf8');
   }
-  gulp.src('./build')
+  return gulp.src('./build')
     .pipe(crx({
       privateKey,
       filename: require('./build/manifest.json').name + '.crx'
@@ -141,7 +146,7 @@ gulp.task('lint', () => {
 });
 
 gulp.task('app:test', () => {
-  gulp.src('./test/app/**/*.spec.js')
+  return gulp.src('./test/app/**/*.spec.js')
     .pipe(mocha({ require: ['./test/setup-app'] }));
 });
 
@@ -152,6 +157,7 @@ gulp.task('e2e:test', () => {
     .on('end', () => crdv.stop());
 });
 
-gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
-gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
-gulp.task('compress', ['crx:compress']);
+gulp.task('default', [ 'replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev' ]);
+gulp.task('build', [ 'replace-webpack-code', 'webpack:build', 'views:build', 'copy:build' ]);
+gulp.task('compress', [ 'crx:compress' ]);
+gulp.task('test', sync([ 'lint', 'app:test', 'build', 'e2e:test' ]));
