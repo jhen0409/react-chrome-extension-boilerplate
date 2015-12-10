@@ -7,6 +7,7 @@ import rename from 'gulp-rename';
 import RSA from 'node-rsa';
 import crx from 'gulp-crx-pack';
 import mocha from 'gulp-mocha';
+import eslint from 'gulp-eslint';
 import crdv from 'chromedriver';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
@@ -126,6 +127,18 @@ gulp.task('crx:compress', () => {
 /*
  * test tasks
  */
+
+gulp.task('lint', () => {
+  return gulp.src([
+    'app/**/*.js',
+    'chrome/**/*.js',
+    'test/**/*.js',
+    '*.js'
+  ])
+    .pipe(eslint())
+    .pipe(eslint.format())
+    .pipe(eslint.failAfterError());
+});
 
 gulp.task('app:test', () => {
   gulp.src('./test/app/**/*.spec.js')
