@@ -1,4 +1,4 @@
-import 'babel/polyfill';  // support generator
+import 'babel-polyfill';
 import bluebird from 'bluebird';
 
 function promisifier(method) {
