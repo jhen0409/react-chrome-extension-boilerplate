@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="UTF-8">
+    <title>React Chrome Extension Boilerplate by jhen0409</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
+  </head>
+  <body>
+    <section class="page-header">
+      <h1 class="project-name">React Chrome Extension Boilerplate</h1>
+      <h2 class="project-tagline">Boilerplate for Chrome Extension React.js project</h2>
+      <a href="https://github.com/jhen0409/react-chrome-extension-boilerplate" class="btn">View on GitHub</a>
+      <a href="https://github.com/jhen0409/react-chrome-extension-boilerplate/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/jhen0409/react-chrome-extension-boilerplate/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
+
+    <section class="main-content">
+      <h1>
+<a id="react-chrome-extension-boilerplate" class="anchor" href="#react-chrome-extension-boilerplate" aria-hidden="true"><span class="octicon octicon-link"></span></a>React Chrome Extension Boilerplate</h1>
+
+<p><a href="https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate"><img src="https://travis-ci.org/jhen0409/react-chrome-extension-boilerplate.svg" alt="Build Status"></a>
+<a href="https://ci.appveyor.com/project/jhen0409/react-chrome-extension-boilerplate/branch/master"><img src="https://ci.appveyor.com/api/projects/status/b5xy6ev6oykth0d2/branch/master?svg=true" alt="Build status: Windows"></a>
+<a href="https://www.npmjs.com/package/react-chrome-extension-boilerplate"><img src="http://img.shields.io/npm/v/react-chrome-extension-boilerplate.svg?style=flat" alt="NPM version"></a></p>
+
+<p>Boilerplate for Chrome Extension React.js project.</p>
+
+<h2>
+<a id="features" class="anchor" href="#features" aria-hidden="true"><span class="octicon octicon-link"></span></a>Features</h2>
+
+<ul>
+<li>Simple <a href="https://github.com/facebook/react">React</a>/<a href="https://github.com/rackt/redux">Redux</a> examples of Chrome Extension Window &amp; Popup &amp; Inject pages</li>
+<li>Hot reloading React/Redux (Using <a href="https://github.com/webpack/webpack">Webpack</a> and <a href="https://github.com/gaearon/react-transform">React Transform</a>)</li>
+<li>Write code with ES2015+ syntax (Using <a href="https://github.com/babel/babel">Babel</a>)</li>
+<li>E2E tests of Window &amp; Popup &amp; Inject pages (Using <a href="https://www.npmjs.com/package/chromedriver">Chrome Driver</a>, <a href="https://www.npmjs.com/package/selenium-webdriver">Selenium Webdriver</a>)</li>
+</ul>
+
+<h2>
+<a id="examples" class="anchor" href="#examples" aria-hidden="true"><span class="octicon octicon-link"></span></a>Examples</h2>
+
+<p>The example is edited from <a href="https://github.com/rackt/redux">Redux</a> TodoMVC example.</p>
+
+<h4>
+<a id="popup" class="anchor" href="#popup" aria-hidden="true"><span class="octicon octicon-link"></span></a>Popup</h4>
+
+<p><img src="example-popup.gif" alt="Popup"></p>
+
+<p>The <code>todos</code> state will be saved to <code>chrome.storage.local</code>.</p>
+
+<h4>
+<a id="window" class="anchor" href="#window" aria-hidden="true"><span class="octicon octicon-link"></span></a>Window</h4>
+
+<p><img src="example-window.gif" alt="Popup"></p>
+
+<p>The context menu is created by <code>chrome/app/background/contextMenus.js</code>.</p>
+
+<p>If you want Packaged app, You can edit <code>manifest.{env}.json</code>.</p>
+
+<div class="highlight highlight-source-json"><pre>...
+  <span class="pl-s"><span class="pl-pds">"</span>app<span class="pl-pds">"</span></span>: {
+    <span class="pl-s"><span class="pl-pds">"</span>launch<span class="pl-pds">"</span></span>: {
+      <span class="pl-s"><span class="pl-pds">"</span>local_path<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>app.html<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>container<span class="pl-pds">"</span></span>: <span class="pl-s"><span class="pl-pds">"</span>panel<span class="pl-pds">"</span></span>,
+      <span class="pl-s"><span class="pl-pds">"</span>width<span class="pl-pds">"</span></span>: <span class="pl-c1">800</span>,
+      <span class="pl-s"><span class="pl-pds">"</span>height<span class="pl-pds">"</span></span>: <span class="pl-c1">500</span>
+    }
+  },
+...</pre></div>
+
+<p>and remove <code>browser_action</code>.</p>
+
+<h4>
+<a id="inject-page" class="anchor" href="#inject-page" aria-hidden="true"><span class="octicon octicon-link"></span></a>Inject page</h4>
+
+<p>The inject script is being run by <code>chrome/app/background/inject.js</code>. A simple example will be inject bottom of page(<code>https://github.com/*</code>) if you visit.</p>
+
+<h2>
+<a id="installation" class="anchor" href="#installation" aria-hidden="true"><span class="octicon octicon-link"></span></a>Installation</h2>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># required node.js</span>
+<span class="pl-c"># clone it</span>
+npm install
+
+<span class="pl-c"># or npm way</span>
+npm install react-chrome-extension-boilerplate --dev</pre></div>
+
+<h2>
+<a id="development" class="anchor" href="#development" aria-hidden="true"><span class="octicon octicon-link"></span></a>Development</h2>
+
+<ul>
+<li>Run script</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># build files to './dev'</span>
+<span class="pl-c"># start WebpackDevServer</span>
+npm run dev</pre></div>
+
+<ul>
+<li>Allow <code>https://localhost:3000</code> connections (Because <code>injectpage</code> injected Github(https) pages, so <code>webpack-dev-server</code> procotol must be https.)</li>
+<li>Load unpacked extensions with <code>./dev</code>
+</li>
+</ul>
+
+<h4>
+<a id="reactredux-hot-reload" class="anchor" href="#reactredux-hot-reload" aria-hidden="true"><span class="octicon octicon-link"></span></a>React/Redux hot reload</h4>
+
+<p>This boilerplate uses <code>Webpack</code> and <code>react-transform</code>, and use <code>Redux</code>. You can hot reload by editing related files of Popup &amp; Window &amp; Inject page.</p>
+
+<h4>
+<a id="using-redux-devtools-extension" class="anchor" href="#using-redux-devtools-extension" aria-hidden="true"><span class="octicon octicon-link"></span></a>Using Redux DevTools Extension</h4>
+
+<p>Use env <code>DEVTOOLS_EXT=1</code> to enable <a href="https://github.com/zalmoxisus/redux-devtools-extension">redux-devtools-extension</a>:</p>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># Unix-like</span>
+DEVTOOLS_EXT=1 npm run dev
+<span class="pl-c"># Windows</span>
+<span class="pl-c1">set</span> DEVTOOLS_EXT=1 <span class="pl-k">&amp;&amp;</span> npm run dev</pre></div>
+
+<h2>
+<a id="build" class="anchor" href="#build" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build</h2>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># build files to './build'</span>
+npm run build</pre></div>
+
+<h2>
+<a id="build--compress" class="anchor" href="#build--compress" aria-hidden="true"><span class="octicon octicon-link"></span></a>Build &amp; Compress</h2>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># compress build folder to {manifest.name}.crx</span>
+npm run compress</pre></div>
+
+<ul>
+<li>You can add custom <code>key.pem</code> in main folder.</li>
+<li>If you want autoupdate, you can refer <a href="https://github.com/PavelVanecek/gulp-crx#autoupdating">this</a> and edit Gulpfile.</li>
+</ul>
+
+<h2>
+<a id="test" class="anchor" href="#test" aria-hidden="true"><span class="octicon octicon-link"></span></a>Test</h2>
+
+<ul>
+<li>
+<code>test/app</code>: React components, Redux actions &amp; reducers tests</li>
+<li>
+<code>test/e2e</code>: E2E tests (use <a href="https://www.npmjs.com/package/chromedriver">chromedriver</a>, <a href="https://www.npmjs.com/package/selenium-webdriver">selenium-webdriver</a>)</li>
+</ul>
+
+<div class="highlight highlight-source-shell"><pre><span class="pl-c"># test/app</span>
+npm run <span class="pl-c1">test</span>:app
+<span class="pl-c"># test/e2e</span>
+npm run build
+npm run <span class="pl-c1">test</span>:e2e
+<span class="pl-c"># lint &amp; test:app &amp; build &amp; test:e2e</span>
+npm <span class="pl-c1">test</span></pre></div>
+
+<h2>
+<a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
+
+<p><a href="LICENSE">MIT</a></p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/jhen0409/react-chrome-extension-boilerplate">React Chrome Extension Boilerplate</a> is maintained by <a href="https://github.com/jhen0409">jhen0409</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
+      </footer>
+
+    </section>
+
+  
+  </body>
+</html>
