@@ -147,13 +147,17 @@ gulp.task('lint', () => {
 
 gulp.task('app:test', () => {
   return gulp.src('./test/app/**/*.spec.js')
-    .pipe(mocha({ require: ['./test/setup-app'] }));
+    .pipe(mocha({ require: [ './test/setup-app' ] }));
+});
+
+gulp.task('watch:app:test', [ 'app:test' ], () => {
+  return gulp.watch([ 'test/app/**/*.spec.js', 'app/**/*.js' ], [ 'app:test' ]);
 });
 
 gulp.task('e2e:test', () => {
   crdv.start();
   return gulp.src('./test/e2e/**/*.js')
-    .pipe(mocha({ require: ['co-mocha'] }))
+    .pipe(mocha({ require: [ 'co-mocha' ] }))
     .on('end', () => crdv.stop());
 });
 

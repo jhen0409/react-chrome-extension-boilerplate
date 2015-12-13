@@ -8,8 +8,9 @@
     "compress": "gulp compress",
     "clean": "rimraf build/ dev/ *.zip *.crx",
     "lint": "gulp lint",
-    "test:app": "gulp app:test",
-    "test:e2e": "gulp e2e:test",
+    "test-app": "gulp app:test",
+    "test-app-watch": "gulp watch:app:test",
+    "test-e2e": "gulp e2e:test",
     "test": "gulp test"
   },
   "repository": {

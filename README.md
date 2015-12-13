@@ -110,11 +110,12 @@ npm run compress
 
 ```bash
 # test/app
-npm run test:app
+npm run test-app
+npm run test-app-watch  # watch files
 # test/e2e
 npm run build
-npm run test:e2e
-# lint & test:app & build & test:e2e
+npm run test-e2e
+# lint & test-app & build & test-e2e
 npm test
 ```
 
