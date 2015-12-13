@@ -5,12 +5,12 @@
   "scripts": {
     "dev": "gulp",
     "build": "gulp build",
-    "compress": "npm run build && gulp compress",
+    "compress": "gulp compress",
     "clean": "rimraf build/ dev/ *.zip *.crx",
-    "lint": "eslint .",
-    "test:app": "gulp test-app",
-    "test:e2e": "gulp test-e2e",
-    "test": "npm run lint && npm run test:app && npm run build && npm run test:e2e"
+    "lint": "gulp lint",
+    "test:app": "gulp app:test",
+    "test:e2e": "gulp e2e:test",
+    "test": "gulp test"
   },
   "repository": {
     "type": "git",
@@ -50,11 +50,14 @@
     "eslint-plugin-react": "^3.2.3",
     "gulp": "^3.9.0",
     "gulp-crx-pack": "^1.0.1",
+    "gulp-eslint": "^1.1.1",
     "gulp-jade": "^1.0.1",
     "gulp-mocha": "^2.2.0",
     "gulp-rename": "^1.2.2",
+    "gulp-sync": "^0.1.4",
     "gulp-util": "^3.0.5",
     "jsdom": "^6.5.1",
+    "merge-stream": "^1.0.0",
     "node-rsa": "^0.2.26",
     "raw-loader": "^0.5.1",
     "react-addons-test-utils": "^0.14.3",
