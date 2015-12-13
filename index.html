@@ -99,9 +99,9 @@ npm install react-chrome-extension-boilerplate --dev</pre></div>
 npm run dev</pre></div>
 
 <ul>
-<li>Allow <code>https://localhost:3000</code> connections (Because <code>injectpage</code> injected Github(https) pages, so <code>webpack-dev-server</code> procotol must be https.)</li>
-<li>Load unpacked extensions with <code>./dev</code>
-</li>
+<li>Allow <code>https://localhost:3000</code> connections. (Because <code>injectpage</code> injected GitHub (https) pages, so <code>webpack-dev-server</code> procotol must be https.)</li>
+<li>
+<a href="https://developer.chrome.com/extensions/getstarted#unpacked">Load unpacked extensions</a> with <code>./dev</code> folder.</li>
 </ul>
 
 <h4>
@@ -147,17 +147,18 @@ npm run compress</pre></div>
 </ul>
 
 <div class="highlight highlight-source-shell"><pre><span class="pl-c"># test/app</span>
-npm run <span class="pl-c1">test</span>:app
+npm run test-app
+npm run test-app-watch  <span class="pl-c"># watch files</span>
 <span class="pl-c"># test/e2e</span>
 npm run build
-npm run <span class="pl-c1">test</span>:e2e
-<span class="pl-c"># lint &amp; test:app &amp; build &amp; test:e2e</span>
+npm run test-e2e
+<span class="pl-c"># lint &amp; test-app &amp; build &amp; test-e2e</span>
 npm <span class="pl-c1">test</span></pre></div>
 
 <h2>
 <a id="license" class="anchor" href="#license" aria-hidden="true"><span class="octicon octicon-link"></span></a>LICENSE</h2>
 
-<p><a href="LICENSE">MIT</a></p>
+<p><a href="https://github.com/jhen0409/react-chrome-extension-boilerplate/blob/master/LICENSE">MIT</a></p>
 
       <footer class="site-footer">
         <span class="site-footer-owner"><a href="https://github.com/jhen0409/react-chrome-extension-boilerplate">React Chrome Extension Boilerplate</a> is maintained by <a href="https://github.com/jhen0409">jhen0409</a>.</span>
@@ -167,6 +168,16 @@ npm <span class="pl-c1">test</span></pre></div>
 
     </section>
 
-  
+            <script type="text/javascript">
+            var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+            document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+          </script>
+          <script type="text/javascript">
+            try {
+              var pageTracker = _gat._getTracker("UA-59571022-1");
+            pageTracker._trackPageview();
+            } catch(err) {}
+          </script>
+
   </body>
 </html>
