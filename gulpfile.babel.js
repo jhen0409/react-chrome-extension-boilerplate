@@ -42,7 +42,7 @@ gulp.task('webpack-dev-server', () => {
   new WebpackDevServer(webpack(myConfig, (err, stats) => {
     if (err) throw new gutil.PluginError('webpack', err);
     gutil.log('Please allow `https://localhost:3000` connections in Google Chrome');
-    gutil.log('and load unpacked extensions with `./dev`');
+    gutil.log('and load unpacked extensions with `./dev` folder.  (see https://developer.chrome.com/extensions/getstarted#unpacked)');
   }), {
     publicPath: myConfig.output.publicPath,
     stats: {colors: true},
@@ -139,8 +139,7 @@ gulp.task('lint', () => {
     'chrome/**/*.js',
     'test/**/*.js',
     '*.js'
-  ])
-    .pipe(eslint())
+  ]).pipe(eslint())
     .pipe(eslint.format())
     .pipe(eslint.failAfterError());
 });
