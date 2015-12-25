@@ -41,23 +41,10 @@ export default {
       loader: 'babel',
       exclude: /node_modules/,
       query: {
-        presets: [ 'es2015', 'stage-0', 'react' ],
+        presets: [ 'es2015', 'stage-0', 'react', 'react-hmre' ],
         plugins: [
           'add-module-exports',
-          'transform-decorators-legacy',
-          [
-            'react-transform',
-            {
-              transforms: [{
-                transform: 'react-transform-hmr',
-                imports: [ 'react' ],
-                locals: [ 'module' ]
-              }, {
-                transform: 'react-transform-catch-errors',
-                imports: [ 'react', 'redbox-react' ]
-              }]
-            }
-          ]
+          'transform-decorators-legacy'
         ]
       }
     }, {
