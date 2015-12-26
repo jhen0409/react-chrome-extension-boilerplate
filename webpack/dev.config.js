@@ -41,11 +41,7 @@ export default {
       loader: 'babel',
       exclude: /node_modules/,
       query: {
-        presets: [ 'es2015', 'stage-0', 'react', 'react-hmre' ],
-        plugins: [
-          'add-module-exports',
-          'transform-decorators-legacy'
-        ]
+        presets: [ 'react-hmre' ]
       }
     }, {
       test: /\.css?$/,
