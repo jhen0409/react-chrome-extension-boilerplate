@@ -1,6 +1,6 @@
 {
   "name": "react-chrome-extension-boilerplate",
-  "version": "0.6.1",
+  "version": "0.6.2",
   "description": "Boilerplate for Chrome extension React.js project",
   "scripts": {
     "dev": "gulp",
