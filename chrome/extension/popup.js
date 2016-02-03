@@ -9,7 +9,7 @@ chrome.storage.local.get('state', (obj) => {
     window.state = JSON.parse(state);
   }
 
-  const createStore = require('../../../app/todoapp/store/configureStore');
+  const createStore = require('../../app/todoapp/store/configureStore');
   ReactDOM.render(
     <Root store={createStore()} />,
     document.querySelector('#root')

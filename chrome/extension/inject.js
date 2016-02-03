@@ -9,7 +9,7 @@ window.addEventListener('load', () => {
   injectDOM.style.width = '500px';
   document.body.appendChild(injectDOM);
 
-  const createStore = require('../../../app/injectpage/store/configureStore');
+  const createStore = require('../../app/injectpage/store/configureStore');
   ReactDOM.render(
     <Root store={createStore()} />,
     injectDOM
