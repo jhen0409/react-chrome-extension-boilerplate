@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import Footer from '../../../../app/todoapp/components/Footer';
+import style from '../../../../app/todoapp/components/Footer.css';
 import { SHOW_ALL, SHOW_ACTIVE } from '../../../../app/todoapp/constants/TodoFilters';
 
 function setup(propOverrides) {
@@ -37,7 +38,7 @@ describe('todoapp Footer component', () => {
   it('should render correctly', () => {
     const { output } = setup();
     expect(output.type).to.equal('footer');
-    expect(output.props.className).to.equal('footer');
+    expect(output.props.className).to.equal(style.footer);
   });
 
   it('should display active count when 0', () => {
@@ -56,13 +57,13 @@ describe('todoapp Footer component', () => {
     const { output } = setup();
     const [, filters] = output.props.children;
     expect(filters.type).to.equal('ul');
-    expect(filters.props.className).to.equal('filters');
+    expect(filters.props.className).to.equal(style.filters);
     expect(filters.props.children.length).to.equal(3);
     filters.props.children.forEach((filter, index) => {
       expect(filter.type).to.equal('li');
       const link = filter.props.children;
       expect(link.props.className).to.equal(index === 0 ? 'selected' : '');
-      expect(link.props.children).to.equal([ 'All', 'Active', 'Completed'][index]);
+      expect(link.props.children).to.equal(['All', 'Active', 'Completed'][index]);
     });
   });
 

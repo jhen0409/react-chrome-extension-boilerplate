@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import TodoItem from '../../../../app/todoapp/components/TodoItem';
+import style from '../../../../app/todoapp/components/TodoItem.css';
 import TodoTextInput from '../../../../app/todoapp/components/TodoTextInput';
 
 function setup(editing = false) {
@@ -38,12 +39,12 @@ describe('todoapp TodoItem component', () => {
     const { output } = setup();
 
     expect(output.type).to.equal('li');
-    expect(output.props.className).to.equal('');
+    expect(output.props.className).to.equal(style.normal);
 
     const div = output.props.children;
 
     expect(div.type).to.equal('div');
-    expect(div.props.className).to.equal('view');
+    expect(div.props.className).to.equal(style.view);
 
     const [input, label, button] = div.props.children;
 
@@ -54,7 +55,7 @@ describe('todoapp TodoItem component', () => {
     expect(label.props.children).to.equal('Use Redux');
 
     expect(button.type).to.equal('button');
-    expect(button.props.className).to.equal('destroy');
+    expect(button.props.className).to.equal(style.destroy);
   });
 
   it('input onChange should call completeTodo', () => {
@@ -77,14 +78,14 @@ describe('todoapp TodoItem component', () => {
     label.props.onDoubleClick({});
     const updated = renderer.getRenderOutput();
     expect(updated.type).to.equal('li');
-    expect(updated.props.className).to.equal('editing');
+    expect(updated.props.className).to.equal(style.editing);
   });
 
   it('edit state render', () => {
     const { output } = setup(true);
 
     expect(output.type).to.equal('li');
-    expect(output.props.className).to.equal('editing');
+    expect(output.props.className).to.equal(style.editing);
 
     const input = output.props.children;
     expect(input.type).to.equal(TodoTextInput);
@@ -109,6 +110,6 @@ describe('todoapp TodoItem component', () => {
     output.props.children.props.onSave('Use Redux');
     const updated = renderer.getRenderOutput();
     expect(updated.type).to.equal('li');
-    expect(updated.props.className).to.equal('');
+    expect(updated.props.className).to.equal(style.normal);
   });
 });

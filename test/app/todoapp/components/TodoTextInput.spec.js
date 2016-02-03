@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import TodoTextInput from '../../../../app/todoapp/components/TodoTextInput';
+import style from '../../../../app/todoapp/components/TodoTextInput.css';
 
 function setup(propOverrides) {
   const props = {
@@ -36,12 +37,12 @@ describe('todoapp TodoTextInput component', () => {
 
   it('should render correctly when editing=true', () => {
     const { output } = setup({ editing: true });
-    expect(output.props.className).to.equal('edit');
+    expect(output.props.className).to.equal(style.edit);
   });
 
   it('should render correctly when newTodo=true', () => {
     const { output } = setup({ newTodo: true });
-    expect(output.props.className).to.equal('new-todo');
+    expect(output.props.className).to.equal(style.new);
   });
 
   it('should update value on change', () => {
