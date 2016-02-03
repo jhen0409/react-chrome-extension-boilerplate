@@ -3,10 +3,10 @@ import webpack from 'webpack';
 
 export default {
   entry: {
-    window: [path.join(__dirname, '../chrome/app/window/index')],
-    popup: [path.join(__dirname, '../chrome/app/popup/index')],
-    background: [path.join(__dirname, '../chrome/app/background/index')],
-    inject: [path.join(__dirname, '../chrome/app/inject/index')]
+    window: [path.join(__dirname, '../chrome/extension/window')],
+    popup: [path.join(__dirname, '../chrome/extension/popup')],
+    background: [path.join(__dirname, '../chrome/extension/background')],
+    inject: [path.join(__dirname, '../chrome/extension/inject')]
   },
   output: {
     path: path.join(__dirname, '../build/js'),

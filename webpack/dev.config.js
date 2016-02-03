@@ -10,10 +10,10 @@ const entry = [
 export default {
   devtool: 'eval-cheap-module-source-map',
   entry: {
-    window: [ path.join(__dirname, '../chrome/app/window/index'), ...entry ],
-    popup: [ path.join(__dirname, '../chrome/app/popup/index'), ...entry ],
-    background: [ path.join(__dirname, '../chrome/app/background/index'), ...entry ],
-    inject: [ path.join(__dirname, '../chrome/app/inject/index'), ...entry ]
+    window: [path.join(__dirname, '../chrome/extension/window'), ...entry],
+    popup: [path.join(__dirname, '../chrome/extension/popup'), ...entry],
+    background: [path.join(__dirname, '../chrome/extension/background'), ...entry],
+    inject: [path.join(__dirname, '../chrome/extension/inject'), ...entry]
   },
   output: {
     path: path.join(__dirname, '../dev/js'),

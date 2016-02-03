@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import 'todomvc-app-css/index.css';
-import Root from '../../../app/todoapp/containers/Root';
+import Root from '../../app/todoapp/containers/Root';
 
 chrome.storage.local.get('state', (obj) => {
   const { state } = obj;

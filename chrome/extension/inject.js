@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Root from '../../../app/injectpage/containers/Root';
+import Root from '../../app/injectpage/containers/Root';
 
 window.addEventListener('load', () => {
   const injectDOM = document.createElement('div');
