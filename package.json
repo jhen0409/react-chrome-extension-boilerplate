@@ -47,6 +47,7 @@
     "chromedriver": "^2.19.0",
     "co-mocha": "^1.1.2",
     "css-loader": "^0.23.1",
+    "css-modules-require-hook": "^2.1.0",
     "eslint": "^1.10.3",
     "eslint-config-airbnb": "0.1.0",
     "eslint-plugin-react": "^3.2.3",
