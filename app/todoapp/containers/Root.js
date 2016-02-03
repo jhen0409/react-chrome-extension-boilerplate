@@ -1,6 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import { Provider } from 'react-redux';
-import TodoApp from './TodoApp';
+import App from './App';
 
 export default class Root extends Component {
 
@@ -13,7 +13,7 @@ export default class Root extends Component {
     return (
       <Provider store={store}>
         <div>
-          <TodoApp />
+          <App />
           {
             (() => {
               if (process.env.DEVTOOLS) {

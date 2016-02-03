@@ -1,5 +1,6 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
+import style from './TodoTextInput.css';
 
 export default class TodoTextInput extends Component {
 
@@ -42,8 +43,8 @@ export default class TodoTextInput extends Component {
     return (
       <input
         className={classnames({
-          edit: this.props.editing,
-          'new-todo': this.props.newTodo
+          [style.edit]: this.props.editing,
+          [style.new]: this.props.newTodo
         })}
         type="text"
         placeholder={this.props.placeholder}

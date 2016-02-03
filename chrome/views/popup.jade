@@ -6,9 +6,9 @@ html
     title Redux TodoMVC Example
     style.
       body { width: 500px; }
-  
+
   body
     #root(class='todoapp')
     if devToolsExt
       script(src='chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js')
-    script(src=env == 'prod' ? '/js/popup.bundle.js' : 'https://localhost:3000/js/popup.bundle.js')
+    script(src=env == 'prod' ? '/js/todoapp.bundle.js' : 'https://localhost:3000/js/todoapp.bundle.js')
