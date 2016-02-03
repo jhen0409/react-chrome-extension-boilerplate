@@ -8,7 +8,8 @@
   bottom: 0;
   margin: auto 0;
   border: none; /* Mobile Safari */
-  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
 }
 
 .normal .toggle:after {

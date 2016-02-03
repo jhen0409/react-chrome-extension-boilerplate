@@ -144,6 +144,7 @@
 
   .toggleAll {
     transform: rotate(90deg);
-    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
   }
 }
