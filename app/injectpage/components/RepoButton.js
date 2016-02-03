@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-class RepoButton extends Component {
+export default class RepoButton extends Component {
 
   render() {
     return (
@@ -12,5 +12,3 @@ class RepoButton extends Component {
     );
   }
 }
-
-export default RepoButton;

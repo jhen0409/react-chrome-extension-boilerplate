@@ -23,13 +23,13 @@ const { sync } = gulpSync(gulp);
  * common tasks
  */
 gulp.task('replace-webpack-code', () => {
-  const replaceTasks = [ {
+  const replaceTasks = [{
     from: './webpack/replace/JsonpMainTemplate.runtime.js',
     to: './node_modules/webpack/lib/JsonpMainTemplate.runtime.js'
   }, {
     from: './webpack/replace/log-apply-result.js',
     to: './node_modules/webpack/hot/log-apply-result.js'
-  } ];
+  }];
   replaceTasks.forEach(task => fs.writeFileSync(task.to, fs.readFileSync(task.from)));
 });
 
@@ -79,7 +79,7 @@ gulp.task('copy:dev', () => {
  * build tasks
  */
 
-gulp.task('webpack:build', (callback) => {
+gulp.task('webpack:build', callback => {
   let myConfig = Object.create(prodConfig);
   webpack(myConfig, (err, stats) => {
     if (err) {
@@ -146,21 +146,21 @@ gulp.task('lint', () => {
 
 gulp.task('app:test', () => {
   return gulp.src('./test/app/**/*.spec.js')
-    .pipe(mocha({ require: [ './test/setup-app' ] }));
+    .pipe(mocha({ require: ['./test/setup-app'] }));
 });
 
-gulp.task('watch:app:test', [ 'app:test' ], () => {
-  return gulp.watch([ 'test/app/**/*.spec.js', 'app/**/*.js' ], [ 'app:test' ]);
+gulp.task('watch:app:test', ['app:test'], () => {
+  return gulp.watch(['test/app/**/*.spec.js', 'app/**/*.js'], ['app:test']);
 });
 
 gulp.task('e2e:test', () => {
   crdv.start();
   return gulp.src('./test/e2e/**/*.js')
-    .pipe(mocha({ require: [ 'co-mocha' ] }))
+    .pipe(mocha({ require: ['co-mocha'] }))
     .on('end', () => crdv.stop());
 });
 
-gulp.task('default', [ 'replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev' ]);
-gulp.task('build', [ 'replace-webpack-code', 'webpack:build', 'views:build', 'copy:build' ]);
-gulp.task('compress', sync([ 'build', 'crx:compress' ]));
-gulp.task('test', sync([ 'lint', 'app:test', 'build', 'e2e:test' ]));
+gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
+gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
+gulp.task('compress', sync(['build', 'crx:compress']));
+gulp.task('test', sync(['lint', 'app:test', 'build', 'e2e:test']));

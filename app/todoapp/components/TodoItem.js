@@ -2,7 +2,7 @@ import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
 
-class TodoItem extends Component {
+export default class TodoItem extends Component {
 
   static propTypes = {
     todo: PropTypes.object.isRequired,
@@ -67,5 +67,3 @@ class TodoItem extends Component {
     );
   }
 }
-
-export default TodoItem;

@@ -9,7 +9,7 @@ const TODO_FILTERS = {
   [SHOW_COMPLETED]: todo => todo.completed
 };
 
-class MainSection extends Component {
+export default class MainSection extends Component {
 
   static propTypes = {
     todos: PropTypes.array.isRequired,
@@ -83,5 +83,3 @@ class MainSection extends Component {
     );
   }
 }
-
-export default MainSection;

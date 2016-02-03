@@ -47,6 +47,6 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
     const tabs = await this.driver.getAllWindowHandles();
     this.driver.switchTo().window(tabs[1]);
     const title = await this.driver.getTitle();
-    expect(title).to.equal('jhen0409/react-chrome-extension-boilerplate · GitHub');
+    expect(title).to.equal('jhen0409/react-chrome-extension-boilerplate: Boilerplate for Chrome Extension React.js project');
   });
 });

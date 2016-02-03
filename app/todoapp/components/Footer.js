@@ -8,7 +8,7 @@ const FILTER_TITLES = {
   [SHOW_COMPLETED]: 'Completed'
 };
 
-class Footer extends Component {
+export default class Footer extends Component {
 
   static propTypes = {
     completedCount: PropTypes.number.isRequired,
@@ -70,5 +70,3 @@ class Footer extends Component {
     );
   }
 }
-
-export default Footer;

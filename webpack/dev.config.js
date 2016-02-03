@@ -41,7 +41,7 @@ export default {
       loader: 'babel',
       exclude: /node_modules/,
       query: {
-        presets: [ 'react-hmre' ]
+        presets: ['react-hmre']
       }
     }, {
       test: /\.css?$/,

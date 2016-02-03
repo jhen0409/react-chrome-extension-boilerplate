@@ -28,7 +28,7 @@ function loadScript(name, tabId, cb) {
   }
 }
 
-const arrowURLs = [ '^https://github\\.com' ];
+const arrowURLs = ['^https://github\\.com'];
 
 chrome.tabs.onUpdated.addListener(async function(tabId, changeInfo, tab) {
   if (changeInfo.status !== 'loading') return;

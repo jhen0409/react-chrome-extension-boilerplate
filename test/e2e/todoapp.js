@@ -103,7 +103,7 @@ describe('window (popup) page', function() {
     this.driver.findElement(webdriver.By.className('toggle-all')).click();
     const todos = await findList(this.driver);
     const classNames = await Promise.all(todos.map((todo) => todo.getAttribute('class')));
-    expect(classNames.every((name) => name === 'completed')).to.equal(true);
+    expect(classNames.every(name => name === 'completed')).to.equal(true);
   });
 
   it('should can delete todo', async () => {
@@ -121,7 +121,7 @@ describe('window (popup) page', function() {
     this.driver.findElement(webdriver.By.className('clear-completed')).click();
     const todos = await findList(this.driver);
     const classNames = await Promise.all(todos.map((todo) => todo.getAttribute('class')));
-    expect(classNames.every((name) => name !== 'completed')).to.equal(true);
+    expect(classNames.every(name => name !== 'completed')).to.equal(true);
   });
 
   it('should cannot clear completed todos if completed todos count = 0', async () => {
