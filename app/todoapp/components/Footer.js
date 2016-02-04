@@ -46,6 +46,7 @@ export default class Footer extends Component {
   renderClearButton() {
     const { completedCount, onClearCompleted } = this.props;
     if (completedCount > 0) {
+      console.log(completedCount);
       return (
         <button className={style.clearCompleted}
                 onClick={onClearCompleted} >

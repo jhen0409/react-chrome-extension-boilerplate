@@ -68,19 +68,9 @@ html .clearCompleted:active {
   line-height: 20px;
   text-decoration: none;
   cursor: pointer;
-  visibility: hidden;
-  position: relative;
 }
 
-.clearCompleted::after {
-  visibility: visible;
-  content: 'Clear completed';
-  position: absolute;
-  right: 0;
-  white-space: nowrap;
-}
-
-.clearCompleted:hover::after {
+.clearCompleted:hover {
   text-decoration: underline;
 }
 
