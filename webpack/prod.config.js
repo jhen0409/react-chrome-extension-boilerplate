@@ -1,6 +1,5 @@
 import path from 'path';
 import webpack from 'webpack';
-import importantly from 'postcss-importantly';
 
 export default {
   entry: {
