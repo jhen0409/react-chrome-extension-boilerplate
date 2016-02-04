@@ -144,9 +144,11 @@ gulp.task('lint', () => {
     .pipe(eslint.failAfterError());
 });
 
+require('./test/setup-app');
+
 gulp.task('app:test', () => {
   return gulp.src('./test/app/**/*.spec.js')
-    .pipe(mocha({ require: ['./test/setup-app'] }));
+    .pipe(mocha());
 });
 
 gulp.task('watch:app:test', ['app:test'], () => {

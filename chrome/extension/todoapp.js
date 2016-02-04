@@ -1,17 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import 'todomvc-app-css/index.css';
 import Root from '../../app/todoapp/containers/Root';
+import './todoapp.css';
 
-chrome.storage.local.get('state', (obj) => {
+chrome.storage.local.get('state', obj => {
   const { state } = obj;
-  if (state) {
-    window.state = JSON.parse(state);
-  }
+  const initialState = JSON.parse(state || '{}');
 
   const createStore = require('../../app/todoapp/store/configureStore');
   ReactDOM.render(
-    <Root store={createStore()} />,
+    <Root store={createStore(initialState)} />,
     document.querySelector('#root')
   );
 });

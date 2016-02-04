@@ -1,6 +1,7 @@
 import React, { Component, PropTypes } from 'react';
 import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
+import style from './TodoItem.css';
 
 export default class TodoItem extends Component {
 
@@ -43,15 +44,15 @@ export default class TodoItem extends Component {
       );
     } else {
       element = (
-        <div className="view">
-          <input className="toggle"
+        <div className={style.view}>
+          <input className={style.toggle}
                  type="checkbox"
                  checked={todo.completed}
                  onChange={() => completeTodo(todo.id)} />
           <label onDoubleClick={this.handleDoubleClick.bind(this)}>
             {todo.text}
           </label>
-          <button className="destroy"
+          <button className={style.destroy}
                   onClick={() => deleteTodo(todo.id)} />
         </div>
       );
@@ -59,8 +60,9 @@ export default class TodoItem extends Component {
 
     return (
       <li className={classnames({
-        completed: todo.completed,
-        editing: this.state.editing
+        [style.completed]: todo.completed,
+        [style.editing]: this.state.editing,
+        [style.normal]: !this.state.editing
       })}>
         {element}
       </li>

@@ -3,6 +3,7 @@ import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
 import MainSection from '../../../../app/todoapp/components/MainSection';
+import style from '../../../../app/todoapp/components/MainSection.css';
 import TodoItem from '../../../../app/todoapp/components/TodoItem';
 import Footer from '../../../../app/todoapp/components/Footer';
 import { SHOW_ALL, SHOW_COMPLETED } from '../../../../app/todoapp/constants/TodoFilters';
@@ -40,7 +41,7 @@ describe('todoapp MainSection component', () => {
   it('should render correctly', () => {
     const { output } = setup();
     expect(output.type).to.equal('section');
-    expect(output.props.className).to.equal('main');
+    expect(output.props.className).to.equal(style.main);
   });
 
   describe('toggle all input', () => {

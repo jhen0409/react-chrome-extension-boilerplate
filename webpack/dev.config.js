@@ -10,8 +10,7 @@ const entry = [
 export default {
   devtool: 'eval-cheap-module-source-map',
   entry: {
-    window: [path.join(__dirname, '../chrome/extension/window'), ...entry],
-    popup: [path.join(__dirname, '../chrome/extension/popup'), ...entry],
+    todoapp: [path.join(__dirname, '../chrome/extension/todoapp'), ...entry],
     background: [path.join(__dirname, '../chrome/extension/background'), ...entry],
     inject: [path.join(__dirname, '../chrome/extension/inject'), ...entry]
   },
@@ -44,8 +43,12 @@ export default {
         presets: ['react-hmre']
       }
     }, {
-      test: /\.css?$/,
-      loaders: ['style', 'raw']
+      test: /\.css$/,
+      loaders: [
+        'style',
+        'css?modules&sourceMap&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]',
+        'postcss'
+      ]
     }]
   }
 };

@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import Header from '../components/Header';
 import MainSection from '../components/MainSection';
 import * as TodoActions from '../actions/TodoActions';
+import style from './App.css';
 
 @connect(
   state => ({
@@ -13,7 +14,7 @@ import * as TodoActions from '../actions/TodoActions';
     actions: bindActionCreators(TodoActions, dispatch)
   })
 )
-export default class TodoApp extends Component {
+export default class App extends Component {
 
   static propTypes = {
     todos: PropTypes.array.isRequired,
@@ -24,7 +25,7 @@ export default class TodoApp extends Component {
     const { todos, actions } = this.props;
 
     return (
-      <div>
+      <div className={style.normal}>
         <Header addTodo={actions.addTodo} />
         <MainSection todos={todos} actions={actions} />
       </div>

@@ -23,7 +23,6 @@ describe('todoapp Header component', () => {
     const { output } = setup();
 
     expect(output.type).to.equal('header');
-    expect(output.props.className).to.equal('header');
 
     const [h1, input] = output.props.children;
 

@@ -15,7 +15,7 @@ export default class Header extends Component {
 
   render() {
     return (
-      <header className="header">
+      <header>
           <h1>todos</h1>
           <TodoTextInput newTodo
                          onSave={this.handleSave.bind(this)}

@@ -4,9 +4,8 @@ html
   head
     meta(charset='UTF-8')
     title Redux TodoMVC Example
-  
   body
     #root(class='todoapp')
     if devToolsExt
       script(src='chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js')
-    script(src=env == 'prod' ? '/js/window.bundle.js' : 'https://localhost:3000/js/window.bundle.js')
+    script(src=env == 'prod' ? '/js/todoapp.bundle.js' : 'https://localhost:3000/js/todoapp.bundle.js')
