@@ -156,7 +156,7 @@ gulp.task('watch:app:test', ['app:test'], () => {
 gulp.task('e2e:test', () => {
   crdv.start();
   return gulp.src('./test/e2e/**/*.js')
-    .pipe(mocha({ require: ['co-mocha'] }))
+    .pipe(mocha({ require: ['co-mocha', './test/setup-app'] }))
     .on('end', () => crdv.stop());
 });
 
