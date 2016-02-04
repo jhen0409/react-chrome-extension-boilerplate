@@ -3,7 +3,7 @@ import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import delay from 'delay';
 
-describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate)', function() {
+describe('inject page (in github.com)', function() {
   this.timeout(15000);
 
   before(async () => {
@@ -36,17 +36,19 @@ describe('inject page (in github.com/jhen0409/react-chrome-extension-boilerplate
       , 10000, 'Inject app not found');
   });
 
-  it('should link to repo page with click "view repo" link', async () => {
+  it('should find `Open TodoApp` button', async () => {
     await this.driver.wait(() =>
-      this.driver.findElements(webdriver.By.className('inject-react-example-repo-button'))
+      this.driver.findElements(webdriver.By.css('.inject-react-example button'))
         .then(elems => elems.length > 0)
-    , 10000, 'Inject app not found');
+    , 10000, 'Inject app `Open TodoApp` button not found');
+  });
 
-    this.driver.findElement(webdriver.By.className('inject-react-example-repo-button')).click();
+  it('should find iframe', async () => {
+    this.driver.findElement(webdriver.By.css('.inject-react-example button')).click();
     await delay(1000);
-    const tabs = await this.driver.getAllWindowHandles();
-    this.driver.switchTo().window(tabs[1]);
-    const title = await this.driver.getTitle();
-    expect(title).to.equal('GitHub - jhen0409/react-chrome-extension-boilerplate: Boilerplate for Chrome Extension React.js project');
+    await this.driver.wait(() =>
+      this.driver.findElements(webdriver.By.css('.inject-react-example iframe'))
+        .then(elems => elems.length > 0)
+    , 10000, 'Inject app iframe not found');
   });
 });
