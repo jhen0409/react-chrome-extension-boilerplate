@@ -80,7 +80,7 @@ describe('window (popup) page', function() {
 
   it('should open Redux TodoMVC Example', async () => {
     const title = await this.driver.getTitle();
-    expect(title).to.equal('Redux TodoMVC Example');
+    expect(title).to.equal('Redux TodoMVC Example (Window)');
   });
 
   it('should can add todo', async () => {
