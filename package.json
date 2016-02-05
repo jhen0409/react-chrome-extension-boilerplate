@@ -15,20 +15,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jhen0409/react-chrome-extension-boilerplate"
+    "url": "https://github.com/jhen0409/react-chrome-extension-boilerplate.git"
   },
-  "homepage": "https://github.com/jhen0409/react-chrome-extension-boilerplate",
   "keywords": [
-    "react",
-    "reactjs",
-    "boilerplate",
-    "hot",
-    "live",
-    "edit",
-    "webpack",
-    "redux",
     "chrome",
-    "extension"
+    "extension",
+    "react",
+    "redux",
+    "hot reload",
+    "webpack",
+    "boilerplate"
   ],
   "author": "Jhen <developer@jhen.me>",
   "license": "MIT",
