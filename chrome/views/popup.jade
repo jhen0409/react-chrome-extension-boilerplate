@@ -8,7 +8,7 @@ html
       body { width: 500px; }
 
   body
-    #root(class='todoapp')
+    #root
     if devToolsExt
       script(src='chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js')
     script(src=env == 'prod' ? '/js/todoapp.bundle.js' : 'https://localhost:3000/js/todoapp.bundle.js')

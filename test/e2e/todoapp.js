@@ -3,10 +3,10 @@ import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import delay from 'delay';
 
-import footerStyle from '../../app/todoapp/components/Footer.css';
-import mainSectionStyle from '../../app/todoapp/components/MainSection.css';
-import todoItemStyle from '../../app/todoapp/components/TodoItem.css';
-import todoTextInputStyle from '../../app/todoapp/components/TodoTextInput.css';
+import footerStyle from '../../app/components/Footer.css';
+import mainSectionStyle from '../../app/components/MainSection.css';
+import todoItemStyle from '../../app/components/TodoItem.css';
+import todoTextInputStyle from '../../app/components/TodoTextInput.css';
 
 function findList(driver) {
   return driver.findElements(webdriver.By.css(`.${mainSectionStyle.todoList} > li`));

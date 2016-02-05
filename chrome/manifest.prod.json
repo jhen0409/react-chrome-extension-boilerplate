@@ -12,6 +12,9 @@
     "48": "img/icon-48.png",
     "128": "img/icon-128.png"
   },
+  "web_accessible_resources": [
+    "inject.html"
+  ],
   "background": {
     "page": "background.html"
   },
