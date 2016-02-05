@@ -2,9 +2,9 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TodoItem from '../../../../app/todoapp/components/TodoItem';
-import style from '../../../../app/todoapp/components/TodoItem.css';
-import TodoTextInput from '../../../../app/todoapp/components/TodoTextInput';
+import TodoItem from '../../../app/components/TodoItem';
+import style from '../../../app/components/TodoItem.css';
+import TodoTextInput from '../../../app/components/TodoTextInput';
 
 function setup(editing = false) {
   const props = {

@@ -1,6 +1,6 @@
 import { expect } from 'chai';
-import * as types from '../../../../app/todoapp/constants/ActionTypes';
-import todos from '../../../../app/todoapp/reducers/todos';
+import * as types from '../../../app/constants/ActionTypes';
+import todos from '../../../app/reducers/todos';
 
 describe('todoapp todos reducer', () => {
 

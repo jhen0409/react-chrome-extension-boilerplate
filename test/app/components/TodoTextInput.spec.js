@@ -2,8 +2,8 @@ import { expect } from 'chai';
 import sinon from 'sinon';
 import React from 'react';
 import TestUtils from 'react-addons-test-utils';
-import TodoTextInput from '../../../../app/todoapp/components/TodoTextInput';
-import style from '../../../../app/todoapp/components/TodoTextInput.css';
+import TodoTextInput from '../../../app/components/TodoTextInput';
+import style from '../../../app/components/TodoTextInput.css';
 
 function setup(propOverrides) {
   const props = {
