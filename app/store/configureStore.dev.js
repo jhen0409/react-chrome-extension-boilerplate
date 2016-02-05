@@ -26,10 +26,10 @@ if (process.env.DEVTOOLS_EXT && window.devToolsExtension) {
     )
   ];
 }
-const finalCreateStore = compose(...composes)(createStore);
+const enhancer = compose(...composes);
 
 export default function(initialState) {
-  const store = finalCreateStore(rootReducer, initialState);
+  const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {
     module.hot.accept('../reducers', () => {

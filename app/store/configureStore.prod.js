@@ -4,11 +4,11 @@ import thunk from 'redux-thunk';
 import storage from '../utils/storage';
 
 const middlewares = applyMiddleware(thunk);
-let finalCreateStore = compose(
+const enhancer = compose(
   middlewares,
   storage()
-)(createStore);
+);
 
 export default function(initialState) {
-  return finalCreateStore(rootReducer, initialState);
+  return createStore(rootReducer, initialState, enhancer);
 }
