@@ -29,22 +29,6 @@ The `todos` state will be saved to `chrome.storage.local`.
 
 The context menu is created by `chrome/app/background/contextMenus.js`.
 
-If you want Packaged app, You can edit `manifest.{env}.json`.
-```json
-...
-  "app": {
-    "launch": {
-      "local_path": "app.html",
-      "container": "panel",
-      "width": 800,
-      "height": 500
-    }
-  },
-...
-```
-
-and remove `browser_action`.
-
 #### Inject page
 
 The inject script is being run by `chrome/app/background/inject.js`. A simple example will be inject bottom of page(`https://github.com/*`) if you visit.
@@ -52,12 +36,11 @@ The inject script is being run by `chrome/app/background/inject.js`. A simple ex
 ## Installation
 
 ```bash
-# required node.js
 # clone it
-npm install
+$ npm install
 
 # or npm way
-npm install react-chrome-extension-boilerplate --dev
+$ npm install react-chrome-extension-boilerplate --dev
 ```
 
 ## Development
@@ -66,7 +49,7 @@ npm install react-chrome-extension-boilerplate --dev
 ```bash
 # build files to './dev'
 # start WebpackDevServer
-npm run dev
+$ npm run dev
 ```
 * Allow `https://localhost:3000` connections. (Because `injectpage` injected GitHub (https) pages, so `webpack-dev-server` procotol must be https.)
 * [Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder.
@@ -83,14 +66,14 @@ You can use [redux-devtools-extension](https://github.com/zalmoxisus/redux-devto
 
 ```bash
 # build files to './build'
-npm run build
+$ npm run build
 ```
 
 ## Build & Compress
 
 ```bash
 # compress build folder to {manifest.name}.crx
-npm run compress
+$ npm run compress
 ```
 
 * You can add custom `key.pem` in main folder.
@@ -103,13 +86,13 @@ npm run compress
 
 ```bash
 # test/app
-npm run test-app
-npm run test-app-watch  # watch files
+$ npm run test-app
+$ npm run test-app-watch  # watch files
 # test/e2e
-npm run build
-npm run test-e2e
+$ npm run build
+$ npm run test-e2e
 # lint & test-app & build & test-e2e
-npm test
+$ npm test
 ```
 
 ## LICENSE
