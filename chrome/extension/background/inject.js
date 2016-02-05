@@ -13,16 +13,16 @@ function loadScript(name, tabId, cb) {
     fetch(`https://localhost:3000/js/${name}.bundle.js`).then(response => {
       return response.text();
     }).then(fetchRes => {
-      if (process.env.DEVTOOLS_EXT) {
-        const request = new XMLHttpRequest();
-        request.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js');
-        request.send();
-        request.onload = function() {
-          if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
-            chrome.tabs.executeScript(tabId, { code: request.responseText, runAt: 'document_start' });
-          }
-        };
-      }
+      // Load redux-devtools-extension inject bundle,
+      // because inject script and page is in a different context
+      const request = new XMLHttpRequest();
+      request.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js');  // sync
+      request.send();
+      request.onload = () => {
+        if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
+          chrome.tabs.executeScript(tabId, { code: request.responseText, runAt: 'document_start' });
+        }
+      };
       chrome.tabs.executeScript(tabId, { code: fetchRes, runAt: 'document_start' }, cb);
     });
   }

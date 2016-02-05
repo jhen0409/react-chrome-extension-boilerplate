@@ -77,14 +77,7 @@ This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can 
 
 #### Using Redux DevTools Extension
 
-Use env `DEVTOOLS_EXT=1` to enable [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension):
-
-```bash
-# Unix-like
-DEVTOOLS_EXT=1 npm run dev
-# Windows
-set DEVTOOLS_EXT=1 && npm run dev
-```
+You can use [redux-devtools-extension](https://github.com/zalmoxisus/redux-devtools-extension) on development mode.
 
 ## Build
 

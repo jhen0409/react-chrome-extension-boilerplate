@@ -26,8 +26,7 @@ export default {
     new webpack.IgnorePlugin(/[^/]+\/[\S]+.prod$/),
     new webpack.DefinePlugin({
       'process.env': {
-        DEVTOOLS: !!process.env.DEVTOOLS || true,
-        DEVTOOLS_EXT: !!process.env.DEVTOOLS_EXT
+        NODE_ENV: JSON.stringify('development')
       }
     })
   ],

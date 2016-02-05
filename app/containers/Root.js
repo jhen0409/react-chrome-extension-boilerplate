@@ -12,17 +12,7 @@ export default class Root extends Component {
     const { store } = this.props;
     return (
       <Provider store={store}>
-        <div>
-          <App />
-          {
-            (() => {
-              if (process.env.DEVTOOLS) {
-                const DevTools = require('./DevTools');
-                return <DevTools />;
-              }
-            })()
-          }
-        </div>
+        <App />
       </Provider>
     );
   }
