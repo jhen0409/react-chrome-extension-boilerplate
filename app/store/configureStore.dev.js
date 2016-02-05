@@ -3,14 +3,10 @@ import { devTools, persistState } from 'redux-devtools';
 import rootReducer from '../reducers';
 import DevTools from '../containers/DevTools';
 import thunk from 'redux-thunk';
-import logger from 'redux-logger';
 import storage from '../utils/storage';
 
 let composes = [
-  applyMiddleware(
-    thunk,
-    logger({ level: 'info' })
-  ),
+  applyMiddleware(thunk),
   storage()
 ];
 if (process.env.DEVTOOLS_EXT && window.devToolsExtension) {
