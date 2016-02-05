@@ -16,7 +16,9 @@ class InjectApp extends Component {
   render() {
     return (
       <div>
-        <button onClick={this.buttonOnClick}>Open TodoApp</button>
+        <button onClick={this.buttonOnClick}>
+          Open TodoApp
+        </button>
         <Dock position="right" dimMode="transparent" defaultSize={0.4} isVisible={this.state.isVisible}>
           <iframe
             style={{
@@ -35,6 +37,7 @@ class InjectApp extends Component {
 window.addEventListener('load', () => {
   const injectDOM = document.createElement('div');
   injectDOM.className = 'inject-react-example';
+  injectDOM.style.textAlign = 'center';
   document.body.appendChild(injectDOM);
   render(<InjectApp />, injectDOM);
 });
