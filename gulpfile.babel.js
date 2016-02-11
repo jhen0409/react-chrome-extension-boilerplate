@@ -8,9 +8,6 @@ import jade from 'gulp-jade';
 import rename from 'gulp-rename';
 import RSA from 'node-rsa';
 import crx from 'gulp-crx-pack';
-import mocha from 'gulp-mocha';
-import eslint from 'gulp-eslint';
-import crdv from 'chromedriver';
 import webpack from 'webpack';
 import WebpackDevServer from 'webpack-dev-server';
 import prodConfig from './webpack/prod.config';
@@ -129,40 +126,6 @@ gulp.task('crx:compress', () => {
     .pipe(gulp.dest('.'));
 });
 
-/*
- * test tasks
- */
-
-gulp.task('lint', () => {
-  return gulp.src([
-    'app/**/*.js',
-    'chrome/**/*.js',
-    'test/**/*.js',
-    '*.js'
-  ]).pipe(eslint())
-    .pipe(eslint.format())
-    .pipe(eslint.failAfterError());
-});
-
-require('./test/setup-app');
-
-gulp.task('app:test', () => {
-  return gulp.src('./test/app/**/*.spec.js')
-    .pipe(mocha());
-});
-
-gulp.task('watch:app:test', ['app:test'], () => {
-  return gulp.watch(['test/app/**/*.spec.js', 'app/**/*.js'], ['app:test']);
-});
-
-gulp.task('e2e:test', () => {
-  crdv.start();
-  return gulp.src('./test/e2e/**/*.js')
-    .pipe(mocha({ require: ['co-mocha'] }))
-    .on('end', () => crdv.stop());
-});
-
 gulp.task('default', ['replace-webpack-code', 'webpack-dev-server', 'views:dev', 'copy:dev']);
 gulp.task('build', ['replace-webpack-code', 'webpack:build', 'views:build', 'copy:build']);
 gulp.task('compress', sync(['build', 'crx:compress']));
-gulp.task('test', sync(['lint', 'app:test', 'build', 'e2e:test']));
