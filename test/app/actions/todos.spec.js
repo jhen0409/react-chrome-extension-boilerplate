@@ -1,6 +1,6 @@
 import { expect } from 'chai';
 import * as types from '../../../app/constants/ActionTypes';
-import * as actions from '../../../app/actions/TodoActions';
+import * as actions from '../../../app/actions/todos';
 
 describe('todoapp todo actions', () => {
 
