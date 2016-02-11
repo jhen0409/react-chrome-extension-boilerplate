@@ -1,20 +1,20 @@
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
-import delay from 'delay';
-
 import footerStyle from '../../app/components/Footer.css';
 import mainSectionStyle from '../../app/components/MainSection.css';
 import todoItemStyle from '../../app/components/TodoItem.css';
 import todoTextInputStyle from '../../app/components/TodoTextInput.css';
 
-function findList(driver) {
-  return driver.findElements(webdriver.By.css(`.${mainSectionStyle.todoList} > li`));
-}
+const delay = time => new Promise(resolve => setTimeout(resolve, time));
+
+const findList = driver =>
+  driver.findElements(webdriver.By.css(`.${mainSectionStyle.todoList} > li`));
 
 const addTodo = async (driver, key) => {
   // add todo
-  driver.findElement(webdriver.By.className(todoTextInputStyle.new)).sendKeys(key + webdriver.Key.RETURN);
+  driver.findElement(webdriver.By.className(todoTextInputStyle.new))
+    .sendKeys(key + webdriver.Key.RETURN);
   await delay(1000);
   const todos = await findList(driver);
   return { todo: todos[0], count: todos.length };
@@ -74,9 +74,7 @@ describe('window (popup) page', function() {
     await this.driver.get(`chrome-extension://${extensionId}/window.html`);
   });
 
-  after(async () => {
-    await this.driver.quit();
-  });
+  after(async () => this.driver.quit());
 
   it('should open Redux TodoMVC Example', async () => {
     const title = await this.driver.getTitle();
