@@ -1,24 +1,22 @@
-import path from 'path';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
+const host = 'localhost';
 const port = 3000;
-const entry = [
-  `webpack-dev-server/client?https://localhost:${port}`,
-  'webpack/hot/only-dev-server'
-];
 
-export default {
+module.exports = {
   devtool: 'eval-cheap-module-source-map',
+  devServer: { host, port, https: true },
   entry: {
-    todoapp: [path.join(__dirname, '../chrome/extension/todoapp'), ...entry],
-    background: [path.join(__dirname, '../chrome/extension/background'), ...entry],
-    inject: [path.join(__dirname, '../chrome/extension/inject'), ...entry]
+    todoapp: path.join(__dirname, '../chrome/extension/todoapp'),
+    background: path.join(__dirname, '../chrome/extension/background'),
+    inject: path.join(__dirname, '../chrome/extension/inject')
   },
   output: {
     path: path.join(__dirname, '../dev/js'),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js',
-    publicPath: `https://localhost:${port}/js/`
+    publicPath: `https://${host}:${port}/js/`
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),

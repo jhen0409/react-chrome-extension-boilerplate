@@ -1,36 +1,29 @@
 import path from 'path';
 import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
-
-const delay = time => new Promise(resolve => setTimeout(resolve, time));
+import { delay, startChromeDriver, buildWebDriver } from '../func';
 
 describe('inject page (in github.com)', function() {
+  let driver;
   this.timeout(15000);
 
   before(async () => {
+    await startChromeDriver();
     const extPath = path.resolve('build');
-    this.driver = new webdriver.Builder()
-      .usingServer('http://localhost:9515')
-      .withCapabilities({
-        chromeOptions: {
-          args: [ `load-extension=${extPath}` ]
-        }
-      })
-      .forBrowser('chrome')
-      .build();
-    await this.driver.get('https://github.com');
+    driver = buildWebDriver(extPath);
+    await driver.get('https://github.com');
   });
 
-  after(async () => this.driver.quit());
+  after(async () => driver.quit());
 
   it('should open Github', async () => {
-    const title = await this.driver.getTitle();
+    const title = await driver.getTitle();
     expect(title).to.equal('GitHub · Where software is built');
   });
 
   it('should render inject app', async () => {
-    await this.driver.wait(
-      () => this.driver.findElements(webdriver.By.className('inject-react-example'))
+    await driver.wait(
+      () => driver.findElements(webdriver.By.className('inject-react-example'))
         .then(elems => elems.length > 0),
       10000,
       'Inject app not found'
@@ -38,8 +31,8 @@ describe('inject page (in github.com)', function() {
   });
 
   it('should find `Open TodoApp` button', async () => {
-    await this.driver.wait(
-      () => this.driver.findElements(webdriver.By.css('.inject-react-example button'))
+    await driver.wait(
+      () => driver.findElements(webdriver.By.css('.inject-react-example button'))
         .then(elems => elems.length > 0),
       10000,
       'Inject app `Open TodoApp` button not found'
@@ -47,10 +40,10 @@ describe('inject page (in github.com)', function() {
   });
 
   it('should find iframe', async () => {
-    this.driver.findElement(webdriver.By.css('.inject-react-example button')).click();
+    driver.findElement(webdriver.By.css('.inject-react-example button')).click();
     await delay(1000);
-    await this.driver.wait(
-      () => this.driver.findElements(webdriver.By.css('.inject-react-example iframe'))
+    await driver.wait(
+      () => driver.findElements(webdriver.By.css('.inject-react-example iframe'))
         .then(elems => elems.length > 0),
       10000,
       'Inject app iframe not found'

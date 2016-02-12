@@ -1,11 +1,11 @@
-import path from 'path';
-import webpack from 'webpack';
+const path = require('path');
+const webpack = require('webpack');
 
-export default {
+module.exports = {
   entry: {
-    todoapp: [path.join(__dirname, '../chrome/extension/todoapp')],
-    background: [path.join(__dirname, '../chrome/extension/background')],
-    inject: [path.join(__dirname, '../chrome/extension/inject')]
+    todoapp: path.join(__dirname, '../chrome/extension/todoapp'),
+    background: path.join(__dirname, '../chrome/extension/background'),
+    inject: path.join(__dirname, '../chrome/extension/inject')
   },
   output: {
     path: path.join(__dirname, '../build/js'),

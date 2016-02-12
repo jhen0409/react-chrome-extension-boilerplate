@@ -26,5 +26,6 @@ before_script:
   - sleep 3
 
 script:
-- npm test
-- npm run compress
+  - npm run lint
+  - npm test
+  - npm run build
