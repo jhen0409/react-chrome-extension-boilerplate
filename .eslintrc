@@ -6,7 +6,8 @@
   "env": {
     "mocha": true,
     "browser": true,
-    "node": true
+    "node": true,
+    "shelljs": true
   },
   "rules": {
     "react/jsx-uses-react": 2,

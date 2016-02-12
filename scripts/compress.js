@@ -1,6 +1,6 @@
-const fs = require("fs");
-const path = require("path");
-const ChromeExtension = require("crx");
+const fs = require('fs');
+const path = require('path');
+const ChromeExtension = require('crx');
 const name = require('../build/manifest.json').name;
 const argv = require('minimist')(process.argv.slice(2));
 
@@ -13,18 +13,15 @@ const crx = new ChromeExtension({
 });
 
 crx.load('build')
-  .then(function(){
-    return crx.loadContents();
-  })
-  .then(function(archiveBuffer){
+  .then(() => crx.loadContents())
+  .then(archiveBuffer => {
     fs.writeFile(name + '.zip', archiveBuffer);
 
     if (!argv.codebase || !existsKey) return;
-    return crx.pack(archiveBuffer);
-  })
-  .then(function(crxBuffer){
-    const updateXML = crx.generateUpdateXML()
+    crx.pack(archiveBuffer).then(crxBuffer => {
+      const updateXML = crx.generateUpdateXML();
 
-    fs.writeFile('update.xml', updateXML)
-    fs.writeFile(name + ".crx", crxBuffer)
+      fs.writeFile('update.xml', updateXML);
+      fs.writeFile(name + '.crx', crxBuffer);
+    });
   });

@@ -10,7 +10,7 @@ exports.replaceWebpack = () => {
   }];
 
   replaceTasks.forEach(task => cp(task.from, task.to));
-}
+};
 
 exports.copyAssets = type => {
   const env = type === 'build' ? 'prod' : type;
@@ -19,4 +19,4 @@ exports.copyAssets = type => {
   cp(`chrome/manifest.${env}.json`, type + '/manifest.json');
   cp('-R', 'chrome/assets/', type);
   exec(`jade -O "{ env: '${env}' }" -o ${type} chrome/views/*.jade`);
-}
+};
