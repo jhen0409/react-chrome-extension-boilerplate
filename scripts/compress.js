@@ -4,10 +4,12 @@ const ChromeExtension = require("crx");
 const name = require('../build/manifest.json').name;
 const argv = require('minimist')(process.argv.slice(2));
 
+const keyPath = argv.key || 'key.pem';
+const existsKey = fs.existsSync(keyPath);
 const crx = new ChromeExtension({
   appId: argv['app-id'],
   codebase: argv.codebase,
-  privateKey: fs.readFileSync(argv.key || 'key.pem')
+  privateKey: existsKey ? fs.readFileSync(keyPath) : null
 });
 
 crx.load('build')
@@ -17,6 +19,7 @@ crx.load('build')
   .then(function(archiveBuffer){
     fs.writeFile(name + '.zip', archiveBuffer);
 
+    if (!argv.codebase || !existsKey) return;
     return crx.pack(archiveBuffer);
   })
   .then(function(crxBuffer){

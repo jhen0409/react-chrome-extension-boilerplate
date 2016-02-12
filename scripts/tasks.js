@@ -1,5 +1,4 @@
 require('shelljs/global');
-const fs = require('fs');
 
 exports.replaceWebpack = () => {
   const replaceTasks = [{

@@ -6,6 +6,7 @@
     "dev": "node scripts/dev",
     "build": "node scripts/build",
     "compress": "node scripts/compress",
+    "compress-keygen": "crx keygen",
     "clean": "rimraf build/ dev/ *.zip *.crx",
     "lint": "eslint app chrome test *.js",
     "test-e2e": "mocha --compilers js:babel-core/register --recursive --require co-mocha --require ./test/setup-app test/e2e",
