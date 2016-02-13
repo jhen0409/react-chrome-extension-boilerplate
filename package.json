@@ -9,7 +9,7 @@
     "compress-keygen": "crx keygen",
     "clean": "rimraf build/ dev/ *.zip *.crx",
     "lint": "eslint app chrome test scripts",
-    "test-e2e": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --require babel-polyfill --recursive --require co-mocha test/e2e",
+    "test-e2e": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive --require co-mocha test/e2e",
     "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive --require ./test/setup-app test/app"
   },
   "repository": {
@@ -33,8 +33,8 @@
     "babel-loader": "^6.2.0",
     "babel-plugin-add-module-exports": "^0.1.1",
     "babel-plugin-transform-decorators-legacy": "^1.2.0",
+    "babel-plugin-transform-runtime": "^6.5.2",
     "babel-plugin-webpack-loaders": "^0.3.0",
-    "babel-polyfill": "^6.3.14",
     "babel-preset-es2015": "^6.3.13",
     "babel-preset-react": "^6.3.13",
     "babel-preset-react-hmre": "^1.0.0",

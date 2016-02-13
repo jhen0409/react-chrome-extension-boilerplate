@@ -1,5 +1,5 @@
-import 'babel-polyfill';
-global.Promise = require('bluebird');
+const bluebird = require('bluebird');
+global.Promise = bluebird;
 
 function promisifier(method) {
   // return a function
@@ -15,7 +15,7 @@ function promisifier(method) {
 }
 
 function promisifyAll(obj, list) {
-  list.forEach(api => Promise.promisifyAll(obj[api], { promisifier }));
+  list.forEach(api => bluebird.promisifyAll(obj[api], { promisifier }));
 }
 
 // let chrome extension api support Promise
