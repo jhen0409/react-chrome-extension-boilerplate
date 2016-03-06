@@ -7,19 +7,21 @@ export default class Header extends Component {
     addTodo: PropTypes.func.isRequired
   };
 
-  handleSave(text) {
+  handleSave = text => {
     if (text.length !== 0) {
       this.props.addTodo(text);
     }
-  }
+  };
 
   render() {
     return (
       <header>
-          <h1>todos</h1>
-          <TodoTextInput newTodo
-                         onSave={this.handleSave.bind(this)}
-                         placeholder="What needs to be done?" />
+        <h1>todos</h1>
+        <TodoTextInput
+          newTodo
+          onSave={this.handleSave}
+          placeholder="What needs to be done?"
+        />
       </header>
     );
   }

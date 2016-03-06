@@ -53,7 +53,7 @@ const deleteTodo = async (driver, index) => {
   return { count: todos.length };
 };
 
-describe('window (popup) page', function() {
+describe('window (popup) page', function () {
   let driver;
   this.timeout(15000);
 
@@ -92,14 +92,16 @@ describe('window (popup) page', function() {
     const { todo, count } = await completeTodo(driver, 0);
     expect(count).to.equal(2);
     const className = await todo.getAttribute('class');
-    expect(className).to.equal(todoItemStyle.completed + ' ' + todoItemStyle.normal);
+    const { completed, normal } = todoItemStyle;
+    expect(className).to.equal(`${completed} ${normal}`);
   });
 
   it('should can complete all todos', async () => {
     driver.findElement(webdriver.By.className(mainSectionStyle.toggleAll)).click();
     const todos = await findList(driver);
     const classNames = await Promise.all(todos.map(todo => todo.getAttribute('class')));
-    expect(classNames.every(name => name === todoItemStyle.completed + ' ' + todoItemStyle.normal)).to.equal(true);
+    const { completed, normal } = todoItemStyle;
+    expect(classNames.every(name => name === `${completed} ${normal}`)).to.equal(true);
   });
 
   it('should can delete todo', async () => {

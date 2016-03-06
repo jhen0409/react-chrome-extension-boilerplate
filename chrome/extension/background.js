@@ -3,9 +3,7 @@ global.Promise = bluebird;
 
 function promisifier(method) {
   // return a function
-  return function promisified() {
-    let args = [].slice.call(arguments);
-
+  return function promisified(...args) {
     // which returns a promise
     return new Promise((resolve, reject) => {
       args.push(resolve);

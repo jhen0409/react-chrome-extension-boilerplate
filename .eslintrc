@@ -1,5 +1,6 @@
 {
-  "extends": "eslint-config-airbnb",
+  "parser": "babel-eslint",
+  "extends": "airbnb",
   "globals": {
     "chrome": true
   },
@@ -14,7 +15,9 @@
     "react/jsx-uses-vars": 2,
     "react/react-in-jsx-scope": 2,
     "react/jsx-quotes": 0,
+    "react/prefer-stateless-function": 0,
     "block-scoped-var": 0,
+    "consistent-return": 0,
     "padded-blocks": 0,
     "quotes": [1, "single"],
     "comma-style": [2, "last"],

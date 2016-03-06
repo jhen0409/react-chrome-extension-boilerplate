@@ -9,7 +9,7 @@ const enhancer = compose(
   window.devToolsExtension ? window.devToolsExtension() : nope => nope
 );
 
-export default function(initialState) {
+export default function (initialState) {
   const store = createStore(rootReducer, initialState, enhancer);
 
   if (module.hot) {

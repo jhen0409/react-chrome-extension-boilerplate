@@ -54,11 +54,13 @@ describe('todoapp MainSection component', () => {
     });
 
     it('should be checked if all todos completed', () => {
-      const { output } = setup({ todos: [{
-        text: 'Use Redux',
-        completed: true,
-        id: 0
-      }]});
+      const { output } = setup({
+        todos: [{
+          text: 'Use Redux',
+          completed: true,
+          id: 0
+        }]
+      });
       const [toggle] = output.props.children;
       expect(toggle.props.checked).to.equal(true);
     });
@@ -98,11 +100,13 @@ describe('todoapp MainSection component', () => {
     });
 
     it('onClearCompleted shouldnt call clearCompleted if no todos completed', () => {
-      const { output, props } = setup({ todos: [{
-        text: 'Use Redux',
-        completed: false,
-        id: 0
-      }]});
+      const { output, props } = setup({
+        todos: [{
+          text: 'Use Redux',
+          completed: false,
+          id: 0
+        }]
+      });
       const [,, footer] = output.props.children;
       footer.props.onClearCompleted();
       expect(props.actions.clearCompleted.callCount).to.equal(0);
