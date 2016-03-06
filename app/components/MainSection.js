@@ -27,11 +27,11 @@ export default class MainSection extends Component {
     if (atLeastOneCompleted) {
       this.props.actions.clearCompleted();
     }
-  }
+  };
 
   handleShow = filter => {
     this.setState({ filter });
-  }
+  };
 
   renderToggleAll(completedCount) {
     const { todos, actions } = this.props;

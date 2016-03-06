@@ -11,7 +11,7 @@ export default class Header extends Component {
     if (text.length !== 0) {
       this.props.addTodo(text);
     }
-  }
+  };
 
   render() {
     return (

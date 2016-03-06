@@ -27,17 +27,17 @@ export default class TodoTextInput extends Component {
         this.setState({ text: '' });
       }
     }
-  }
+  };
 
   handleChange = evt => {
     this.setState({ text: evt.target.value });
-  }
+  };
 
   handleBlur = evt => {
     if (!this.props.newTodo) {
       this.props.onSave(evt.target.value);
     }
-  }
+  };
 
   render() {
     return (

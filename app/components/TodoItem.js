@@ -21,7 +21,7 @@ export default class TodoItem extends Component {
 
   handleDoubleClick = () => {
     this.setState({ editing: true });
-  }
+  };
 
   handleSave = text => {
     const { todo, deleteTodo, editTodo } = this.props;
@@ -31,17 +31,17 @@ export default class TodoItem extends Component {
       editTodo(todo.id, text);
     }
     this.setState({ editing: false });
-  }
+  };
 
   handleComplete = () => {
     const { todo, completeTodo } = this.props;
     completeTodo(todo.id);
-  }
+  };
 
   handleDelete = () => {
     const { todo, deleteTodo } = this.props;
     deleteTodo(todo.id);
-  }
+  };
 
   render() {
     const { todo, completeTodo, deleteTodo } = this.props;
