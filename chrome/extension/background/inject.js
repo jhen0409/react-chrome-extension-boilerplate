@@ -1,6 +1,8 @@
 function isInjected(tabId) {
   return chrome.tabs.executeScriptAsync(tabId, {
-    code: 'var injected = window.reactExampleInjected; window.reactExampleInjected = true; injected;',
+    code: `var injected = window.reactExampleInjected;
+      window.reactExampleInjected = true;
+      injected;`,
     runAt: 'document_start'
   });
 }

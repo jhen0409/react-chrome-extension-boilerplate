@@ -47,33 +47,33 @@ describe('todoapp TodoTextInput component', () => {
 
   it('should update value on change', () => {
     const { output, renderer } = setup();
-    output.props.onChange({ target: { value: 'Use Radox' }});
+    output.props.onChange({ target: { value: 'Use Radox' } });
     const updated = renderer.getRenderOutput();
     expect(updated.props.value).to.equal('Use Radox');
   });
 
   it('should call onSave on return key press', () => {
     const { output, props } = setup();
-    output.props.onKeyDown({ which: 13, target: { value: 'Use Redux' }});
+    output.props.onKeyDown({ which: 13, target: { value: 'Use Redux' } });
     expect(props.onSave.calledWith('Use Redux')).to.equal(true);
   });
 
   it('should reset state on return key press if newTodo', () => {
     const { output, renderer } = setup({ newTodo: true });
-    output.props.onKeyDown({ which: 13, target: { value: 'Use Redux' }});
+    output.props.onKeyDown({ which: 13, target: { value: 'Use Redux' } });
     const updated = renderer.getRenderOutput();
     expect(updated.props.value).to.equal('');
   });
 
   it('should call onSave on blur', () => {
     const { output, props } = setup();
-    output.props.onBlur({ target: { value: 'Use Redux' }});
+    output.props.onBlur({ target: { value: 'Use Redux' } });
     expect(props.onSave.calledWith('Use Redux')).to.equal(true);
   });
 
   it('shouldnt call onSave on blur if newTodo', () => {
     const { output, props } = setup({ newTodo: true });
-    output.props.onBlur({ target: { value: 'Use Redux' }});
+    output.props.onBlur({ target: { value: 'Use Redux' } });
     expect(props.onSave.callCount).to.equal(0);
   });
 });

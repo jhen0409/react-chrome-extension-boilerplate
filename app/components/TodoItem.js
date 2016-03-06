@@ -19,17 +19,28 @@ export default class TodoItem extends Component {
     };
   }
 
-  handleDoubleClick() {
+  handleDoubleClick = () => {
     this.setState({ editing: true });
   }
 
-  handleSave(id, text) {
+  handleSave = text => {
+    const { todo, deleteTodo, editTodo } = this.props;
     if (text.length === 0) {
-      this.props.deleteTodo(id);
+      deleteTodo(todo.id);
     } else {
-      this.props.editTodo(id, text);
+      editTodo(todo.id, text);
     }
     this.setState({ editing: false });
+  }
+
+  handleComplete = () => {
+    const { todo, completeTodo } = this.props;
+    completeTodo(todo.id);
+  }
+
+  handleDelete = () => {
+    const { todo, deleteTodo } = this.props;
+    deleteTodo(todo.id);
   }
 
   render() {
@@ -39,31 +50,37 @@ export default class TodoItem extends Component {
     if (this.state.editing) {
       element = (
         <TodoTextInput text={todo.text}
-                       editing={this.state.editing}
-                       onSave={text => this.handleSave(todo.id, text)} />
+          editing={this.state.editing}
+          onSave={this.handleSave}
+        />
       );
     } else {
       element = (
         <div className={style.view}>
           <input className={style.toggle}
-                 type="checkbox"
-                 checked={todo.completed}
-                 onChange={() => completeTodo(todo.id)} />
-          <label onDoubleClick={this.handleDoubleClick.bind(this)}>
+            type="checkbox"
+            checked={todo.completed}
+            onChange={this.handleComplete}
+          />
+          <label onDoubleClick={this.handleDoubleClick}>
             {todo.text}
           </label>
-          <button className={style.destroy}
-                  onClick={() => deleteTodo(todo.id)} />
+          <button
+            className={style.destroy}
+            onClick={this.handleDelete}
+          />
         </div>
       );
     }
 
     return (
-      <li className={classnames({
-        [style.completed]: todo.completed,
-        [style.editing]: this.state.editing,
-        [style.normal]: !this.state.editing
-      })}>
+      <li
+        className={classnames({
+          [style.completed]: todo.completed,
+          [style.editing]: this.state.editing,
+          [style.normal]: !this.state.editing
+        })}
+      >
         {element}
       </li>
     );
