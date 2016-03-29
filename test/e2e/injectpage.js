@@ -18,7 +18,7 @@ describe('inject page (in github.com)', function () {
 
   it('should open Github', async () => {
     const title = await driver.getTitle();
-    expect(title).to.equal('GitHub · Where software is built');
+    expect(title).to.equal('How people build software · GitHub');
   });
 
   it('should render inject app', async () => {
