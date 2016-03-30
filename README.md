@@ -6,7 +6,7 @@
 [![Dependency Status](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate.svg)](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate)
 [![devDependency Status](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate/dev-status.svg)](https://david-dm.org/jhen0409/react-chrome-extension-boilerplate#info=devDependencies)
 
-Boilerplate for Chrome Extension React.js project.
+> Boilerplate for Chrome Extension React.js project.
 
 ## Features
 
@@ -29,11 +29,11 @@ The `todos` state will be saved to `chrome.storage.local`.
 
 ![Window](https://cloud.githubusercontent.com/assets/3001525/14128489/da176b62-f653-11e5-9bff-fefc35232358.gif)
 
-The context menu is created by `chrome/app/background/contextMenus.js`.
+The context menu is created by [chrome/extension/background/contextMenus.js](chrome/extension/background/contextMenus.js).
 
 #### Inject page
 
-The inject script is being run by `chrome/app/background/inject.js`. A simple example will be inject bottom of page(`https://github.com/*`) if you visit.
+The inject script is being run by [chrome/extension/background/inject.js](chrome/extension/background/inject.js). A simple example will be inject bottom of page(`https://github.com/*`) if you visit.
 
 ## Installation
 
