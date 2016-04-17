@@ -21,16 +21,16 @@ const actionsMap = {
   },
   [ActionTypes.EDIT_TODO](state, action) {
     return state.map(todo =>
-      todo.id === action.id ?
+      (todo.id === action.id ?
         Object.assign({}, todo, { text: action.text }) :
-        todo
+        todo)
     );
   },
   [ActionTypes.COMPLETE_TODO](state, action) {
     return state.map(todo =>
-      todo.id === action.id ?
+      (todo.id === action.id ?
         Object.assign({}, todo, { completed: !todo.completed }) :
-        todo
+        todo)
     );
   },
   [ActionTypes.COMPLETE_ALL](state, action) {
