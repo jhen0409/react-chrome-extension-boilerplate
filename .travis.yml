@@ -3,9 +3,6 @@ dist: trusty
 language: node_js
 node_js:
   - "4"
-cache:
-  directories:
-    - node_modules
 env:
   - CXX=g++-4.8
 addons:
