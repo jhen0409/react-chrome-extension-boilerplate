@@ -1,6 +1,6 @@
 import * as ActionTypes from '../constants/ActionTypes';
 
-let initialState = [{
+const initialState = [{
   text: 'Use Redux',
   completed: false,
   id: 0
@@ -33,13 +33,13 @@ const actionsMap = {
         todo)
     );
   },
-  [ActionTypes.COMPLETE_ALL](state, action) {
+  [ActionTypes.COMPLETE_ALL](state/*, action*/) {
     const areAllCompleted = state.every(todo => todo.completed);
     return state.map(todo => Object.assign({}, todo, {
       completed: !areAllCompleted
     }));
   },
-  [ActionTypes.CLEAR_COMPLETED](state, action) {
+  [ActionTypes.CLEAR_COMPLETED](state/*, action*/) {
     return state.filter(todo => todo.completed === false);
   }
 };

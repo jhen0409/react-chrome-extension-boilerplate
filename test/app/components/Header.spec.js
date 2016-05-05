@@ -18,7 +18,6 @@ function setup() {
 }
 
 describe('todoapp Header component', () => {
-
   it('should render correctly', () => {
     const { output } = setup();
 

@@ -22,7 +22,6 @@ export default class Footer extends Component {
 
   constructor(props, context) {
     super(props, context);
-    const { onShow } = props;
     if (props.onShow) {
       this.filterHandlers = FILTERS.map(filter => () => props.onShow(filter));
     }

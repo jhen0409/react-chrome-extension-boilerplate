@@ -53,7 +53,7 @@ const deleteTodo = async (driver, index) => {
   return { count: todos.length };
 };
 
-describe('window (popup) page', function () {
+describe('window (popup) page', function test() {
   let driver;
   this.timeout(15000);
 

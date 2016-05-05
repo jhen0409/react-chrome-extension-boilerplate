@@ -34,7 +34,6 @@ function setup(editing = false) {
 }
 
 describe('todoapp TodoItem component', () => {
-
   it('should render correctly', () => {
     const { output } = setup();
 

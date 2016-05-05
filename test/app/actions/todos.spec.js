@@ -3,7 +3,6 @@ import * as types from '../../../app/constants/ActionTypes';
 import * as actions from '../../../app/actions/todos';
 
 describe('todoapp todo actions', () => {
-
   it('addTodo should create ADD_TODO action', () => {
     expect(actions.addTodo('Use Redux')).to.eql({
       type: types.ADD_TODO,

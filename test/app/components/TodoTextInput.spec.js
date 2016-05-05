@@ -27,7 +27,6 @@ function setup(propOverrides) {
 }
 
 describe('todoapp TodoTextInput component', () => {
-
   it('should render correctly', () => {
     const { output } = setup();
     expect(output.props.placeholder).to.equal('What needs to be done?');
