@@ -9,8 +9,8 @@
     "compress-keygen": "crx keygen",
     "clean": "rimraf build/ dev/ *.zip *.crx",
     "lint": "eslint app chrome test scripts",
-    "test-e2e": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive --require co-mocha test/e2e",
-    "test": "cross-env NODE_ENV=test mocha --compilers js:babel-core/register --recursive --require ./test/setup-app test/app"
+    "test-e2e": "cross-env NODE_ENV=test mocha test/e2e",
+    "test": "cross-env NODE_ENV=test mocha -r ./test/setup-app test/app"
   },
   "repository": {
     "type": "git",
