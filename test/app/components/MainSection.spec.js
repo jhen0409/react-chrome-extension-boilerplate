@@ -37,7 +37,6 @@ function setup(propOverrides) {
 }
 
 describe('todoapp MainSection component', () => {
-
   it('should render correctly', () => {
     const { output } = setup();
     expect(output.type).to.equal('section');

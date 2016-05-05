@@ -10,7 +10,7 @@ function closeIfExist() {
 
 function popWindow(type) {
   closeIfExist();
-  let options = {
+  const options = {
     type: 'popup',
     left: 100, top: 100,
     width: 800, height: 475

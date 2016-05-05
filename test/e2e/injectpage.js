@@ -3,7 +3,7 @@ import webdriver from 'selenium-webdriver';
 import { expect } from 'chai';
 import { delay, startChromeDriver, buildWebDriver } from '../func';
 
-describe('inject page (in github.com)', function () {
+describe('inject page (in github.com)', function test() {
   let driver;
   this.timeout(15000);
 

@@ -5,7 +5,7 @@ function promisifier(method) {
   // return a function
   return function promisified(...args) {
     // which returns a promise
-    return new Promise((resolve, reject) => {
+    return new Promise(resolve => {
       args.push(resolve);
       method.apply(this, args);
     });
