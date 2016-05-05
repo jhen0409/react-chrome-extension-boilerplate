@@ -12,7 +12,7 @@ function loadScript(name, tabId, cb) {
     chrome.tabs.executeScript(tabId, { file: `/js/${name}.bundle.js`, runAt: 'document_end' }, cb);
   } else {
     // dev: async fetch bundle
-    fetch(`https://localhost:3000/js/${name}.bundle.js`)
+    fetch(`http://localhost:3000/js/${name}.bundle.js`)
     .then(res => res.text())
     .then(fetchRes => {
       // Load redux-devtools-extension inject bundle,
