@@ -63,8 +63,8 @@
     "shelljs": "^0.7.0",
     "sinon": "^1.17.1",
     "style-loader": "^0.13.1",
-    "webpack": "^1.12.9",
-    "webpack-dev-server": "^1.10.1"
+    "webpack": "^1.13.0",
+    "webpack-httpolyglot-server": "^0.2.0"
   },
   "dependencies": {
     "bluebird": "^3.3.4",
