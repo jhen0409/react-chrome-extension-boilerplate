@@ -85,7 +85,7 @@ describe('window (popup) page', function test() {
     const { todo, count } = await editTodo(driver, 0, 'Ya ');
     expect(count).to.equal(2);
     const text = await todo.findElement(webdriver.By.tagName('label')).getText();
-    expect(text).to.equal('Ya Add tests');
+    expect(text).to.equal('Add testsYa');
   });
 
   it('should can complete todo', async () => {
