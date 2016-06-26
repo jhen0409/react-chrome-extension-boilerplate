@@ -31,7 +31,7 @@ class InjectApp extends Component {
             }}
             frameBorder={0}
             allowTransparency="true"
-            src={chrome.extension.getURL('inject.html')}
+            src={chrome.extension.getURL(`inject.html?protocol=${location.protocol}`)}
           />
         </Dock>
       </div>
