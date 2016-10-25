@@ -5,8 +5,8 @@ exports.replaceWebpack = () => {
     from: 'webpack/replace/JsonpMainTemplate.runtime.js',
     to: 'node_modules/webpack/lib/JsonpMainTemplate.runtime.js'
   }, {
-    from: 'webpack/replace/log-apply-result.js',
-    to: 'node_modules/webpack/hot/log-apply-result.js'
+    from: 'webpack/replace/process-update.js',
+    to: 'node_modules/webpack-hot-middleware/process-update.js'
   }];
 
   replaceTasks.forEach(task => cp(task.from, task.to));
