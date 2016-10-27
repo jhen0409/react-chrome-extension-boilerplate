@@ -36,7 +36,10 @@ module.exports = {
     loaders: [{
       test: /\.js$/,
       loader: 'babel',
-      exclude: /node_modules/
+      exclude: /node_modules/,
+      query: {
+        presets: ['react-optimize']
+      }
     }, {
       test: /\.css$/,
       loaders: [
