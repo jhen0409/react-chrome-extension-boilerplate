@@ -18,7 +18,7 @@ function loadScript(name, tabId, cb) {
       // Load redux-devtools-extension inject bundle,
       // because inject script and page is in a different context
       const request = new XMLHttpRequest();
-      request.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/inject.bundle.js');  // sync
+      request.open('GET', 'chrome-extension://lmhkpmbekcpmknklioeibfkpmmfibljd/js/redux-devtools-extension.js');  // sync
       request.send();
       request.onload = () => {
         if (request.readyState === XMLHttpRequest.DONE && request.status === 200) {
