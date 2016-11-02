@@ -6,7 +6,7 @@ import footerStyle from '../../app/components/Footer.css';
 import mainSectionStyle from '../../app/components/MainSection.css';
 import todoItemStyle from '../../app/components/TodoItem.css';
 import todoTextInputStyle from '../../app/components/TodoTextInput.css';
-import manifest from '../../build/manifest.json';
+import manifest from '../../chrome/manifest.prod.json';
 
 const extensionName = manifest.name;
 
