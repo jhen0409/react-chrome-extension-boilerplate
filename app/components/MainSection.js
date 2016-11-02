@@ -29,7 +29,7 @@ export default class MainSection extends Component {
     }
   };
 
-  handleShow = filter => {
+  handleShow = (filter) => {
     this.setState({ filter });
   };
 

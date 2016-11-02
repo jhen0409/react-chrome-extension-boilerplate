@@ -12,8 +12,10 @@ function popWindow(type) {
   closeIfExist();
   const options = {
     type: 'popup',
-    left: 100, top: 100,
-    width: 800, height: 475
+    left: 100,
+    top: 100,
+    width: 800,
+    height: 475,
   };
   if (type === 'open') {
     options.url = 'window.html';

@@ -23,7 +23,7 @@ export default class TodoItem extends Component {
     this.setState({ editing: true });
   };
 
-  handleSave = text => {
+  handleSave = (text) => {
     const { todo, deleteTodo, editTodo } = this.props;
     if (text.length === 0) {
       deleteTodo(todo.id);

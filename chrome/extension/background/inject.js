@@ -14,7 +14,7 @@ function loadScript(name, tabId, cb) {
     // dev: async fetch bundle
     fetch(`http://localhost:3000/js/${name}.bundle.js`)
     .then(res => res.text())
-    .then(fetchRes => {
+    .then((fetchRes) => {
       // Load redux-devtools-extension inject bundle,
       // because inject script and page is in a different context
       const request = new XMLHttpRequest();

@@ -1,6 +1,6 @@
 import { applyMiddleware, createStore, compose } from 'redux';
-import rootReducer from '../reducers';
 import thunk from 'redux-thunk';
+import rootReducer from '../reducers';
 import storage from '../utils/storage';
 
 // If Redux DevTools Extension is installed use it, otherwise use Redux compose
@@ -23,6 +23,7 @@ export default function (initialState) {
   if (module.hot) {
     module.hot.accept('../reducers', () => {
       const nextRootReducer = require('../reducers');
+
       store.replaceReducer(nextRootReducer);
     });
   }

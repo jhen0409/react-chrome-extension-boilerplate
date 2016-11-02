@@ -12,7 +12,7 @@ exports.replaceWebpack = () => {
   replaceTasks.forEach(task => cp(task.from, task.to));
 };
 
-exports.copyAssets = type => {
+exports.copyAssets = (type) => {
   const env = type === 'build' ? 'prod' : type;
   rm('-rf', type);
   mkdir(type);
