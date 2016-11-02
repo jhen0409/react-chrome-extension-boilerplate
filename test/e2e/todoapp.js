@@ -63,7 +63,10 @@ describe('window (popup) page', function test() {
     driver = buildWebDriver(extPath);
     await driver.get('chrome://extensions-frame');
     const elems = await driver.findElements(webdriver.By.className('extension-list-item-wrapper'));
-    const extensionId = await elems[1].getAttribute('id');
+    let extensionId;
+    for (const elem of elems) {
+      extensionId = extensionId || await elem.getAttribute('id');
+    }
     await driver.get(`chrome-extension://${extensionId}/window.html`);
   });
 
