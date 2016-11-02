@@ -6,6 +6,9 @@ import footerStyle from '../../app/components/Footer.css';
 import mainSectionStyle from '../../app/components/MainSection.css';
 import todoItemStyle from '../../app/components/TodoItem.css';
 import todoTextInputStyle from '../../app/components/TodoTextInput.css';
+import manifest from '../../build/manifest.json';
+
+const extensionName = manifest.name;
 
 const findList = driver =>
   driver.findElements(webdriver.By.css(`.${mainSectionStyle.todoList} > li`));
@@ -62,11 +65,11 @@ describe('window (popup) page', function test() {
     const extPath = path.resolve('build');
     driver = buildWebDriver(extPath);
     await driver.get('chrome://extensions-frame');
-    const elems = await driver.findElements(webdriver.By.className('extension-list-item-wrapper'));
-    let extensionId;
-    for (const elem of elems) {
-      extensionId = extensionId || await elem.getAttribute('id');
-    }
+    const elems = await driver.findElements(webdriver.By.xpath(
+      '//div[contains(@class, "extension-list-item-wrapper") and ' +
+      `.//h2[contains(text(), "${extensionName}")]]`
+    ));
+    const extensionId = await elems[0].getAttribute('id');
     await driver.get(`chrome-extension://${extensionId}/window.html`);
   });
 
