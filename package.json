@@ -55,7 +55,7 @@
     "jsdom": "^9.2.1",
     "minimist": "^1.2.0",
     "mocha": "^3.1.2",
-    "postcss-loader": "^1.1.0",
+    "postcss-loader": "^1.2.1",
     "pug-cli": "^1.0.0-alpha6",
     "react-addons-test-utils": "^15.0.2",
     "rimraf": "^2.4.3",

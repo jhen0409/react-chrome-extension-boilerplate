@@ -1,5 +1,6 @@
 const path = require('path');
 const webpack = require('webpack');
+const postCSSConfig = require('./postcss.config');
 
 const host = 'localhost';
 const port = 3000;
@@ -26,6 +27,9 @@ const baseDevConfig = () => ({
     path: path.join(__dirname, '../dev/js'),
     filename: '[name].bundle.js',
     chunkFilename: '[id].chunk.js'
+  },
+  postcss() {
+    return postCSSConfig;
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
