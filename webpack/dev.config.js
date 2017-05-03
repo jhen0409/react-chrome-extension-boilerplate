@@ -18,7 +18,8 @@ const baseDevConfig = () => ({
     stats: {
       colors: true
     },
-    noInfo: true
+    noInfo: true,
+    headers: { 'Access-Control-Allow-Origin': '*' }
   },
   hotMiddleware: {
     path: '/js/__webpack_hmr'
