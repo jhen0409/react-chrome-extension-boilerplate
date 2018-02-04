@@ -11,11 +11,11 @@ function setup(editing = false) {
     todo: {
       id: 0,
       text: 'Use Redux',
-      completed: false
+      completed: false,
     },
     editTodo: sinon.spy(),
     deleteTodo: sinon.spy(),
-    completeTodo: sinon.spy()
+    completeTodo: sinon.spy(),
   };
 
   const renderer = TestUtils.createRenderer();

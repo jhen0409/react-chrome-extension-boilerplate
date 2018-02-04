@@ -26,7 +26,7 @@ describe('inject page (in github.com)', function test() {
       () => driver.findElements(webdriver.By.className('inject-react-example'))
         .then(elems => elems.length > 0),
       10000,
-      'Inject app not found'
+      'Inject app not found',
     );
   });
 
@@ -35,7 +35,7 @@ describe('inject page (in github.com)', function test() {
       () => driver.findElements(webdriver.By.css('.inject-react-example button'))
         .then(elems => elems.length > 0),
       10000,
-      'Inject app `Open TodoApp` button not found'
+      'Inject app `Open TodoApp` button not found',
     );
   });
 
@@ -46,7 +46,7 @@ describe('inject page (in github.com)', function test() {
       () => driver.findElements(webdriver.By.css('.inject-react-example iframe'))
         .then(elems => elems.length > 0),
       10000,
-      'Inject app iframe not found'
+      'Inject app iframe not found',
     );
   });
 });

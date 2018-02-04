@@ -22,7 +22,7 @@ promisifyAll(chrome, [
   'tabs',
   'windows',
   'browserAction',
-  'contextMenus'
+  'contextMenus',
 ]);
 promisifyAll(chrome.storage, [
   'local',

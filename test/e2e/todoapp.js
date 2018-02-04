@@ -46,10 +46,8 @@ const completeTodo = async (driver, index) => {
 
 const deleteTodo = async (driver, index) => {
   let todos = await findList(driver);
-  driver.executeScript(
-    `document.querySelectorAll('.${mainSectionStyle.todoList} > li')[${index}]
-      .getElementsByClassName('${todoItemStyle.destroy}')[0].style.display = 'block'`
-  );
+  driver.executeScript(`document.querySelectorAll('.${mainSectionStyle.todoList} > li')[${index}]
+      .getElementsByClassName('${todoItemStyle.destroy}')[0].style.display = 'block'`);
   todos[index].findElement(webdriver.By.className(todoItemStyle.destroy)).click();
   await delay(1000);
   todos = await findList(driver);
@@ -65,10 +63,8 @@ describe('window (popup) page', function test() {
     const extPath = path.resolve('build');
     driver = buildWebDriver(extPath);
     await driver.get('chrome://extensions-frame');
-    const elems = await driver.findElements(webdriver.By.xpath(
-      '//div[contains(@class, "extension-list-item-wrapper") and ' +
-      `.//h2[contains(text(), "${extensionName}")]]`
-    ));
+    const elems = await driver.findElements(webdriver.By.xpath('//div[contains(@class, "extension-list-item-wrapper") and ' +
+      `.//h2[contains(text(), "${extensionName}")]]`));
     const extensionId = await elems[0].getAttribute('id');
     await driver.get(`chrome-extension://${extensionId}/window.html`);
   });

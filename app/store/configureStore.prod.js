@@ -6,7 +6,7 @@ import storage from '../utils/storage';
 const middlewares = applyMiddleware(thunk);
 const enhancer = compose(
   middlewares,
-  storage()
+  storage(),
 );
 
 export default function (initialState) {

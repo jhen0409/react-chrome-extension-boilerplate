@@ -11,6 +11,6 @@ chrome.storage.local.get('state', (obj) => {
 
   ReactDOM.render(
     <Root store={createStore(initialState)} />,
-    document.querySelector('#root')
+    document.querySelector('#root'),
   );
 });

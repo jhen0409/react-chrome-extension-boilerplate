@@ -1,4 +1,5 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { bindActionCreators } from 'redux';
 import { connect } from 'react-redux';
 import Header from '../components/Header';
@@ -8,17 +9,16 @@ import style from './App.css';
 
 @connect(
   state => ({
-    todos: state.todos
+    todos: state.todos,
   }),
   dispatch => ({
-    actions: bindActionCreators(TodoActions, dispatch)
-  })
+    actions: bindActionCreators(TodoActions, dispatch),
+  }),
 )
 export default class App extends Component {
-
   static propTypes = {
     todos: PropTypes.array.isRequired,
-    actions: PropTypes.object.isRequired
+    actions: PropTypes.object.isRequired,
   };
 
   render() {

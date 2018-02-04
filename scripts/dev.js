@@ -14,5 +14,5 @@ console.log('please allow `https://localhost:3000` connections in Google Chrome,
 console.log('and load unpacked extensions with `./dev` folder. (see https://developer.chrome.com/extensions/getstarted#unpacked)\n');
 createWebpackServer(devConfig, {
   host: 'localhost',
-  port: 3000
+  port: 3000,
 });

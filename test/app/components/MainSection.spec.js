@@ -13,20 +13,20 @@ function setup(propOverrides) {
     todos: [{
       text: 'Use Redux',
       completed: false,
-      id: 0
+      id: 0,
     }, {
       text: 'Run the tests',
       completed: true,
-      id: 1
+      id: 1,
     }],
     actions: {
       editTodo: sinon.spy(),
       deleteTodo: sinon.spy(),
       completeTodo: sinon.spy(),
       completeAll: sinon.spy(),
-      clearCompleted: sinon.spy()
+      clearCompleted: sinon.spy(),
     },
-    ...propOverrides
+    ...propOverrides,
   };
 
   const renderer = TestUtils.createRenderer();
@@ -57,8 +57,8 @@ describe('todoapp MainSection component', () => {
         todos: [{
           text: 'Use Redux',
           completed: true,
-          id: 0
-        }]
+          id: 0,
+        }],
       });
       const [toggle] = output.props.children;
       expect(toggle.props.checked).to.equal(true);
@@ -103,8 +103,8 @@ describe('todoapp MainSection component', () => {
         todos: [{
           text: 'Use Redux',
           completed: false,
-          id: 0
-        }]
+          id: 0,
+        }],
       });
       const [,, footer] = output.props.children;
       footer.props.onClearCompleted();

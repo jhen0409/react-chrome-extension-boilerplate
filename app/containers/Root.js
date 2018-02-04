@@ -1,11 +1,11 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { Provider } from 'react-redux';
 import App from './App';
 
 export default class Root extends Component {
-
   static propTypes = {
-    store: PropTypes.object.isRequired
+    store: PropTypes.object.isRequired,
   };
 
   render() {

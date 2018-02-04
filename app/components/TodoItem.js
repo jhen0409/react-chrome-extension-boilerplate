@@ -1,21 +1,21 @@
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import TodoTextInput from './TodoTextInput';
 import style from './TodoItem.css';
 
 export default class TodoItem extends Component {
-
   static propTypes = {
     todo: PropTypes.object.isRequired,
     editTodo: PropTypes.func.isRequired,
     deleteTodo: PropTypes.func.isRequired,
-    completeTodo: PropTypes.func.isRequired
+    completeTodo: PropTypes.func.isRequired,
   };
 
   constructor(props, context) {
     super(props, context);
     this.state = {
-      editing: false
+      editing: false,
     };
   }
 
@@ -49,11 +49,7 @@ export default class TodoItem extends Component {
     let element;
     if (this.state.editing) {
       element = (
-        <TodoTextInput
-          text={todo.text}
-          editing={this.state.editing}
-          onSave={this.handleSave}
-        />
+        <TodoTextInput text={todo.text} editing={this.state.editing} onSave={this.handleSave} />
       );
     } else {
       element = (
@@ -64,13 +60,8 @@ export default class TodoItem extends Component {
             checked={todo.completed}
             onChange={this.handleComplete}
           />
-          <label onDoubleClick={this.handleDoubleClick}>
-            {todo.text}
-          </label>
-          <button
-            className={style.destroy}
-            onClick={this.handleDelete}
-          />
+          <label onDoubleClick={this.handleDoubleClick}>{todo.text}</label>
+          <button className={style.destroy} onClick={this.handleDelete} />
         </div>
       );
     }
@@ -80,7 +71,7 @@ export default class TodoItem extends Component {
         className={classnames({
           [style.completed]: todo.completed,
           [style.editing]: this.state.editing,
-          [style.normal]: !this.state.editing
+          [style.normal]: !this.state.editing,
         })}
       >
         {element}

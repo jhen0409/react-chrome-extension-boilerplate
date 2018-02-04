@@ -19,8 +19,8 @@ export function buildWebDriver(extPath) {
     .usingServer('http://localhost:9515')
     .withCapabilities({
       chromeOptions: {
-        args: [`load-extension=${extPath}`]
-      }
+        args: [`load-extension=${extPath}`],
+      },
     })
     .forBrowser('chrome')
     .build();

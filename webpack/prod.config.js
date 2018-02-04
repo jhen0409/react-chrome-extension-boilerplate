@@ -8,12 +8,12 @@ module.exports = {
   entry: {
     todoapp: [customPath, path.join(__dirname, '../chrome/extension/todoapp')],
     background: [customPath, path.join(__dirname, '../chrome/extension/background')],
-    inject: [customPath, path.join(__dirname, '../chrome/extension/inject')]
+    inject: [customPath, path.join(__dirname, '../chrome/extension/inject')],
   },
   output: {
     path: path.join(__dirname, '../build/js'),
     filename: '[name].bundle.js',
-    chunkFilename: '[id].chunk.js'
+    chunkFilename: '[id].chunk.js',
   },
   plugins: [
     new webpack.optimize.OccurrenceOrderPlugin(),
@@ -21,17 +21,17 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin({
       comments: false,
       compressor: {
-        warnings: false
-      }
+        warnings: false,
+      },
     }),
     new webpack.DefinePlugin({
       'process.env': {
-        NODE_ENV: JSON.stringify('production')
-      }
-    })
+        NODE_ENV: JSON.stringify('production'),
+      },
+    }),
   ],
   resolve: {
-    extensions: ['*', '.js']
+    extensions: ['*', '.js'],
   },
   module: {
     rules: [{
@@ -39,8 +39,8 @@ module.exports = {
       loader: 'babel-loader',
       exclude: /node_modules/,
       query: {
-        presets: ['react-optimize']
-      }
+        presets: ['react-optimize'],
+      },
     }, {
       test: /\.css$/,
       use: [
@@ -49,10 +49,10 @@ module.exports = {
         {
           loader: 'postcss-loader',
           options: {
-            plugins: () => [autoprefixer]
-          }
-        }
-      ]
-    }]
-  }
+            plugins: () => [autoprefixer],
+          },
+        },
+      ],
+    }],
+  },
 };

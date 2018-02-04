@@ -7,7 +7,7 @@ import TodoTextInput from '../../../app/components/TodoTextInput';
 
 function setup() {
   const props = {
-    addTodo: sinon.spy()
+    addTodo: sinon.spy(),
   };
 
   const renderer = TestUtils.createRenderer();
