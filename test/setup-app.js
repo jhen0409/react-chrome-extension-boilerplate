@@ -6,5 +6,5 @@ global.window = document.defaultView;
 global.navigator = global.window.navigator;
 
 hook({
-  generateScopedName: '[name]__[local]___[hash:base64:5]'
+  generateScopedName: '[name]__[local]___[hash:base64:5]',
 });

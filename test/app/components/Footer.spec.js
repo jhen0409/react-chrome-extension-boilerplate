@@ -13,7 +13,7 @@ function setup(propOverrides) {
     filter: SHOW_ALL,
     onClearCompleted: sinon.spy(),
     onShow: sinon.spy(),
-    ...propOverrides
+    ...propOverrides,
   };
 
   const renderer = TestUtils.createRenderer();
@@ -27,10 +27,12 @@ function getTextContent(elem) {
   const children = Array.isArray(elem.props.children) ?
     elem.props.children : [elem.props.children];
 
-  return children.reduce((out, child) =>
+  return children.reduce(
+    (out, child) =>
     // Children are either elements or text strings
-    out + (child.props ? getTextContent(child) : child)
-  , '');
+      out + (child.props ? getTextContent(child) : child)
+    , '',
+  );
 }
 
 describe('todoapp Footer component', () => {
