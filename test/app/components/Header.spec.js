@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { createRenderer } from 'react-test-renderer/shallow';
 import Header from '../../../app/components/Header';
 import TodoTextInput from '../../../app/components/TodoTextInput';
 
@@ -10,7 +10,7 @@ function setup() {
     addTodo: sinon.spy()
   };
 
-  const renderer = TestUtils.createRenderer();
+  const renderer = createRenderer();
   renderer.render(<Header {...props} />);
   const output = renderer.getRenderOutput();
 

@@ -1,0 +1,8 @@
+{
+  "appName": {
+    "message": "react-chrome-extension-example"
+  },
+  "appDesc": {
+    "message": "Example for react-chrome-extension-boilerplate"
+  }
+}

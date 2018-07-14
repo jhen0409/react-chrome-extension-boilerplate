@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { createRenderer } from 'react-test-renderer/shallow';
 import Footer from '../../../app/components/Footer';
 import style from '../../../app/components/Footer.css';
 import { SHOW_ALL, SHOW_ACTIVE } from '../../../app/constants/TodoFilters';
@@ -16,7 +16,7 @@ function setup(propOverrides) {
     ...propOverrides
   };
 
-  const renderer = TestUtils.createRenderer();
+  const renderer = createRenderer();
   renderer.render(<Footer {...props} />);
   const output = renderer.getRenderOutput();
 

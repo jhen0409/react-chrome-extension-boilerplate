@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { createRenderer } from 'react-test-renderer/shallow';
 import MainSection from '../../../app/components/MainSection';
 import style from '../../../app/components/MainSection.css';
 import TodoItem from '../../../app/components/TodoItem';
@@ -29,7 +29,7 @@ function setup(propOverrides) {
     ...propOverrides
   };
 
-  const renderer = TestUtils.createRenderer();
+  const renderer = createRenderer();
   renderer.render(<MainSection {...props} />);
   const output = renderer.getRenderOutput();
 

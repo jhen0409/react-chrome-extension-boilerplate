@@ -1,7 +1,7 @@
 import { expect } from 'chai';
 import sinon from 'sinon';
 import React from 'react';
-import TestUtils from 'react-addons-test-utils';
+import { createRenderer } from 'react-test-renderer/shallow';
 import TodoItem from '../../../app/components/TodoItem';
 import style from '../../../app/components/TodoItem.css';
 import TodoTextInput from '../../../app/components/TodoTextInput';
@@ -18,7 +18,7 @@ function setup(editing = false) {
     completeTodo: sinon.spy()
   };
 
-  const renderer = TestUtils.createRenderer();
+  const renderer = createRenderer();
 
   renderer.render(<TodoItem {...props} />);
 
