@@ -1,33 +1,24 @@
-const bluebird = require('bluebird');
-
-global.Promise = bluebird;
-
-function promisifier(method) {
-  // return a function
-  return function promisified(...args) {
-    // which returns a promise
-    return new Promise((resolve) => {
-      args.push(resolve);
-      method.apply(this, args);
-    });
-  };
-}
-
-function promisifyAll(obj, list) {
-  list.forEach(api => bluebird.promisifyAll(obj[api], { promisifier }));
-}
-
-// let chrome extension api support Promise
-promisifyAll(chrome, [
-  'tabs',
-  'windows',
-  'browserAction',
-  'contextMenus'
-]);
-promisifyAll(chrome.storage, [
-  'local',
-]);
+import { isContentScriptLoaded, loadContentScript } from './background/contentScriptLoader';
 
 require('./background/contextMenus');
-require('./background/inject');
 require('./background/badge');
+
+
+const targetURL = '^https://github\\.com';
+
+chrome.tabs.onUpdated.addListener(async (tabId, changeInfo, tab) => {
+  if (changeInfo.status !== 'loading' || !tab.url.match(targetURL)) {
+    return;
+  }
+
+  const result = await isContentScriptLoaded(tabId);
+  if (chrome.runtime.lastError || result[0]) {
+    return;
+  }
+
+  // content script can be loaded from background script dynamically.
+  // (or it can be loaded directly from manifest.json file.)
+  loadContentScript(tabId, () => {
+    console.log('load content bundle from background success!');
+  });
+});

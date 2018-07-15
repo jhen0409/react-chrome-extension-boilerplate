@@ -1,8 +1,10 @@
 {
   "version": "0.0.0",
-  "name": "react-chrome-extension-example",
   "manifest_version": 2,
-  "description": "Example for react-chrome-extension-boilerplate",
+  "name": "__MSG_appName__",
+  "description": "__MSG_appDesc__",
+  "default_locale": "en",
+
   "browser_action": {
     "default_title": "React Chrome Extension Example",
     "default_popup": "popup.html"
@@ -13,11 +15,17 @@
     "128": "img/icon-128.png"
   },
   "web_accessible_resources": [
-    "inject.html"
+    "js/page.bundle.js"
   ],
   "background": {
     "page": "background.html"
   },
-  "permissions": [ "contextMenus", "tabs", "storage", "https://github.com/*" ],
+  "permissions": [
+    "contextMenus",
+    "management",
+    "tabs",
+    "storage",
+    "https://github.com/*"
+  ],
   "content_security_policy": "default-src 'self'; script-src 'self'; style-src * 'unsafe-inline'; img-src 'self' data:;"
 }

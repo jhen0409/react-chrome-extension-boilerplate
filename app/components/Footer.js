@@ -1,4 +1,5 @@
-import React, { PropTypes, Component } from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import classnames from 'classnames';
 import { SHOW_ALL, SHOW_COMPLETED, SHOW_ACTIVE } from '../constants/TodoFilters';
 import style from './Footer.css';
@@ -11,7 +12,6 @@ const FILTER_TITLES = {
 };
 
 export default class Footer extends Component {
-
   static propTypes = {
     completedCount: PropTypes.number.isRequired,
     activeCount: PropTypes.number.isRequired,
@@ -64,6 +64,7 @@ export default class Footer extends Component {
     if (completedCount > 0) {
       return (
         <button
+          type="button"
           className={style.clearCompleted}
           onClick={onClearCompleted}
         >
@@ -78,11 +79,11 @@ export default class Footer extends Component {
       <footer className={style.footer}>
         {this.renderTodoCount()}
         <ul className={style.filters}>
-          {FILTERS.map((filter, i) =>
+          {FILTERS.map((filter, i) => (
             <li key={filter}>
               {this.renderFilterLink(filter, this.filterHandlers[i])}
             </li>
-          )}
+          ))}
         </ul>
         {this.renderClearButton()}
       </footer>

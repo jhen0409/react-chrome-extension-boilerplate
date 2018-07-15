@@ -10,8 +10,7 @@ import manifest from '../../chrome/manifest.prod.json';
 
 const extensionName = manifest.name;
 
-const findList = driver =>
-  driver.findElements(webdriver.By.css(`.${mainSectionStyle.todoList} > li`));
+const findList = driver => driver.findElements(webdriver.By.css(`.${mainSectionStyle.todoList} > li`));
 
 const addTodo = async (driver, key) => {
   // add todo
@@ -66,8 +65,8 @@ describe('window (popup) page', function test() {
     driver = buildWebDriver(extPath);
     await driver.get('chrome://extensions-frame');
     const elems = await driver.findElements(webdriver.By.xpath(
-      '//div[contains(@class, "extension-list-item-wrapper") and ' +
-      `.//h2[contains(text(), "${extensionName}")]]`
+      '//div[contains(@class, "extension-list-item-wrapper") and '
+      + `.//h2[contains(text(), "${extensionName}")]]`
     ));
     const extensionId = await elems[0].getAttribute('id');
     await driver.get(`chrome-extension://${extensionId}/window.html`);
