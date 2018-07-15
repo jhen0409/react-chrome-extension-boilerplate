@@ -33,9 +33,12 @@ The context menu is created by [chrome/extension/background/contextMenus.js](chr
 
 #### Inject page
 
-The inject script is being run by [chrome/extension/background/contentScriptLoader.js](chrome/extension/background/inject.js). A simple example will be inject bottom of page(`https://github.com/*`) if you visit.
+The background script will load [content script](https://developer.chrome.com/extensions/content_scripts), and content script will inject page script into context of currently opened page. A open TodoApp button will be injected top of page(`https://github.com/*`) if you visit.
 
-If you are receiving the error message `Failed to load resource: net::ERR_INSECURE_RESPONSE`, you need to allow invalid certificates for resources loaded from localhost. You can do this by visiting the following URL: `chrome://flags/#allow-insecure-localhost` and enabling **Allow invalid certificates for resources loaded from localhost**.
+- Content script can only manipulate DOM of current page. (It is running on different context of currently opened page)
+- If you want to interact with a javascript code running in currently opened page, you will have to inject page script into it from content script.
+
+- If you are receiving the error message `Failed to load resource: net::ERR_INSECURE_RESPONSE`, you need to allow invalid certificates for resources loaded from localhost. You can do this by visiting the following URL: `chrome://flags/#allow-insecure-localhost` and enabling **Allow invalid certificates for resources loaded from localhost**.
 
 ## Installation
 
@@ -49,18 +52,37 @@ $ npm install
 
 ## Development
 
-* Run script
+### Running scripts
+
+Two seprates command are provided for developing Chrome extension.
+
+#### dev-r
+
 ```bash
-# build files to './dev'
-# start webpack development server
-$ npm run dev
+# build asset & html files to './dev'
+# start webpack development server for background, window, popup script.
+$ npm run dev-r
 ```
-* If you're developing Inject page, please allow `https://localhost:3000` connections. (Because `injectpage` injected GitHub (https) pages, so webpack server procotol must be https.)
-* [Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder.
+If you are developing Chrome extension that uses backgroun script, window, and popup, then running `dev-r` will be enough.
+
+#### dev-s
+
+```bash
+# build content & page script and watch for their changes.
+$ npm run dev-s
+```
+
+If you are developing Chrome extension that uses content and page script, you have to run `dev-r` command first, then run `dev-s` command from **different terminal window**. 
+
+#### How to load chrome extension?
+
+- [Load unpacked extensions](https://developer.chrome.com/extensions/getstarted#unpacked) with `./dev` folder.
 
 #### React/Redux hot reload
 
-This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window & Inject page.
+- This boilerplate uses `Webpack` and `react-transform`, and use `Redux`. You can hot reload by editing related files of Popup & Window and background scripts. 
+
+- Content script & page script (injected by content script) cannot use hot reload, because many web sites use strict Content Security Policy (CSP) which allows loading resources from only specified domains. When Chrome Extension's content script & page script run on these web sites, loading from webpack-dev-server (http://localhost:3000) is not possible.
 
 #### Using Redux DevTools Extension
 
