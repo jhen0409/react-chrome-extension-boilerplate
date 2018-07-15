@@ -12,7 +12,6 @@ const TODO_FILTERS = {
 };
 
 export default class MainSection extends Component {
-
   static propTypes = {
     todos: PropTypes.array.isRequired,
     actions: PropTypes.object.isRequired
@@ -80,9 +79,7 @@ export default class MainSection extends Component {
       <section className={style.main}>
         {this.renderToggleAll(completedCount)}
         <ul className={style.todoList}>
-          {filteredTodos.map(todo =>
-            <TodoItem key={todo.id} todo={todo} {...actions} />
-          )}
+          {filteredTodos.map(todo => <TodoItem key={todo.id} todo={todo} {...actions} />)}
         </ul>
         {this.renderFooter(completedCount)}
       </section>

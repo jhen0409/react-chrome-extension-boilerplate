@@ -68,6 +68,7 @@ export default class TodoItem extends Component {
             {todo.text}
           </label>
           <button
+            type="button"
             className={style.destroy}
             onClick={this.handleDelete}
           />

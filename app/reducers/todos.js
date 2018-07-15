@@ -15,23 +15,17 @@ const actionsMap = {
     }, ...state];
   },
   [ActionTypes.DELETE_TODO](state, action) {
-    return state.filter(todo =>
-      todo.id !== action.id
-    );
+    return state.filter(todo => todo.id !== action.id);
   },
   [ActionTypes.EDIT_TODO](state, action) {
-    return state.map(todo =>
-      (todo.id === action.id ?
-        Object.assign({}, todo, { text: action.text }) :
-        todo)
-    );
+    return state.map(todo => (todo.id === action.id
+      ? Object.assign({}, todo, { text: action.text })
+      : todo));
   },
   [ActionTypes.COMPLETE_TODO](state, action) {
-    return state.map(todo =>
-      (todo.id === action.id ?
-        Object.assign({}, todo, { completed: !todo.completed }) :
-        todo)
-    );
+    return state.map(todo => (todo.id === action.id
+      ? Object.assign({}, todo, { completed: !todo.completed })
+      : todo));
   },
   [ActionTypes.COMPLETE_ALL](state/*, action*/) {
     const areAllCompleted = state.every(todo => todo.completed);

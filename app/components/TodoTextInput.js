@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import style from './TodoTextInput.css';
 
 export default class TodoTextInput extends Component {
-
   static propTypes = {
     onSave: PropTypes.func.isRequired,
     text: PropTypes.string,
@@ -49,7 +48,6 @@ export default class TodoTextInput extends Component {
         })}
         type="text"
         placeholder={this.props.placeholder}
-        autoFocus="true"
         value={this.state.text}
         onBlur={this.handleBlur}
         onChange={this.handleChange}

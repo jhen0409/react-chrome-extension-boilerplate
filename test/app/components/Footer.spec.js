@@ -24,13 +24,11 @@ function setup(propOverrides) {
 }
 
 function getTextContent(elem) {
-  const children = Array.isArray(elem.props.children) ?
-    elem.props.children : [elem.props.children];
+  const children = Array.isArray(elem.props.children)
+    ? elem.props.children : [elem.props.children];
 
-  return children.reduce((out, child) =>
-    // Children are either elements or text strings
-    out + (child.props ? getTextContent(child) : child)
-  , '');
+  return children.reduce((out, child) => out + (child.props ? getTextContent(child) : child),
+    '');
 }
 
 describe('todoapp Footer component', () => {
